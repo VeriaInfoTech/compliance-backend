@@ -1,0 +1,93 @@
+ 'erm' => [
+        'type'=>['compliance'],
+        'rule' => [
+            'target' => 'insurance',
+            'import_type' => 'insurance',
+            'export_type' => ['insurance','insurance-comparison','insurance-statement'],
+        ],
+        'task' => [
+            'type' => 'insurance',
+            'import_type' => 'insurance',
+            'export_type' => ['insurance','insurance-comparison','insurance-statement'],
+        ],
+        'domain' => [
+            'type' => 'insurance',
+            'import_type' => '',
+            'export_type' => [],
+        ],
+        'answers' => [
+            'compliance' => [
+                [
+                    'value' => 'رعایت می شود',
+                    'key' => 'yes',
+                    'score' => '100',
+                ],
+                [
+                    'value' => 'تاحدودی رعایت می شود',
+                    'key' => 'partially',
+                    'score' => '50',
+                ],
+                [
+                    'value' => 'رعایت نمی شود',
+                    'key' => 'no',
+                    'score' => '0',
+                ]
+            ],
+            'audit' => [
+
+                [
+                    'value' => '',
+                    'key' => '',
+                    'score' => '',
+                ]
+            ],
+            'maturity' => [
+                [
+                    'value' => 'اولیه',
+                    'key' => 'initial',
+                    'score' => '0',
+                ],
+                [
+                    'value' => 'مدیریت شده',
+                    'key' => 'managed',
+                    'score' => '25',
+                ],
+                [
+                    'value' => 'تعریف شده',
+                    'key' => 'defined',
+                    'score' => '50',
+                ],
+                [
+                    'value' => 'به صورت کمی مدیریت شده',
+                    'key' => 'partially-managed',
+                    'score' => '75',
+                ],
+                [
+                    'value' => 'بهینه شده',
+                    'key' => 'optimized',
+                    'score' => '100',
+                ],
+            ],
+            'insurance' => [
+                [
+                    'value' => 'رعایت می شود',
+                    'key' => 'yes',
+                    'score' => '100',
+                ],
+                [
+                    'value' => 'تاحدودی رعایت می شود',
+                    'key' => 'partially',
+                    'score' => '50',
+                ],
+                [
+                    'value' => 'رعایت نمی شود',
+                    'key' => 'no',
+                    'score' => '0',
+                ]
+            ],
+
+        ],
+        'directory' => [
+            'download_path' => *
+        ]
+    ],

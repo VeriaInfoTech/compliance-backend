@@ -1,0 +1,114 @@
+{
+  "name": "laminas/laminas-mvc-skeleton",
+  "description": "Laminas MVC Skeleton Application",
+  "type": "project",
+  "license": "BSD-3-Clause",
+  "keywords": [
+    "Laminas",
+    "Laminas MVC",
+    "Laminas Module",
+    "laminas",
+    "mvc",
+    "skeleton",
+    "framework",
+    "Psr",
+    "MultiTenant",
+    "SaaS"
+  ],
+  "require": {
+    "php": "~8.0.0 || ~8.1.0||~8.1.0 || ~8.2.0|| ~8.3.3",
+    "ext-redis": "*",
+    "ext-ctype": "*",
+    "ext-fileinfo": "*",
+    "ext-gd": "*",
+    "ext-json": "*",
+    "ext-mbstring": "*",
+    "ext-pdo": "*",
+    "ext-spl": "*",
+    "ext-intl": "*",
+    "ext-soap": "*",
+    "ext-zip": "*",
+    "lib-curl": "*",
+    "laminas/laminas-component-installer":  "*",
+    "laminas/laminas-development-mode": "*",
+    "laminas/laminas-skeleton-installer":  "*",
+    "laminas/laminas-mvc":  "*",
+    "laminas/laminas-db":  "*",
+    "laminas/laminas-mvc-form":  "*",
+    "laminas/laminas-json":  "*",
+    "laminas/laminas-log":  "*",
+    "laminas/laminas-cli":  "*",
+    "laminas/laminas-mvc-i18n":  "*",
+    "laminas/laminas-mvc-plugins": "*",
+    "laminas/laminas-mvc-middleware": "*",
+    "laminas/laminas-di":  "*",
+    "laminas/laminas-authentication": "*",
+    "laminas/laminas-crypt": "*",
+    "laminas/laminas-http": "*",
+    "laminas/laminas-eventmanager": "*",
+    "laminas/laminas-cache": "*",
+    "laminas/laminas-cache-storage-adapter-redis": "*",
+    "laminas/laminas-cache-storage-adapter-memory": "^2.4",
+    "laminas/laminas-serializer": "*",
+    "laminas/laminas-inputfilter": "*",
+    "laminas/laminas-permissions-rbac": "*",
+    "laminas/laminas-i18n": "*",
+    "laminas/laminas-file":"*",
+    "laminas/laminas-config": "*",
+    "laminas/laminas-diactoros": "*",
+    "laminas/laminas-soap": "*",
+    "laminas/laminas-code": "*",
+    "laminas/laminas-server": "*",
+    "laminas/laminas-diagnostics": "*",
+    "laminas/laminas-uri": "*",
+    "laminas/laminas-zendframework-bridge": "*",
+    "lm-commons/lmc-cors": "*",
+    "firebase/php-jwt": "*",
+    "phpmailer/phpmailer": "*",
+    "automattic/woocommerce": "*",
+    "voku/anti-xss": "^4.1",
+    "mongodb/mongodb": "^1.16",
+    "phpoffice/phpspreadsheet": "*",
+    "robthree/twofactorauth": "*",
+    "endroid/qr-code": "*",
+    "hybridauth/hybridauth": "*",
+    "google/auth": "*",
+    "phpseclib/phpseclib": "*",
+    "jenssegers/agent": "^2.6",
+    "aws/aws-sdk-php": "^3.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Application\\": "module/Application/src/",
+      "Pi\\Core\\": "module/Core/src/",
+      "Pi\\User\\": "module/User/src/",
+      "Pi\\Notification\\": "module/Notification/src/",
+      "Erm\\": "module/Erm/src/",
+      "Risk\\": "module/Risk/src/",
+      "Pi\\Logger\\": "module/Logger/src/",
+      "Pi\\Media\\": "module/Media/src/"
+    }
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "php -r 'if (file_exists(\"bin/post-install.php\")) include \"bin/post-install.php\";'"
+    ],
+    "post-update-cmd": [
+      "php -r 'if (file_exists(\"bin/post-update.php\")) include \"bin/post-update.php\";'"
+    ],
+    "post-package-uninstall": [
+      "php -r 'if (file_exists(\"bin/post-remove.php\")) include \"bin/post-remove.php\";'"
+    ]
+  },
+  "suggest": {
+    "ext-apc": "for opcode cache and system persistent data",
+    "ext-discount": "for Markdown text parsing",
+    "ext-intl": "for i18n features"
+  },
+  "config": {
+    "allow-plugins": {
+      "laminas/laminas-component-installer": true,
+      "laminas/laminas-skeleton-installer": true
+    }
+  }
+}

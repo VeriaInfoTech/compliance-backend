@@ -1,0 +1,128 @@
+<?php
+
+$local    = 'en_US';
+$basePath = '/app';
+$baseUrl  = 'http://localhost:8080';
+
+return [
+    'roles'   => [
+        'default_roles' => [
+            [
+                'name'    => 'member',
+                'section' => 'api',
+            ],
+        ],
+    ],
+    'jwt'     => [
+        'exp_access'  => 1209600, // 14 days, for development, for production set new value
+        'exp_refresh' => 7776000, // 90 days
+        'public_key'  => $basePath . '/data/keys/public_key.pem',
+        'private_key' => $basePath . '/data/keys/private_key.pem',
+        'internal_public_key'   => $basePath . '/data/keys/internal_public_key.pem',
+        'internal_private_key'  => $basePath . '/data/keys/internal_private_key.pem'
+        'iss'         => $baseUrl,
+        'check_aud'   => 0,
+        'check_ip'    => 0,
+        'use_origin'         => 0,
+        'additional'  => [
+            'company_id',
+            'company_title',
+            'identity',
+            'email',
+            'name',
+            'first_name',
+            'last_name',
+            'avatar',
+            'roles',
+        ],
+    ],
+    'account' => [
+        'otp_sms'      => [
+            'message' => '',
+            'source'  => [],
+        ],
+        'otp_email'    => [
+            'subject' => 'Login by one-time token',
+            'body'    => 'Your one-time token is <strong>%s</strong> and it is valid just for 2 minutes.',
+        ],
+        'multi_factor' => [
+            'status'         => 0,
+            'default_method' => 'app',
+            'allowed_method' => ['sms', 'email', 'app'],
+            'sms'            => [
+                'message' => 'Your verification code is: %s',
+            ],
+            'email'          => [
+                'subject' => 'Verify Your Code - Secure Login',
+                'body'    => 'Your verification code is <strong>%s</strong>. It is valid for only 2 minutes. Please do not share this code with anyone.',
+            ],
+        ],
+        'oauth'        => [
+            'oauth_login'    => 1,
+            'oauth_register' => 1,
+            'microsoft'      => [
+                'status'                  => 1,
+                'microsoft_callback'      => 'XXX',
+                'microsoft_client_id'     => 'XXX',
+                'microsoft_client_secret' => 'XXX',
+                'microsoft_tenant_id'     => 'XXX',
+            ],
+            'google'         => [
+                'status'               => 1,
+                'google_callback'      => 'XXX',
+                'google_client_id'     => 'XXX',
+                'google_client_secret' => 'XXX',
+            ],
+            'oauth2'         => [
+                'base_url'         => 'XXX',
+                'authorize_url'    => 'XXX',
+                'token_url'        => 'XXX',
+                'user_info_url'    => 'XXX',
+                'client_id'        => 'XXX',
+                'response_type'    => 'XXX',
+                'scope'            => 'XXX',
+                'redirect_uri'     => 'XXX',
+                'state'            => 'XXX',
+                'nonce'            => 'XXX',
+                'response_mode'    => 'XXX',
+                'client_login_url' => 'XXX',
+            ],
+        ],
+        'register'     => [
+            'status' => 1,
+        ],
+        'login'        => [
+            'session_policy'       => 'multi', // multi,single
+            'check_signature'      => 1,
+            'get_company'          => 1,
+            'permission'           => 1,
+            'permission_package'   => 1,
+            'permission_role'      => ['api', 'admin'],
+            'permission_blacklist' => [],
+        ],
+    ],
+    'captcha' => [
+        'recaptcha' => [
+            'public' => 'XXX',
+            'secret' => 'XXX',
+        ],
+    ],
+    'export'  => [
+        'format'    => 'csv',
+        'file_path' => 'PATH_TO/data/export',
+    ],
+    'avatar'  => [
+        'avatar_uri'        => 'https://...',
+        'public_path'       => 'PUBLIC_AVATAR_PATH',
+        'allowed_extension' => [
+            'jpg',
+            'jpeg',
+            'png',
+        ],
+        'mime_type'         => [],
+        'allowed_size'      => [
+            'min' => '1kB',
+            'max' => '2MB',
+        ],
+    ],
+];

@@ -1,0 +1,35 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Pi\User\Model\Account;
+
+class Credential
+{
+    private mixed   $id;
+    private ?string $credential;
+
+    public function __construct(
+        $credential,
+        $id = null
+    ) {
+        $this->credential = $credential;
+        $this->id         = $id;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getCredential(): string|null
+    {
+        return $this->credential;
+    }
+}

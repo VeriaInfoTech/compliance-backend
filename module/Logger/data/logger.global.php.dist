@@ -1,0 +1,44 @@
+<?php
+
+return [
+    'logger'       => [
+        'storage'    => 'mysql', // mysql, mongodb, file, disable
+        'mongodb'    => [
+            'uri'        => 'mongodb://localhost:27017',
+            'database'   => 'XXX',
+            'collection' => 'logger_system',
+        ],
+        'file'    => [
+            'path'        => 'LOCAL_PATH',
+            'date_format' => 'Y-m-d',
+        ],
+        'limitation'     => [
+            'cleanup'           => true, // true or false
+            'maximum_allowed'   => 100000, // Total logs can store to database
+            'alert_threshold'   => 80, // The percentage at which an alert should be triggered
+            'cleanup_threshold' => 95,  // The percentage at which cleanup should trigger
+            'cleanup_amount'    => 30,  // The amount/percentage of data to clean up
+        ],
+        'forbidden_keys' => [
+            'credential',
+            'credentialColumn',
+            'token',
+            'access_token',
+            'refresh_token',
+            'token_payload',
+            'permission',
+            'HTTP_TOKEN',
+            'Token',
+            'controller',
+            'middleware',
+            'Laminas\Router\RouteMatch',
+            'token_data',
+            'current_token',
+            'company_authorization',
+            'media_authorization',
+            'setting',
+            'member',
+            'package',
+        ]
+    ]
+];

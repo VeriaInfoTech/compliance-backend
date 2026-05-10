@@ -1,0 +1,81 @@
+services:
+  app:
+    build: .
+    container_name: shahr-backend
+    volumes:
+      - .:/var/www
+    environment:
+      MYSQL_DB_HOST: ${MYSQL_DB_HOST:-mariadb}
+      MYSQL_PORT: ${MYSQL_PORT:-3306}
+      MYSQL_DB_USER: ${MYSQL_DB_USER:-root}
+      MYSQL_DB_PASSWORD: ${MYSQL_DB_PASSWORD:-113071}
+      REDIS_HOST: ${REDIS_HOST:-redis}
+      REDIS_PORT: ${REDIS_PORT:-6379}
+    depends_on:
+      mariadb:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    networks:
+      - shahr-network
+
+  nginx:
+    image: nginx:alpine
+    container_name: shahr-nginx
+    ports:
+      - "${HTTP_PORT:-8085}:80"
+    volumes:
+      - .:/var/www
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app
+    networks:
+      - shahr-network
+
+  mariadb:
+    image: mariadb:10.11
+    container_name: shahr-mariadb
+    ports:
+      - "${MARIADB_HOST_PORT:-3308}:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_DB_PASSWORD:-113071}
+      MYSQL_DATABASE: ${MYSQL_DB_NAME:-shahr_db}
+    volumes:
+      - shahr-mariadb-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - shahr-network
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: shahr-phpmyadmin
+    ports:
+      - "${PMA_PORT:-8095}:80"
+    environment:
+      PMA_HOST: mariadb
+      PMA_PORT: 3306
+      PMA_USER: ${MYSQL_DB_USER:-root}
+      PMA_PASSWORD: ${MYSQL_DB_PASSWORD:-113071}
+      UPLOAD_LIMIT: 64M
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    networks:
+      - shahr-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: shahr-redis
+    networks:
+      - shahr-network
+
+networks:
+  shahr-network:
+    driver: bridge
+
+volumes:
+  shahr-mariadb-data:

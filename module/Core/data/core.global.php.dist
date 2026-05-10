@@ -1,0 +1,162 @@
+<?php
+
+$local    = 'en_US';
+$basePath = '/app';
+$baseUrl  = 'http://localhost:8080';
+
+return [
+    'db'      => [
+        'driver'         => 'Pdo',
+        'dsn'            => 'mysql:dbname=XXX;host=XXX;charset=utf8',
+        'username'       => 'XXX',
+        'password'       => 'XXX',
+        'driver_options' => [
+            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8mb4 COLLATE utf8mb4_general_ci',
+            PDO::ATTR_PERSISTENT         => false,
+        ],
+        'options'        => [],
+    ],
+    'global'  => [
+        'baseurl'  => $baseUrl,
+        'sitename' => 'Lamines',
+        'platform' => 'dev-123'
+    ],
+    'cache'   => [
+        'storage' => 'redis',
+        'options' => [
+            'namespace' => 'local_laminas',
+            'ttl'       => 1209600,
+            'server'    => [
+                '127.0.0.1',
+                6379,
+            ],
+        ],
+        'plugins' => [
+            [
+                'name' => 'serializer',
+            ],
+        ],
+    ],
+    'utility' => [
+        'local'         => $local,
+        'currency'      => 'USD',
+        'timezone'      => 'Asia/Dubai',
+        'date_local'    => $local,
+        'date_type'     => IntlDateFormatter::SHORT,
+        'time_type'     => IntlDateFormatter::NONE,
+        'date_calendar' => IntlDateFormatter::TRADITIONAL,
+        'date_pattern'  => 'yyyy/MM/dd',
+    ],
+    'security'     => [
+        // General
+        'signature'       => [
+            'public_key'       => $basePath . '/data/keys/signature_public_key.pem',
+            'private_key'      => $basePath . '/data/keys/signature_private_key.pem',
+            'allowed_tables'   => ['user_account', 'role_account', 'permission_role'],
+            'signature_fields' => [
+                'user_account'    => ['id', 'name', 'identity', 'email', 'mobile', 'credential', 'status', 'multi_factor_status', 'multi_factor_secret'],
+                'role_account'    => ['id', 'user_id', 'role', 'section'],
+                'permission_role' => ['id', 'key', 'resource', 'section', 'module', 'role'],
+            ],
+        ],
+        // Request
+        'ip'             => [
+            'is_active' => true,
+            'whitelist' => [
+                '172.18.0.1',
+                '192.168.1.1',
+                '10.0.0.0/24', // Range
+            ],
+            'blacklist' => [
+                'unknown',
+                '203.0.113.5',
+                '198.51.100.0/24', // Range
+            ],
+        ],
+        'url'            => [
+            'is_active' => true,
+            'blacklist' => [],
+        ],
+        'origin'         => [
+            'is_active' => true,
+            'blacklist' => [],
+        ],
+        'method'         => [
+            'is_active'    => true,
+            'allow_method' => ['POST', 'GET'],
+        ],
+        'xss'            => [
+            'is_active'        => true,
+            'ignore_whitelist' => true,
+             'pattern_type'    => 'standard' // basic, standard, critical
+        ],
+        'injection'            => [
+            'is_active'        => true,
+            'ignore_whitelist' => true,
+            'pattern_type'     => 'standard' // basic, standard, critical
+        ],
+        'inputValidation'=> [
+            'is_active'        => true,
+            'ignore_whitelist' => true,
+        ],
+        'inputSizeLimit' => [
+            'is_active'      => true,
+            'max_input_size' => 1048576, // 1MB in bytes
+        ],
+        'requestLimit'   => [
+            'is_active'        => true,
+            'ignore_whitelist' => true,
+            'max_requests'     => 100,
+            'rate_limit'       => 60, // Time window in seconds
+        ],
+        'userData'        => [
+            'is_active'         => true,
+            'ignore_whitelist'  => true,
+            'geo_location_path' => $basePath . '/data/geoLite/GeoLite2-City.mmdb',
+        ],
+        'csrf'            => [
+            'is_active'        => true,
+            'ignore_whitelist' => true,
+            'check_list' => [
+                //'api-user-security-csrf'
+            ]
+        ],
+        // Response
+        'header'          => [
+            'is_active' => true,
+            'options' => [
+                'content_security_policy'   => "default-src 'self'",
+                'strict_transport_security' => 'max-age=31536000; includeSubDomains',
+                'x_content_type_options'    => 'nosniff',
+                'x_frame_options'           => 'DENY',
+                'x_xss_protection'          => '1; mode=block',
+                'referrer_policy'           => 'strict-origin-when-cross-origin',
+                'permissions_policy'        => "geolocation=(), microphone=(), camera=(), fullscreen=(self), payment=(), usb=(), vibrate=(), sync-xhr=(), accelerometer=(), gyroscope=(), magnetometer=(), ambient-light-sensor=(), xr-spatial-tracking=()",
+                'cache_control'             => 'no-store, no-cache, must-revalidate, proxy-revalidate, private, max-age=0',
+            ],
+        ],
+        'escape'          => [
+            'is_active' => true,
+        ],
+        'compress'        => [
+            'is_active' => true,
+        ],
+        // Account
+        'account'        => [
+            'attempts' => 5,
+            'ttl'      => 3600,
+        ],
+    ],
+    'translator' => [
+        'locale'                    => $local,
+        'translation_file_patterns' => [
+            //...
+            [
+                'type'     => 'phparray',
+                'base_dir' => $basePath . '/module/User/language',
+                'pattern'  => '%s.php',
+            ],
+            //...
+        ],
+    ],
+];

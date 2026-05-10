@@ -1,0 +1,37 @@
+# Composer
+/vendor/
+
+# Node
+/node_modules/
+
+# Environment
+.env
+.env.local
+
+# Laminas local config
+/config/autoload/*.local.php
+
+# Cache & logs
+/data/cache/*
+/data/logs/*
+/data/sessions/*
+
+# Keep folders
+!/data/cache/.gitkeep
+!/data/logs/.gitkeep
+!/data/sessions/.gitkeep
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+
+/PRIVATE_PATH/
+/public/upload/

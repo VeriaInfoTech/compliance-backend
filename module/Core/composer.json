@@ -1,0 +1,118 @@
+{
+  "name": "pi/core",
+  "description": "Pi is a multi-tenant application development engine for cloud ready SaaS platform with support for SSO/OAuth.",
+  "license": "BSD-3-Clause",
+  "keywords": [
+    "Pi",
+    "Pi Engine",
+    "Laminas",
+    "Laminas MVC",
+    "Laminas Module",
+    "Psr",
+    "MultiTenant",
+    "SaaS"
+  ],
+  "homepage": "https://piengine.org",
+  "authors": [
+    {
+      "name": "Hossein Azizabadi Farahani",
+      "email": "hossein@azizabadi.com"
+    },
+    {
+      "name": "Pi Team",
+      "homepage": "https://github.com/pi-engine/pi/graphs/contributors"
+    }
+  ],
+  "extra": {
+    "laminas": {
+      "module": "Pi\\Core"
+    }
+  },
+  "require": {
+    "php": "~8.3.0 || ~8.4.0",
+    "ext-redis": "*",
+    "ext-ctype": "*",
+    "ext-fileinfo": "*",
+    "ext-gd": "*",
+    "ext-json": "*",
+    "ext-mbstring": "*",
+    "ext-pdo": "*",
+    "ext-spl": "*",
+    "ext-intl": "*",
+    "ext-soap": "*",
+    "ext-zip": "*",
+    "ext-curl": "*",
+    "ext-mongodb": "*",
+    "ext-zlib": "*",
+    "lib-curl": "*",
+    "laminas/laminas-component-installer":  "*",
+    "laminas/laminas-development-mode": "*",
+    "laminas/laminas-skeleton-installer":  "*",
+    "laminas/laminas-mvc":  "*",
+    "laminas/laminas-db":  "*",
+    "laminas/laminas-cli":  "*",
+    "laminas/laminas-mvc-i18n":  "*",
+    "laminas/laminas-mvc-plugins": "*",
+    "laminas/laminas-mvc-middleware": "*",
+    "laminas/laminas-authentication": "*",
+    "laminas/laminas-http": "*",
+    "laminas/laminas-eventmanager": "*",
+    "laminas/laminas-cache": "*",
+    "laminas/laminas-cache-storage-adapter-redis": "*",
+    "laminas/laminas-cache-storage-adapter-filesystem": "*",
+    "laminas/laminas-serializer": "*",
+    "laminas/laminas-inputfilter": "*",
+    "laminas/laminas-permissions-rbac": "*",
+    "laminas/laminas-i18n": "*",
+    "laminas/laminas-diactoros": "*",
+    "laminas/laminas-soap": "*",
+    "laminas/laminas-code": "*",
+    "laminas/laminas-server": "*",
+    "laminas/laminas-diagnostics": "*",
+    "laminas/laminas-uri": "*",
+    "lm-commons/lmc-cors": "*",
+    "firebase/php-jwt": "*",
+    "symfony/mailer": "*",
+    "symfony/uid": "*",
+    "phpmailer/phpmailer": "*",
+    "imagine/imagine": "*",
+    "phpoffice/phppresentation": "*",
+    "phpoffice/phpspreadsheet": "*",
+    "phpoffice/phpword": "*",
+    "smalot/pdfparser": "*",
+    "robthree/twofactorauth": "*",
+    "endroid/qr-code": "*",
+    "hybridauth/hybridauth": "*",
+    "google/auth": "*",
+    "google/recaptcha": "*",
+    "google/cloud-storage": "*",
+    "phpseclib/phpseclib": "*",
+    "mongodb/mongodb": "*",
+    "triagens/arangodb": "*",
+    "doctrine/doctrine-mongo-odm-module": "*",
+    "aws/aws-sdk-php": "*",
+    "monolog/monolog": "*",
+    "twilio/sdk": "*",
+    "doctrine/mongodb-odm": "*",
+    "jenssegers/agent": "*",
+    "geoip2/geoip2": "*",
+    "dragonmantank/cron-expression": "*",
+    "basis-company/nats": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Pi\\Core\\": "src/"
+    }
+  },
+  "suggest": {
+    "ext-apc": "for opcode cache and system persistent data",
+    "ext-discount": "for Markdown text parsing",
+    "ext-intl": "for i18n features"
+  },
+  "config": {
+    "allow-plugins": {
+      "laminas/laminas-component-installer": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  }
+}

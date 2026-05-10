@@ -1,0 +1,81 @@
+<?php
+
+return [
+    'notification' => [
+        'defaults' => [
+            'mail' => 'phpMailer',
+            'sms'  => 'twilio',
+            'push' => 'fcm',
+        ],
+        'mail'     => [
+            'laminas'   => [
+                'encoding' => 'utf-8',
+                'from'     => [
+                    'email' => 'XXX',
+                    'name'  => 'Laminas',
+                ],
+            ],
+            'symfony'   => [
+                // Custom:     smtp://username:password@smtp.example.com:587
+                // Gmail:      smtp://your-email@gmail.com:your-app-password@smtp.gmail.com:587
+                // SendGrid:   smtp://apikey:your-sendgrid-api-key@smtp.sendgrid.net:587
+                // Amazon SES: smtp://your-aws-access-key-id:your-aws-secret-access-key@email-smtp.us-east-1.amazonaws.com:587
+                'dns'      => 'smtp://username:password@smtp.example.com:587',
+                'encoding' => 'utf-8',
+                'from'     => [
+                    'email' => 'XXX',
+                    'name'  => 'Laminas',
+                ],
+            ],
+            'phpMailer' => [
+                // use 587 if you have set `SMTPSecure => ENCRYPTION_STARTTLS`
+                // use 465 if you have set `SMTPSecure => ENCRYPTION_SMTPS`
+                'smtp'     => [
+                    'host'          => 'XXX',
+                    'username'      => 'XXX',
+                    'password'      => 'XXX',
+                    'port'          => 465,
+                    'SMTPSecure'    => 'ENCRYPTION_SMTPS',
+                    'crypto_method' => STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT,
+                    'ssl'           => 'tls',
+                ],
+                'from'     => [
+                    'email' => 'XXX',
+                    'name'  => 'Laminas',
+                ],
+                'encoding' => 'utf-8',
+            ],
+        ],
+        'sms'      => [],
+        'push'     => [
+            'fcm'  => [
+                'setting' => [
+                    'limitation' => [
+                        'status' => true,
+                        'length' => 150,
+                    ],
+                    'xss'        => [
+                        'status' => true,
+                    ],
+                ],
+            ],
+            'apns' => [
+                'key_id'             => '',
+                'is_production'      => false,
+                'team_id'            => '',
+                'app_bundle_id'      => '..',
+                'private_key_path'   => '/app/config/autoload/...',
+                'private_key_secret' => null,
+                'setting'            => [
+                    'limitation' => [
+                        'status' => true,
+                        'length' => 150,
+                    ],
+                    'xss'        => [
+                        'status' => true,
+                    ],
+                ],
+            ],
+        ],
+    ],
+];

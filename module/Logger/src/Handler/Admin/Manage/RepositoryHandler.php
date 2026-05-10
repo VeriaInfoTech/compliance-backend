@@ -1,0 +1,44 @@
+<?php
+
+namespace Pi\Logger\Handler\Admin\Manage;
+
+use Pi\Core\Response\EscapingJsonResponse;
+use Pi\Logger\Service\LoggerService;
+use Psr\Http\Message\ResponseFactoryInterface;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\StreamFactoryInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+
+class RepositoryHandler implements RequestHandlerInterface
+{
+    /** @var ResponseFactoryInterface */
+    protected ResponseFactoryInterface $responseFactory;
+
+    /** @var StreamFactoryInterface */
+    protected StreamFactoryInterface $streamFactory;
+
+    /** @var LoggerService */
+    protected LoggerService $loggerService;
+
+    public function __construct(
+        ResponseFactoryInterface $responseFactory,
+        StreamFactoryInterface   $streamFactory,
+        LoggerService            $loggerService
+    ) {
+        $this->responseFactory = $responseFactory;
+        $this->streamFactory   = $streamFactory;
+        $this->loggerService   = $loggerService;
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function handle(ServerRequestInterface $request): ResponseInterface
+    {
+        $result = $this->loggerService->checkRepository();
+        return new EscapingJsonResponse($result);
+    }
+}
