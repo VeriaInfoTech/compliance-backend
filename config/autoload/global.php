@@ -711,8 +711,10 @@ return [
         'stream_uri' => 'https://shahr.kerloper.com/upload',
         'private_path' => 'PRIVATE_PATH',
         'public_path' => 'public/upload',
+        'can_delete'        => 1,
         'allowed_extension' => [
             'jpg',
+            'png',
             'jpeg',
             'png',
             'pdf',

@@ -75,7 +75,8 @@
     "google/auth": "*",
     "phpseclib/phpseclib": "*",
     "jenssegers/agent": "^2.6",
-    "aws/aws-sdk-php": "^3.0"
+    "aws/aws-sdk-php": "^3.0",
+    "symfony/uid": "^7.4"
   },
   "autoload": {
     "psr-4": {
@@ -109,6 +110,12 @@
     "allow-plugins": {
       "laminas/laminas-component-installer": true,
       "laminas/laminas-skeleton-installer": true
+    }
+  },
+  "repositories": {
+    "packagist": {
+      "type": "composer",
+      "url": "https://mirror.abrha.net/repository/composer/"
     }
   }
 }
