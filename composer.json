@@ -87,6 +87,7 @@
       "Erm\\": "module/Erm/src/",
       "Risk\\": "module/Risk/src/",
       "Pi\\Logger\\": "module/Logger/src/",
+      "Content\\": "module/Content/src/",
       "Pi\\Media\\": "module/Media/src/"
     }
   },

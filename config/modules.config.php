@@ -36,6 +36,7 @@ return [
     'Erm',
     'Pi\Logger',
     'Risk',
+    'Content',
     'Pi\Notification',
     'Pi\Media',
 ];
