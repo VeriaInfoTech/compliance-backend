@@ -69,104 +69,6 @@ class ItemService implements ServiceInterface
             'status' => isset($params['status']) ? $params['status'] : 1,
         ];
 
-        if (array_key_exists('support_follow_up_date', $params)) {
-            if ($params['support_follow_up_date']) {
-                $listParams['support_follow_up_date'] = $params['support_follow_up_date'];
-            }
-        }
-
-        if (array_key_exists('support_title', $params)) {
-            if ($params['support_title']) {
-                $listParams['support_title'] = $params['support_title'];
-            }
-        }
-
-        if (array_key_exists('support_product_title', $params)) {
-            if ($params['support_product_title']) {
-                $listParams['support_product_title'] = $params['support_product_title'];
-            }
-        }
-
-        if (array_key_exists('support_customer_name', $params)) {
-            if ($params['support_customer_name']) {
-                $listParams['support_customer_name'] = $params['support_customer_name'];
-            }
-        }
-
-        if (array_key_exists('support_customer_email', $params)) {
-            if ($params['support_customer_email']) {
-                $listParams['support_customer_email'] = $params['support_customer_email'];
-            }
-        }
-
-        if (array_key_exists('support_customer_id', $params)) {
-            if ($params['support_customer_id']) {
-                $listParams['support_customer_id'] = $params['support_customer_id'];
-            }
-        }
-
-        if (array_key_exists('support_status', $params)) {
-            if (isset($params['support_status']['value'])) {
-                if (in_array($params['support_status']['value'], [0, 1])) {
-                    $listParams['status'] = $params['support_status']['value'];
-                }
-            }
-        }
-
-        if (array_key_exists('support_order_status', $params)) {
-            if (isset($params['support_order_status']['value'])) {
-                $listParams['support_order_status'] = $params['support_order_status']['value'];
-            }
-        }
-
-        if (isset($params['data_from'])) {
-            $listParams['data_from'] = strtotime(
-                ($params['data_from']) != null
-                    ? sprintf('%s 00:00:00', $params['data_from'])
-                    : sprintf('%s 00:00:00', date('Y-m-d', strtotime('-1 month')))
-            );
-        }
-
-        if (isset($params['data_to'])) {
-            $listParams['data_to'] = strtotime(
-                ($params['data_to']) != null
-                    ? sprintf('%s 00:00:00', $params['data_to'])
-                    : sprintf('%s 23:59:59', date('Y-m-d'))
-            );
-        }
-
-        if (isset($params['user_id'])) {
-            $listParams['user_id'] = $params['user_id'];
-        }
-
-        if (isset($params['parent_id'])) {
-            $listParams['parent_id'] = $params['parent_id'];
-        }
-
-        if (isset($params['title'])) {
-            $listParams['title'] = $params['title'];
-        }
-
-        if (!empty($filters)) {
-            $isFresh = true;
-            foreach ($filters as $filter) {
-                $itemIdList = [];
-                $rowSet = $this->itemRepository->getIDFromFilter($filter);
-                foreach ($rowSet as $row) {
-                    $itemIdList[] = $this->canonizeMetaItemID($row);
-                }
-                if ($isFresh) {
-                    $listParams['id'] = $itemIdList;
-                    $isFresh = false;
-                } else {
-                    $listParams['id'] = array_intersect($listParams['id'], $itemIdList);
-                }
-            }
-        }
-
-        if (isset($params['id']) && !empty($params['id'])) {
-            $listParams['id'] = isset($listParams['id']) ? array_intersect($listParams['id'], $params['id']) : $params['id'];
-        }
 
         $list = [];
         $rowSet = $this->itemRepository->getItemList($listParams);
@@ -189,21 +91,6 @@ class ItemService implements ServiceInterface
             ],
             'error' => [],
         ];
-    }
-
-    public function canonizeMetaItemID(object|array $meta): int|null
-    {
-        if (empty($meta)) {
-            return 0;
-        }
-
-        if (is_object($meta)) {
-            $itemID = $meta->getItemID();
-        } else {
-            $itemID = $meta['item_id'];
-        }
-
-        return $itemID;
     }
 
     public function canonizeItem(object|array $item, $type = 'global'): array

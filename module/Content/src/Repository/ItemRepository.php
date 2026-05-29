@@ -3,8 +3,6 @@
 namespace Content\Repository;
 
 use Content\Model\Item;
-use Content\Model\Key;
-use Content\Model\Meta;
 use Laminas\Db\Adapter\AdapterInterface;
 use Laminas\Db\Adapter\Driver\ResultInterface;
 use Laminas\Db\ResultSet\HydratingResultSet;
@@ -28,20 +26,6 @@ class ItemRepository implements ItemRepositoryInterface
     private string $tableItem = 'content_item';
 
     /**
-     * Meta Value Table name
-     *
-     * @var string
-     */
-    private string $tableMetaValue = 'content_meta_value';
-
-    /**
-     * Meta Key Table name
-     *
-     * @var string
-     */
-    private string $tableMetaKey = 'content_meta_key';
-
-    /**
      * @var AdapterInterface
      */
     private AdapterInterface $db;
@@ -52,34 +36,19 @@ class ItemRepository implements ItemRepositoryInterface
     private Item $itemPrototype;
 
     /**
-     * @var Meta
-     */
-    private Meta $metaValuePrototype;
-
-    /**
-     * @var Key
-     */
-    private Key $metaKeyPrototype;
-
-    /**
      * @var HydratorInterface
      */
     private HydratorInterface $hydrator;
 
-
     public function __construct(
         AdapterInterface  $db,
         HydratorInterface $hydrator,
-        Item              $itemPrototype,
-        Meta              $metaValuePrototype,
-        Key               $metaKeyPrototype
+        Item              $itemPrototype
     )
     {
         $this->db = $db;
         $this->hydrator = $hydrator;
         $this->itemPrototype = $itemPrototype;
-        $this->metaValuePrototype = $metaValuePrototype;
-        $this->metaKeyPrototype = $metaKeyPrototype;
     }
 
     /**
@@ -153,27 +122,6 @@ class ItemRepository implements ItemRepositoryInterface
 
         $sql = new Sql($this->db);
         $select = $sql->select($this->tableItem)->columns($columns)->where($where);
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $row = $statement->execute()->current();
-
-        return (int)$row['count'];
-    }
-
-    /**
-     * @param array $params
-     *
-     * @return int
-     */
-    public function getMetaKeyCount(array $params = []): int
-    {
-        $where = [];
-        if (isset($params['target']) && !empty($params['target'])) {
-            $where['target'] = $params['target'];
-        }
-        // Set where
-        $columns = ['count' => new Expression('count(*)')];
-        $sql = new Sql($this->db);
-        $select = $sql->select($this->tableMetaKey)->columns($columns)->where($where);
         $statement = $sql->prepareStatementForSqlObject($select);
         $row = $statement->execute()->current();
 
@@ -331,296 +279,6 @@ class ItemRepository implements ItemRepositoryInterface
         $statement->execute();
     }
 
-    /**
-     * @param array $params
-     *
-     * @return void
-     */
-    public function destroyItem($where): void
-    {
-        $update = new Delete($this->tableItem);
-        $update->where($where);
-
-        $sql = new Sql($this->db);
-        $statement = $sql->prepareStatementForSqlObject($update);
-        $statement->execute();
-    }
-
-    /**
-     * @param array $filters
-     *
-     * @return HydratingResultSet|array
-     */
-    // ToDo: This is temp solution, need be improve
-    public function getIDFromFilter_old(array $filters = []): HydratingResultSet|array
-    {
-        $where = ['status' => 1];
-        $sql = new Sql($this->db);
-        $select = $sql->select($this->tableMetaValue)->where($where);
-
-        foreach ($filters as $filter) {
-            switch ($filter['type']) {
-                case 'id':
-                    $select->where(['meta_key' => $filter['key'], 'value_id' => $filter['value']]);
-                    break;
-
-                case 'int':
-                    $select->where(['meta_key' => $filter['meta_key'], 'value_number' => $filter['value']]);
-                    break;
-
-                case 'string':
-                    $select->where(['meta_key' => $filter['meta_key'], 'value_string' => $filter['value']]);
-                    break;
-
-                case 'search':
-                    $select->where(['meta_key' => $filter['meta_key'], 'value_string like ?' => '%s' . $filter['value'] . '%s']);
-                    break;
-
-                case 'rangeMax':
-                    $select->where(['meta_key' => $filter['meta_key'], 'value_string < ?' => '%s' . $filter['value'] . '%s']);
-                    break;
-                case 'slug':
-                    $select->where(['meta_key' => $filter['meta_key'], 'value_slug' => $filter['value']]);
-                    break;
-
-                case 'rangeMin':
-                    $select->where(['meta_key' => $filter['meta_key'], 'value_string > ?' => '%s' . $filter['value'] . '%s']);
-                    break;
-            }
-        }
-
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-
-        if (!$result instanceof ResultInterface || !$result->isQueryResult()) {
-            return [];
-        }
-
-        $resultSet = new HydratingResultSet($this->hydrator, $this->metaValuePrototype);
-        $resultSet->initialize($result);
-
-        return $resultSet;
-    }
-
-    public function getIDFromFilter(array $filter = []): HydratingResultSet|array
-    {
-        $where = ['status' => 1];
-        $sql = new Sql($this->db);
-        $select = $sql->select($this->tableMetaValue)->where($where);
-
-
-        switch ($filter['type']) {
-            case 'id':
-                $select->where(['meta_key' => $filter['key'], 'value_id' => $filter['value']]);
-                break;
-
-            case 'int':
-                $select->where(['meta_key' => $filter['meta_key'], 'value_number' => $filter['value']]);
-                break;
-
-            case 'string':
-                $select->where(['meta_key' => $filter['meta_key'], 'value_string' => $filter['value']]);
-                break;
-
-            case 'search':
-                $select->where(['meta_key' => $filter['meta_key'], 'value_string like ?' => '%s' . $filter['value'] . '%s']);
-                break;
-
-            case 'slug':
-                $select->where(['meta_key' => $filter['meta_key'], 'value_slug' => $filter['value']]);
-                break;
-
-            case 'rangeMax':
-                $select->where(['meta_key' => $filter['meta_key'], 'value_number < ?' => (int)$filter['value']]);
-                break;
-            case 'rangeMin':
-                $select->where(['meta_key' => $filter['meta_key'], 'value_number >  ?' => (int)$filter['value']]);
-                break;
-        }
-
-
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-
-        if (!$result instanceof ResultInterface || !$result->isQueryResult()) {
-            return [];
-        }
-
-        $resultSet = new HydratingResultSet($this->hydrator, $this->metaValuePrototype);
-        $resultSet->initialize($result);
-
-        return $resultSet;
-    }
-
-
-    /**
-     * @param array $params
-     *
-     * @return array|object
-     */
-    public function addCartItem(array $params): object|array
-    {
-        $insert = new Insert($this->tableItem);
-        $insert->values($params);
-
-        $sql = new Sql($this->db);
-        $statement = $sql->prepareStatementForSqlObject($insert);
-        $result = $statement->execute();
-
-        if (!$result instanceof ResultInterface) {
-            throw new RuntimeException(
-                'Database error occurred during blog post insert operation'
-            );
-        }
-        $id = $result->getGeneratedValue();
-        return $this->getItem($id);
-    }
-
-
-    ///     META SECTION
-    ///
-
-    /**
-     * @param array $params
-     *
-     * @return HydratingResultSet|array
-     */
-    public function getMetaValue(array $params = [], $return = "array")
-    {
-        $where = [];
-        if (isset($params['id']) && !empty($params['id'])) {
-            $where['id'] = $params['id'];
-        }
-        if (isset($params['item_id']) && !empty($params['item_id'])) {
-            $where['item_id'] = $params['item_id'];
-        }
-        if (isset($params['meta_key']) && !empty($params['meta_key'])) {
-            $where['meta_key'] = $params['meta_key'];
-        }
-
-        $sql = new Sql($this->db);
-        $select = $sql->select($this->tableMetaValue)->where($where);
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-
-        if (!$result instanceof ResultInterface || !$result->isQueryResult()) {
-            return [];
-        }
-
-        $resultSet = new HydratingResultSet($this->hydrator, $this->metaValuePrototype);
-        $resultSet->initialize($result);
-        $item = $resultSet->current();
-
-        if (!$item) {
-            return [];
-        }
-
-        return $return == "object" ? $item : $resultSet;
-
-    }
-
-    /**
-     * @param array $params
-     *
-     * @return array|object
-     */
-    public function addMetaKey(array $params): object|array
-    {
-        $insert = new Insert($this->tableMetaKey);
-        $insert->values($params);
-
-        $sql = new Sql($this->db);
-        $statement = $sql->prepareStatementForSqlObject($insert);
-        $result = $statement->execute();
-
-        if (!$result instanceof ResultInterface) {
-            throw new RuntimeException(
-                'Database error occurred during blog post insert operation'
-            );
-        }
-        $id = $result->getGeneratedValue();
-        return $this->getMetaKey(["id" => $id]);
-    }
-
-    /**
-     * @param array $params
-     *
-     * @return array|object
-     */
-    public function addMetaValue(array $params): object|array
-    {
-        $insert = new Insert($this->tableMetaValue);
-        $insert->values($params);
-
-        $sql = new Sql($this->db);
-        $statement = $sql->prepareStatementForSqlObject($insert);
-        $result = $statement->execute();
-
-        if (!$result instanceof ResultInterface) {
-            throw new RuntimeException(
-                'Database error occurred during blog post insert operation'
-            );
-        }
-        $id = $result->getGeneratedValue();
-        return $this->getMetaValue(["id" => $id]);
-    }
-
-    /**
-     * @param array $params
-     *
-     * @return array|object
-     */
-    public function updateMetaValue(array $params): object|array
-    {
-        $update = new Update($this->tableMetaValue);
-        $update->set($params);
-        if (isset($params["id"]))
-            $update->where(['id' => $params["id"]]);
-
-        $sql = new Sql($this->db);
-        $statement = $sql->prepareStatementForSqlObject($update);
-        $result = $statement->execute();
-
-        if (!$result instanceof ResultInterface) {
-            throw new RuntimeException(
-                'Database error occurred during update operation'
-            );
-        }
-        return $this->getMetaValue($params, "object");
-    }
-
-
-    /**
-     * @param string $parameter
-     * @param string $type
-     *
-     * @return object|array
-     */
-    public function getGroupList($parameter, $type = 'id'): object|array
-    {
-
-
-        $sql = new Sql($this->db);
-        $select = $sql->select($this->tableItem)->where("$type IN ($parameter)");
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-
-        if (!$result instanceof ResultInterface || !$result->isQueryResult()) {
-            throw new RuntimeException(
-                sprintf(
-                    'Failed retrieving blog post with identifier "%s"; unknown database error.',
-                    $parameter
-                )
-            );
-        }
-
-        $resultSet = new HydratingResultSet($this->hydrator, $this->itemPrototype);
-        $resultSet->initialize($result);
-
-
-        return $resultSet;
-    }
-
     private function createConditional(array $params): array
     {
         $where = [];
@@ -663,117 +321,5 @@ class ItemRepository implements ItemRepositoryInterface
         return $where;
     }
 
-
-    // Meta repo
-
-    /**
-     * @param array $params
-     *
-     * @return HydratingResultSet|array
-     */
-    public function getMetaKeyList(array $params = []): HydratingResultSet|array
-    {
-
-        $where = [];
-
-        $where['status'] = 1;
-        if (isset($params['target']) && !empty($params['target'])) {
-            $where['target'] = $params['target'];
-        }
-
-        $sql = new Sql($this->db);
-        $select = $sql->select($this->tableMetaKey)->where($where)->order($params['order'])->offset($params['offset'])->limit($params['limit']);
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-
-        if (!$result instanceof ResultInterface || !$result->isQueryResult()) {
-            return [];
-        }
-
-        $resultSet = new HydratingResultSet($this->hydrator, $this->metaKeyPrototype);
-        $resultSet->initialize($result);
-
-        return $resultSet;
-    }
-
-    /**
-     * @param array $params
-     *
-     * @return object
-     */
-    public function getMetaKey(array $params = []): object
-    {
-        $where = [];
-        if (isset($params['key']) && !empty($params['key'])) {
-            $where['key'] = $params['key'];
-        }
-        if (isset($params['id']) && !empty($params['id'])) {
-            $where['id'] = $params['id'];
-        }
-        if (isset($params['target']) && !empty($params['target'])) {
-            $where['target'] = $params['target'];
-        }
-
-        $sql = new Sql($this->db);
-        $select = $sql->select($this->tableMetaKey)->where($where);
-        $statement = $sql->prepareStatementForSqlObject($select);
-        $result = $statement->execute();
-
-        if (!$result instanceof ResultInterface || !$result->isQueryResult()) {
-            throw new RuntimeException(
-                sprintf(
-                    'Failed retrieving blog post with identifier "%s"; unknown database error.',
-                    $params
-                )
-            );
-        }
-
-        $resultSet = new HydratingResultSet($this->hydrator, $this->metaKeyPrototype);
-        $resultSet->initialize($result);
-        $item = $resultSet->current();
-
-        if (!$item) {
-            return [];
-        }
-
-        return $item;
-    }
-
-    public function destroyMetaValue($where): void
-    {
-        $update = new Delete($this->tableMetaValue);
-        $update->where($where);
-
-        $sql = new Sql($this->db);
-        $statement = $sql->prepareStatementForSqlObject($update);
-        $statement->execute();
-    }
-    /**
-     * @param array $params
-     *
-     * @return array|object
-     */
-    public function updateMetaKey(array $params): object|array
-    {
-        $update = new Update($this->tableMetaKey);
-        $update->set($params);
-        if (isset($params["id"]))
-            $update->where(['id' => $params["id"]]);
-
-        if (isset($params["slug"]))
-            $update->where(['slug' => $params["slug"]]);
-
-        $sql = new Sql($this->db);
-        $statement = $sql->prepareStatementForSqlObject($update);
-        $result = $statement->execute();
-
-        if (!$result instanceof ResultInterface) {
-            throw new RuntimeException(
-                'Database error occurred during update operation'
-            );
-        }
-
-        return (isset($params["id"])) ? $this->getItem($params["id"]) : $this->getItem($params["slug"], "slug");
-    }
 
 }
