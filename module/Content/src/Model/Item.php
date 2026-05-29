@@ -167,5 +167,4 @@ class Item
     {
         $this->priority = $priority;
     }
-
 }

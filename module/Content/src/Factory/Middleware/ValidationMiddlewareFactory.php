@@ -9,7 +9,7 @@ use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\StreamFactoryInterface;
-use User\Handler\ErrorHandler;
+use Pi\Core\Handler\ErrorHandler;
 
 class ValidationMiddlewareFactory implements FactoryInterface
 {

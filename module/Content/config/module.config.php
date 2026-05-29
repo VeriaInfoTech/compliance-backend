@@ -165,6 +165,59 @@ return [
                             ],
                         ],
                     ],
+                    'item' => [
+                        'type' => Literal::class,
+                        'options' => [
+                            'route' => '/item',
+                            'defaults' => [],
+                        ],
+                        'child_routes' => [
+                            'list' => [
+                                'type' => Literal::class,
+                                'options' => [
+                                    'route' => '/list',
+                                    'defaults' => [
+                                        'module' => 'content',
+                                        'section' => 'api',
+                                        'package' => 'item',
+                                        'validator' => 'list',
+                                        'handler' => 'list',
+                                        'permission' => 'api-content-item-list',
+                                        'controller' => PipeSpec::class,
+                                        'middleware' => new PipeSpec(
+                                            SecurityMiddleware::class,
+                                            Middleware\ValidationMiddleware::class,
+                                            AuthenticationMiddleware::class,
+                                            AuthorizationMiddleware::class,
+                                            Handler\Api\ItemListHandler::class
+                                        ),
+                                    ],
+                                ],
+                            ],
+                            'detail' => [
+                                'type' => Literal::class,
+                                'options' => [
+                                    'route' => '/detail',
+                                    'defaults' => [
+                                        'module' => 'content',
+                                        'section' => 'api',
+                                        'package' => 'item',
+                                        'validator' => 'detail',
+                                        'handler' => 'detail',
+                                        'permission' => 'api-content-item-detail',
+                                        'controller' => PipeSpec::class,
+                                        'middleware' => new PipeSpec(
+                                            SecurityMiddleware::class,
+                                            Middleware\ValidationMiddleware::class,
+                                            AuthenticationMiddleware::class,
+                                            AuthorizationMiddleware::class,
+                                            Handler\Api\ItemDetailHandler::class
+                                        ),
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
             ],
             // Admin section

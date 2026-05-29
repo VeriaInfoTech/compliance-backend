@@ -4,20 +4,20 @@ namespace Content\Model;
 
 class Meta
 {
-    public mixed $id;
-    public mixed $item_id;
-    public mixed $meta_key;
-    public mixed $value_id;
-    public mixed $value_number;
-    public mixed $value_string;
-    public mixed $value_slug;
-    public mixed $value_text;
-    public mixed $status;
-    public mixed $time_create;
-    public mixed $time_update;
-    public mixed $time_delete;
-    public mixed $type;
-    public mixed $option;
+    private mixed $id;
+    private mixed $item_id;
+    private mixed $meta_key;
+    private mixed $value_id;
+    private mixed $value_number;
+    private mixed $value_string;
+    private mixed $value_slug;
+    private mixed $value_text;
+    private mixed $status;
+    private mixed $time_create;
+    private mixed $time_update;
+    private mixed $time_delete;
+    private mixed $type;
+    private mixed $option;
 
     public function __construct(
         mixed $id,
@@ -49,5 +49,75 @@ class Meta
         $this->time_delete = $time_delete;
         $this->type = $type;
         $this->option = $option;
+    }
+
+    public function getId(): mixed
+    {
+        return $this->id;
+    }
+
+    public function getItemId(): mixed
+    {
+        return $this->item_id;
+    }
+
+    public function getMetaKey(): mixed
+    {
+        return $this->meta_key;
+    }
+
+    public function getValueId(): mixed
+    {
+        return $this->value_id;
+    }
+
+    public function getValueNumber(): mixed
+    {
+        return $this->value_number;
+    }
+
+    public function getValueString(): mixed
+    {
+        return $this->value_string;
+    }
+
+    public function getValueSlug(): mixed
+    {
+        return $this->value_slug;
+    }
+
+    public function getValueText(): mixed
+    {
+        return $this->value_text;
+    }
+
+    public function getStatus(): mixed
+    {
+        return $this->status;
+    }
+
+    public function getTimeCreate(): mixed
+    {
+        return $this->time_create;
+    }
+
+    public function getTimeUpdate(): mixed
+    {
+        return $this->time_update;
+    }
+
+    public function getTimeDelete(): mixed
+    {
+        return $this->time_delete;
+    }
+
+    public function getType(): mixed
+    {
+        return $this->type;
+    }
+
+    public function getOption(): mixed
+    {
+        return $this->option;
     }
 }
