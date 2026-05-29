@@ -1,6 +1,6 @@
 <?php
 
-namespace Content\Handler\Api;
+namespace Content\Handler\Api\Item;
 
 use Content\Service\ItemService;
 use Laminas\Diactoros\Response\JsonResponse;

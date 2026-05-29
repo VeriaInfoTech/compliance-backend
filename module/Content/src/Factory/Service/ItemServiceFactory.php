@@ -8,7 +8,6 @@ use Interop\Container\ContainerInterface;
 use Laminas\ServiceManager\Factory\FactoryInterface;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
-use Pi\User\Service\AccountService;
 use Pi\Core\Service\UtilityService;
 
 class ItemServiceFactory implements FactoryInterface
@@ -24,13 +23,9 @@ class ItemServiceFactory implements FactoryInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null): ItemService
     {
-        $config = $container->get('config');
-
         return new ItemService(
             $container->get(ItemRepositoryInterface::class),
-            $container->get(AccountService::class),
-            $container->get(UtilityService::class),
-            $config['client']
+            $container->get(UtilityService::class)
         );
     }
 }

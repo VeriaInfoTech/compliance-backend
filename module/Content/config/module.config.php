@@ -2,13 +2,12 @@
 
 namespace Content;
 
-use Content\Middleware\ValidationMiddleware;
 use Laminas\Mvc\Middleware\PipeSpec;
 use Laminas\Router\Http\Literal;
-use Pi\User\Middleware\AuthenticationMiddleware;
-use Pi\User\Middleware\AuthorizationMiddleware;
 use Pi\Core\Middleware\RequestPreparationMiddleware;
 use Pi\Core\Middleware\SecurityMiddleware;
+use Pi\User\Middleware\AuthenticationMiddleware;
+use Pi\User\Middleware\AuthorizationMiddleware;
 
 return [
     'service_manager' => [
@@ -16,23 +15,22 @@ return [
             Repository\ItemRepositoryInterface::class => Repository\ItemRepository::class,
         ],
         'factories' => [
-            Repository\ItemRepository::class => Factory\Repository\ItemRepositoryFactory::class,
-            Service\ItemService::class => Factory\Service\ItemServiceFactory::class,
-            Middleware\ValidationMiddleware::class => Factory\Middleware\ValidationMiddlewareFactory::class,
-            Validator\SlugValidator::class => Factory\Validator\SlugValidatorFactory::class,
-            Validator\TypeValidator::class => Factory\Validator\TypeValidatorFactory::class,
-            Handler\Api\MainHandler::class => Factory\Handler\Api\MainHandlerFactory::class,
-            Handler\Api\ItemListHandler::class => Factory\Handler\Api\ItemListHandlerFactory::class,
-            Handler\Api\ItemDetailHandler::class => Factory\Handler\Api\ItemDetailHandlerFactory::class,
-            Handler\InstallerHandler::class => Factory\Handler\InstallerHandlerFactory::class,
+            Repository\ItemRepository::class             => Factory\Repository\ItemRepositoryFactory::class,
+            Service\ItemService::class                   => Factory\Service\ItemServiceFactory::class,
+            Middleware\ValidationMiddleware::class       => Factory\Middleware\ValidationMiddlewareFactory::class,
+            Validator\SlugValidator::class               => Factory\Validator\SlugValidatorFactory::class,
+            Validator\TypeValidator::class               => Factory\Validator\TypeValidatorFactory::class,
+            Handler\Api\Item\ItemListHandler::class      => Factory\Handler\Api\Item\ItemListHandlerFactory::class,
+            Handler\Api\Item\ItemDetailHandler::class    => Factory\Handler\Api\Item\ItemDetailHandlerFactory::class,
+            Handler\InstallerHandler::class              => Factory\Handler\InstallerHandlerFactory::class,
 
             // Item
-            Handler\Admin\Item\ItemListHandler::class => Factory\Handler\Admin\Item\ItemListHandlerFactory::class,
-            Handler\Admin\Item\ItemDetailHandler::class => Factory\Handler\Admin\Item\ItemDetailHandlerFactory::class,
+            Handler\Admin\Item\ItemListHandler::class    => Factory\Handler\Admin\Item\ItemListHandlerFactory::class,
+            Handler\Admin\Item\ItemDetailHandler::class  => Factory\Handler\Admin\Item\ItemDetailHandlerFactory::class,
 
             ///Public Section
             // Item
-            Handler\Public\Item\ItemListHandler::class => Factory\Handler\Public\Item\ItemListHandlerFactory::class,
+            Handler\Public\Item\ItemListHandler::class   => Factory\Handler\Public\Item\ItemListHandlerFactory::class,
             Handler\Public\Item\ItemDetailHandler::class => Factory\Handler\Public\Item\ItemDetailHandlerFactory::class,
 
         ],
@@ -102,27 +100,6 @@ return [
                     'defaults' => [],
                 ],
                 'child_routes' => [
-                    'main' => [
-                        'type' => Literal::class,
-                        'options' => [
-                            'route' => '/main',
-                            'defaults' => [
-                                'module' => 'content',
-                                'section' => 'api',
-                                'package' => 'main',
-                                'validator' => 'main',
-                                'handler' => 'main',
-                                'permission' => 'api-content-main',
-                                'controller' => PipeSpec::class,
-                                'middleware' => new PipeSpec(
-                                    SecurityMiddleware::class,
-                                    AuthenticationMiddleware::class,
-                                    AuthorizationMiddleware::class,
-                                    Handler\Api\MainHandler::class
-                                ),
-                            ],
-                        ],
-                    ],
                     'list' => [
                         'type' => Literal::class,
                         'options' => [
@@ -140,7 +117,7 @@ return [
                                     Middleware\ValidationMiddleware::class,
                                     AuthenticationMiddleware::class,
                                     AuthorizationMiddleware::class,
-                                    Handler\Api\ItemListHandler::class
+                                    Handler\Api\Item\ItemListHandler::class
                                 ),
                             ],
                         ],
@@ -160,7 +137,7 @@ return [
                                 'middleware' => new PipeSpec(
                                     SecurityMiddleware::class,
                                     Middleware\ValidationMiddleware::class,
-                                    Handler\Api\ItemDetailHandler::class
+                                    Handler\Api\Item\ItemDetailHandler::class
                                 ),
                             ],
                         ],
@@ -189,7 +166,7 @@ return [
                                             Middleware\ValidationMiddleware::class,
                                             AuthenticationMiddleware::class,
                                             AuthorizationMiddleware::class,
-                                            Handler\Api\ItemListHandler::class
+                                            Handler\Api\Item\ItemListHandler::class
                                         ),
                                     ],
                                 ],
@@ -211,7 +188,7 @@ return [
                                             Middleware\ValidationMiddleware::class,
                                             AuthenticationMiddleware::class,
                                             AuthorizationMiddleware::class,
-                                            Handler\Api\ItemDetailHandler::class
+                                            Handler\Api\Item\ItemDetailHandler::class
                                         ),
                                     ],
                                 ],

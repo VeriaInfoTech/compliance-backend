@@ -1,8 +1,8 @@
 <?php
 
-namespace Content\Factory\Handler\Api;
+namespace Content\Factory\Handler\Api\Item;
 
-use Content\Handler\Api\ItemDetailHandler;
+use Content\Handler\Api\Item\ItemDetailHandler;
 use Content\Service\ItemService;
 use Interop\Container\ContainerInterface;
 use Laminas\ServiceManager\Factory\FactoryInterface;
