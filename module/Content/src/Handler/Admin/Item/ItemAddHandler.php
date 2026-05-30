@@ -22,10 +22,10 @@ class ItemAddHandler implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        // Check if bulk import mode is requested via query parameter
+//        // Check if bulk import mode is requested via query parameter
 //        $queryParams = $request->getQueryParams();
 //        if (isset($queryParams['mode']) && $queryParams['mode'] === 'bulk_import') {
-            return $this->handleBulkImport($request);
+//            return $this->handleBulkImport($request);
 //        }
 
         // Regular single item add
@@ -56,7 +56,7 @@ class ItemAddHandler implements RequestHandlerInterface
             $userId = $account['id'] ?? null;
 
             // Get the controls path from project root
-            $controlsPath = dirname(__DIR__, 6) . '/bin/domains';
+            $controlsPath = dirname(__DIR__, 6) . '/bin/controls';
 
             // Execute bulk import
             $result = $this->itemBulkService->importFromJsonFiles($controlsPath, $userId);
