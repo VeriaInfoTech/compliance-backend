@@ -17,7 +17,8 @@ class Item
     private int    $time_create;
     private int    $time_update;
     private int    $time_delete;
-    private string $information;
+
+    public ?string $information = null;
     private mixed $priority;
 
     /**
@@ -174,7 +175,7 @@ class Item
         $this->time_delete = $time_delete;
     }
 
-    public function getInformation(): string
+    public function getInformation(): mixed
     {
         return $this->information;
     }
