@@ -22,11 +22,13 @@ return [
             Validator\TypeValidator::class               => Factory\Validator\TypeValidatorFactory::class,
             Handler\Api\Item\ItemListHandler::class      => Factory\Handler\Api\Item\ItemListHandlerFactory::class,
             Handler\Api\Item\ItemDetailHandler::class    => Factory\Handler\Api\Item\ItemDetailHandlerFactory::class,
+            Handler\Api\Item\ItemAddHandler::class       => Factory\Handler\Api\Item\ItemAddHandlerFactory::class,
             Handler\InstallerHandler::class              => Factory\Handler\InstallerHandlerFactory::class,
 
             // Item
             Handler\Admin\Item\ItemListHandler::class    => Factory\Handler\Admin\Item\ItemListHandlerFactory::class,
             Handler\Admin\Item\ItemDetailHandler::class  => Factory\Handler\Admin\Item\ItemDetailHandlerFactory::class,
+            Handler\Admin\Item\ItemAddHandler::class     => Factory\Handler\Admin\Item\ItemAddHandlerFactory::class,
 
             ///Public Section
             // Item
@@ -193,6 +195,26 @@ return [
                                     ],
                                 ],
                             ],
+                            'add' => [
+                                'type' => Literal::class,
+                                'options' => [
+                                    'route' => '/add',
+                                    'defaults' => [
+                                        'module' => 'content',
+                                        'section' => 'api',
+                                        'package' => 'item',
+                                        'handler' => 'add',
+                                        'permission' => 'api-content-item-add',
+                                        'controller' => PipeSpec::class,
+                                        'middleware' => new PipeSpec(
+                                            SecurityMiddleware::class,
+                                            AuthenticationMiddleware::class,
+                                            AuthorizationMiddleware::class,
+                                            Handler\Api\Item\ItemAddHandler::class
+                                        ),
+                                    ],
+                                ],
+                            ],
                         ],
                     ],
                 ],
@@ -248,6 +270,26 @@ return [
                                             AuthenticationMiddleware::class,
                                             AuthorizationMiddleware::class,
                                             Handler\Admin\Item\ItemListHandler::class
+                                        ),
+                                    ],
+                                ],
+                            ],
+                            'add' => [
+                                'type' => Literal::class,
+                                'options' => [
+                                    'route' => '/add',
+                                    'defaults' => [
+                                        'module' => 'content',
+                                        'section' => 'admin',
+                                        'package' => 'item',
+                                        'handler' => 'add',
+                                        'permission' => 'admin-content-item-add',
+                                        'controller' => PipeSpec::class,
+                                        'middleware' => new PipeSpec(
+                                            SecurityMiddleware::class,
+                                            AuthenticationMiddleware::class,
+                                            AuthorizationMiddleware::class,
+                                            Handler\Admin\Item\ItemAddHandler::class
                                         ),
                                     ],
                                 ],

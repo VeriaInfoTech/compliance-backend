@@ -6,8 +6,10 @@ class Item
 {
     private mixed  $id;
     private mixed  $parent_id;
+    private string $parent_slug;
     private string $title;
     private string $slug;
+    private string $source;
     private string $type;
     private int    $status;
 
@@ -21,8 +23,10 @@ class Item
     /**
      * @param mixed $id
      * @param mixed $parent_id
+     * @param string $parent_slug
      * @param string $title
      * @param string $slug
+     * @param string $source
      * @param string $type
      * @param int $status
      * @param int $user_id
@@ -32,12 +36,14 @@ class Item
      * @param string $information
      * @param mixed $priority
      */
-    public function __construct(mixed $id, mixed $parent_id, string $title, string $slug, string $type, int $status, int $user_id, int $time_create, int $time_update, int $time_delete, string $information, mixed $priority)
+    public function __construct(mixed $id, mixed $parent_id, string $parent_slug, string $title, string $slug, string $source, string $type, int $status, int $user_id, int $time_create, int $time_update, int $time_delete, string $information, mixed $priority)
     {
         $this->id = $id;
         $this->parent_id = $parent_id;
+        $this->parent_slug = $parent_slug;
         $this->title = $title;
         $this->slug = $slug;
+        $this->source = $source;
         $this->type = $type;
         $this->status = $status;
         $this->user_id = $user_id;
@@ -66,6 +72,26 @@ class Item
     public function setParentId(mixed $parent_id): void
     {
         $this->parent_id = $parent_id;
+    }
+
+    public function getParentSlug(): string
+    {
+        return $this->parent_slug;
+    }
+
+    public function setParentSlug(string $parent_slug): void
+    {
+        $this->parent_slug = $parent_slug;
+    }
+
+    public function getSource(): string
+    {
+        return $this->source;
+    }
+
+    public function setSource(string $source): void
+    {
+        $this->source = $source;
     }
 
     public function getTitle(): string

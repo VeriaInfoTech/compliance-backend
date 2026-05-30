@@ -175,4 +175,42 @@ class ItemService implements ServiceInterface
     {
         return !empty($value) && $value !== '';
     }
+
+    public function addItem(array $params): array
+    {
+        $validation = $this->validateItemParams($params);
+        if (!$validation['valid']) {
+            return ['result' => false, 'data' => [], 'error' => $validation['errors']];
+        }
+
+        $params['time_create'] = $params['time_create'] ?? time();
+        $params['time_update'] = $params['time_update'] ?? time();
+
+        $item = $this->itemRepository->addItem($params);
+
+        return [
+            'result' => true,
+            'data' => $this->canonizeItem($item),
+            'error' => []
+        ];
+    }
+
+    private function validateItemParams(array $params): array
+    {
+        $errors = [];
+
+        if (empty($params['title'])) {
+            $errors['title'] = 'Title is required';
+        }
+        if (empty($params['slug'])) {
+            $errors['slug'] = 'Slug is required';
+        }
+        if (empty($params['type'])) {
+            $errors['type'] = 'Type is required';
+        }
+        return [
+            'valid' => empty($errors),
+            'errors' => $errors
+        ];
+    }
 }
