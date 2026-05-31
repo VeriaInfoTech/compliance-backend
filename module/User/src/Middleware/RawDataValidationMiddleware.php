@@ -143,7 +143,7 @@ class RawDataValidationMiddleware implements MiddlewareInterface
             return $this->errorHandler->handle($request);
         }
 
-        return $handler->handle($request);
+        return $handler->handle($request->withParsedBody($parsedBody));
     }
 
     protected function setErrorHandler($inputFilter): array

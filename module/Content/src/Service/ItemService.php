@@ -13,36 +13,7 @@ class ItemService implements ServiceInterface
     protected ItemRepositoryInterface $itemRepository;
     protected UtilityService $utilityService;
 
-    private const FILTER_CONFIG = [
-        'color' => ['meta_key' => 'color', 'type' => 'string', 'explode' => true],
-        'size' => ['meta_key' => 'size', 'type' => 'string', 'explode' => true],
-        'brand' => ['meta_key' => 'brand', 'type' => 'id'],
-        'min_price' => ['meta_key' => 'price', 'type' => 'rangeMin'],
-        'max_price' => ['meta_key' => 'price', 'type' => 'rangeMax'],
-        'min_height' => ['meta_key' => 'height', 'type' => 'rangeMin'],
-        'max_height' => ['meta_key' => 'height', 'type' => 'rangeMax'],
-        'min_width' => ['meta_key' => 'width', 'type' => 'rangeMin'],
-        'max_width' => ['meta_key' => 'width', 'type' => 'rangeMax'],
-        'min_diagonal' => ['meta_key' => 'diagonal', 'type' => 'rangeMin'],
-        'max_diagonal' => ['meta_key' => 'diagonal', 'type' => 'rangeMax'],
-        'min_flames_count' => ['meta_key' => 'flames-count', 'type' => 'rangeMin'],
-        'max_flames_count' => ['meta_key' => 'flames-count', 'type' => 'rangeMax'],
-        'flames_count' => ['meta_key' => 'flames-count', 'type' => 'int'],
-        'special_suggest' => ['meta_key' => 'special-suggest', 'type' => 'slug'],
-        'product_middle_section' => ['meta_key' => 'product-middle-section', 'type' => 'slug'],
-        'product_trend' => ['meta_key' => 'product-trend', 'type' => 'slug'],
-        'product_popular' => ['meta_key' => 'product-popular', 'type' => 'slug'],
-        'product_new' => ['meta_key' => 'product-new', 'type' => 'slug'],
-        'product_special' => ['meta_key' => 'product-special', 'type' => 'slug'],
-        'categories' => ['meta_key' => 'category', 'type' => 'slug', 'explode' => true],
-        'category_list' => ['meta_key' => 'category', 'type' => 'slug'],
-        'brand_list' => ['meta_key' => 'brand', 'type' => 'slug'],
-        'colors' => ['meta_key' => 'color', 'type' => 'slug', 'explode' => true],
-        'shed_colors' => ['meta_key' => 'shed_color', 'type' => 'slug', 'explode' => true],
-        'target-muscles' => ['meta_key' => 'target-muscles', 'type' => 'slug'],
-        'activity-types' => ['meta_key' => 'activity-types', 'type' => 'slug'],
-        'type-muscles' => ['meta_key' => 'type-muscles', 'type' => 'slug'],
-    ];
+    private const ALLOWED_LIST_PARAMS = ['type', 'source', 'status', 'limit', 'page', 'order'];
 
     public function __construct(
         ItemRepositoryInterface $itemRepository,
@@ -54,12 +25,13 @@ class ItemService implements ServiceInterface
 
     public function getItemList(array $params): array
     {
+        $params = $this->filterListParams($params);
+        $params = $this->sanitizeListParams($params);
+
         $limit = $params['limit'] ?? 125;
         $page = $params['page'] ?? 1;
         $order = $params['order'] ?? ['priority desc', 'id desc'];
         $offset = ($page - 1) * $limit;
-
-        $filters = $this->prepareFilter($params);
 
         $listParams = [
             'order' => $order,
@@ -69,6 +41,9 @@ class ItemService implements ServiceInterface
             'status' => isset($params['status']) ? $params['status'] : 1,
         ];
 
+        if (isset($params['source'])) {
+            $listParams['source'] = $params['source'];
+        }
 
         $list = [];
         $rowSet = $this->itemRepository->getItemList($listParams);
@@ -87,7 +62,6 @@ class ItemService implements ServiceInterface
                     'limit' => $limit,
                     'page' => $page,
                 ],
-                'filters' => $filters,
             ],
             'error' => [],
         ];
@@ -149,31 +123,40 @@ class ItemService implements ServiceInterface
         return $this->canonizeItem($item, (isset($params['type'])) ? $params['type'] : 'global');
     }
 
-    public function prepareFilter(array $params): array
+    private function filterListParams(array $params): array
     {
-        $filters = [];
+        $filtered = [];
 
         foreach ($params as $key => $value) {
-            if (!isset(self::FILTER_CONFIG[$key]) || !$this->isValidFilterValue($value)) {
-                continue;
+            if (in_array($key, self::ALLOWED_LIST_PARAMS, true)) {
+                $filtered[$key] = $value;
             }
-
-            $config = self::FILTER_CONFIG[$key];
-            $filterValue = $config['explode'] ?? false ? explode(',', $value) : $value;
-
-            $filters[$key] = [
-                'meta_key' => $config['meta_key'],
-                'value' => $filterValue,
-                'type' => $config['type'],
-            ];
         }
 
-        return $filters;
+        return $filtered;
     }
 
-    private function isValidFilterValue(mixed $value): bool
+    private function sanitizeListParams(array $params): array
     {
-        return !empty($value) && $value !== '';
+        $params['limit'] = $this->sanitizeLimit($params['limit'] ?? 125);
+        $params['page'] = $this->sanitizePage($params['page'] ?? 1);
+        $params['status'] = isset($params['status']) ? (int) $params['status'] : 1;
+        $params['source'] = isset($params['source']) ? (string) $params['source'] : null;
+        $params['type'] = isset($params['type']) ? (string) $params['type'] : 'global';
+
+        return $params;
+    }
+
+    private function sanitizeLimit(mixed $limit): int
+    {
+        $limit = (int) $limit;
+        return $limit > 0 && $limit <= 1000 ? $limit : 125;
+    }
+
+    private function sanitizePage(mixed $page): int
+    {
+        $page = (int) $page;
+        return $page > 0 ? $page : 1;
     }
 
     public function addItem(array $params): array
