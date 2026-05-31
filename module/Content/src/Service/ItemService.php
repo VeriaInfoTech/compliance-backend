@@ -105,15 +105,9 @@ class ItemService implements ServiceInterface
 
         $data = !empty($item['information']) ? json_decode($item['information'], true) : [];
 
-        if ($type == 'product') {
-            $data['thumbnail'] = $data['image'] ?? null;
-        }
 
         $data['time_create_view'] = $this->utilityService->date($item['time_create']);
         $data['id'] = $item['id'];
-        if (isset($data['image']))
-            if (!isset($data['thumbnail']))
-                $data['thumbnail'] = $data['image'];
         return $data;
     }
 
@@ -142,7 +136,7 @@ class ItemService implements ServiceInterface
         $params['page'] = $this->sanitizePage($params['page'] ?? 1);
         $params['status'] = isset($params['status']) ? (int) $params['status'] : 1;
         $params['source'] = isset($params['source']) ? (string) $params['source'] : null;
-        $params['type'] = isset($params['type']) ? (string) $params['type'] : 'global';
+        $params['type'] = isset($params['type']) ?   $params['type'] : ['global'];
 
         return $params;
     }

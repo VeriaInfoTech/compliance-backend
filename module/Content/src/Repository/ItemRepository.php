@@ -210,9 +210,9 @@ class ItemRepository implements ItemRepositoryInterface
         return $where;
     }
 
-    private function sanitizeString(mixed $value): string
+    private function sanitizeString(mixed $value): mixed
     {
-        return (string) trim($value);
+        return  ($value);
     }
 
     private function sanitizeInt(mixed $value): int
