@@ -34,6 +34,9 @@ return [
             Handler\Admin\Item\ItemAddHandler::class     => Factory\Handler\Admin\Item\ItemAddHandlerFactory::class,
             Handler\Admin\Item\ItemUpdateHandler::class  => Factory\Handler\Admin\Item\ItemUpdateHandlerFactory::class,
 
+            // Dashboard
+            Handler\Api\Dashboard\DashboardGetHandler::class  => Factory\Handler\Api\Dashboard\DashboardGetHandlerFactory::class,
+
             ///Public Section
             // Item
             Handler\Public\Item\ItemListHandler::class   => Factory\Handler\Public\Item\ItemListHandlerFactory::class,
@@ -187,11 +190,11 @@ return [
                                         'package'    => 'item',
                                         'handler'    => 'detail',
                                         'permission' => 'api-content-item-detail',
+                                        'validator'  => 'global',
                                         'controller' => PipeSpec::class,
                                         'middleware' => new PipeSpec(
                                             SecurityMiddleware::class,
-
-                                            
+                                            RawDataValidationMiddleware::class,
                                             AuthenticationMiddleware::class,
                                             AuthorizationMiddleware::class,
                                             Handler\Api\Item\ItemDetailHandler::class
@@ -207,9 +210,9 @@ return [
                                         'module'     => 'content',
                                         'section'    => 'api',
                                         'package'    => 'item',
-                                        'validator'  => 'global',
                                         'handler'    => 'add',
                                         'permission' => 'api-content-item-add',
+                                        'validator'  => 'global',
                                         'controller' => PipeSpec::class,
                                         'middleware' => new PipeSpec(
                                             SecurityMiddleware::class,
@@ -239,6 +242,37 @@ return [
                                             AuthenticationMiddleware::class,
                                             AuthorizationMiddleware::class,
                                             Handler\Api\Item\ItemUpdateHandler::class
+                                        ),
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                    'dashboard'   => [
+                        'type'         => Literal::class,
+                        'options'      => [
+                            'route'    => '/dashboard',
+                            'defaults' => [],
+                        ],
+                        'child_routes' => [
+                            'detail' => [
+                                'type'    => Literal::class,
+                                'options' => [
+                                    'route'    => '/get',
+                                    'defaults' => [
+                                        'module'     => 'content',
+                                        'section'    => 'api',
+                                        'package'    => 'item',
+                                        'handler'    => 'list',
+                                        'permission' => 'api-content-item-detail',
+                                        'validator'  => 'global',
+                                        'controller' => PipeSpec::class,
+                                        'middleware' => new PipeSpec(
+                                            SecurityMiddleware::class,
+                                            RawDataValidationMiddleware::class,
+                                            AuthenticationMiddleware::class,
+                                            AuthorizationMiddleware::class,
+                                            Handler\Api\Dashboard\DashboardGetHandler::class
                                         ),
                                     ],
                                 ],
