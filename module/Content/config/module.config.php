@@ -25,12 +25,14 @@ return [
             Handler\Api\Item\ItemListHandler::class      => Factory\Handler\Api\Item\ItemListHandlerFactory::class,
             Handler\Api\Item\ItemDetailHandler::class    => Factory\Handler\Api\Item\ItemDetailHandlerFactory::class,
             Handler\Api\Item\ItemAddHandler::class       => Factory\Handler\Api\Item\ItemAddHandlerFactory::class,
+            Handler\Api\Item\ItemUpdateHandler::class    => Factory\Handler\Api\Item\ItemUpdateHandlerFactory::class,
             Handler\InstallerHandler::class              => Factory\Handler\InstallerHandlerFactory::class,
 
             // Item
             Handler\Admin\Item\ItemListHandler::class    => Factory\Handler\Admin\Item\ItemListHandlerFactory::class,
             Handler\Admin\Item\ItemDetailHandler::class  => Factory\Handler\Admin\Item\ItemDetailHandlerFactory::class,
             Handler\Admin\Item\ItemAddHandler::class     => Factory\Handler\Admin\Item\ItemAddHandlerFactory::class,
+            Handler\Admin\Item\ItemUpdateHandler::class  => Factory\Handler\Admin\Item\ItemUpdateHandlerFactory::class,
 
             ///Public Section
             // Item
@@ -205,15 +207,38 @@ return [
                                         'module'     => 'content',
                                         'section'    => 'api',
                                         'package'    => 'item',
+                                        'validator'  => 'global',
                                         'handler'    => 'add',
                                         'permission' => 'api-content-item-add',
                                         'controller' => PipeSpec::class,
                                         'middleware' => new PipeSpec(
                                             SecurityMiddleware::class,
-
+                                            RawDataValidationMiddleware::class,
                                             AuthenticationMiddleware::class,
                                             AuthorizationMiddleware::class,
                                             Handler\Api\Item\ItemAddHandler::class
+                                        ),
+                                    ],
+                                ],
+                            ],
+                            'update' => [
+                                'type'    => Literal::class,
+                                'options' => [
+                                    'route'    => '/update',
+                                    'defaults' => [
+                                        'module'     => 'content',
+                                        'section'    => 'api',
+                                        'package'    => 'item',
+                                        'validator'  => 'global',
+                                        'handler'    => 'update',
+                                        'permission' => 'api-content-item-update',
+                                        'controller' => PipeSpec::class,
+                                        'middleware' => new PipeSpec(
+                                            SecurityMiddleware::class,
+                                            RawDataValidationMiddleware::class,
+                                            AuthenticationMiddleware::class,
+                                            AuthorizationMiddleware::class,
+                                            Handler\Api\Item\ItemUpdateHandler::class
                                         ),
                                     ],
                                 ],
@@ -287,15 +312,38 @@ return [
                                         'module'     => 'content',
                                         'section'    => 'admin',
                                         'package'    => 'item',
+                                        'validator'  => 'global',
                                         'handler'    => 'add',
                                         'permission' => 'admin-content-item-add',
                                         'controller' => PipeSpec::class,
                                         'middleware' => new PipeSpec(
                                             SecurityMiddleware::class,
-
+                                            RawDataValidationMiddleware::class,
                                             AuthenticationMiddleware::class,
                                             AuthorizationMiddleware::class,
                                             Handler\Admin\Item\ItemAddHandler::class
+                                        ),
+                                    ],
+                                ],
+                            ],
+                            'update' => [
+                                'type'    => Literal::class,
+                                'options' => [
+                                    'route'    => '/update',
+                                    'defaults' => [
+                                        'module'     => 'content',
+                                        'section'    => 'admin',
+                                        'package'    => 'item',
+                                        'validator'  => 'global',
+                                        'handler'    => 'update',
+                                        'permission' => 'admin-content-item-update',
+                                        'controller' => PipeSpec::class,
+                                        'middleware' => new PipeSpec(
+                                            SecurityMiddleware::class,
+                                            RawDataValidationMiddleware::class,
+                                            AuthenticationMiddleware::class,
+                                            AuthorizationMiddleware::class,
+                                            Handler\Admin\Item\ItemUpdateHandler::class
                                         ),
                                     ],
                                 ],

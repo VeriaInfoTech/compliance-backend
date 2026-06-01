@@ -28,7 +28,7 @@ class ItemService implements ServiceInterface
         $params = $this->filterListParams($params);
         $params = $this->sanitizeListParams($params);
 
-        $limit = $params['limit'] ?? 125;
+        $limit =   400;
         $page = $params['page'] ?? 1;
         $order = $params['order'] ?? ['priority desc', 'id desc'];
         $offset = ($page - 1) * $limit;
@@ -163,7 +163,58 @@ class ItemService implements ServiceInterface
         $params['time_create'] = $params['time_create'] ?? time();
         $params['time_update'] = $params['time_update'] ?? time();
 
-        $item = $this->itemRepository->addItem($params);
+        $item = $this->processJsonObject($params);
+
+        return [
+            'result' => true,
+            'data' => $item,
+            'error' => []
+        ];
+    }
+
+    public function updateItem(array $params): array
+    {
+        // Define allowed DB columns
+        $allowedColumns = [
+            'id',
+            'source',
+            'title',
+            'slug',
+            'parent_slug',
+            'type',
+            'status',
+            'priority',
+            'user_id',
+            'time_create',
+            'time_update',
+        ];
+
+        // Split DB fields from JSON fields
+        $dbParams = [];
+        $jsonData = [];
+
+        foreach ($params as $key => $value) {
+            if (in_array($key, $allowedColumns, true)) {
+                $dbParams[$key] = $value;
+            }
+        }
+
+        // Validate only the fields being updated (for updates, not all fields are required)
+        $validation = $this->validateUpdateParams($dbParams);
+        if (!$validation['valid']) {
+            return ['result' => false, 'data' => [], 'error' => $validation['errors']];
+        }
+
+        // Add time_update if not already set
+        $dbParams['time_update'] =  time();
+        $params['time_update'] =  time();
+
+        // If there's JSON data, encode it into information field
+        if (!empty($params)) {
+            $dbParams['information'] = json_encode($params, JSON_UNESCAPED_UNICODE);
+        }
+
+        $item = $this->itemRepository->editItem($dbParams);
 
         return [
             'result' => true,
@@ -172,19 +223,132 @@ class ItemService implements ServiceInterface
         ];
     }
 
-    private function validateItemParams(array $params): array
+    private function validateUpdateParams(array $params): array
+    {
+        $errors = [];
+
+        // For update, only validate id - other fields are optional
+        if (empty($params['id']) && empty($params['slug'])) {
+            $errors['id'] = 'Either id or slug is required for update';
+        }
+        return [
+            'valid' => empty($errors),
+            'errors' => $errors
+        ];
+    }
+
+
+
+    /**
+     * Process single JSON object
+     */
+    public function processJsonObject(array $object): ?array
+    {
+        if (empty($object)) {
+            return null;
+        }
+
+        [$dbParams, $extraData] = $this->splitObject($object, $object['user_id']);
+
+        $validation = $this->validateItemParams($dbParams);
+
+        if (!$validation['valid']) {
+            throw new RuntimeException(
+                sprintf('Validation failed: %s', json_encode($validation['errors']))
+            );
+        }
+
+        $dbParams['time_create'] = $dbParams['time_create'] ?? time();
+        $dbParams['time_update'] = $dbParams['time_update'] ?? time();
+
+        // INSERT
+        $insertedItem = $this->itemRepository->addItem($dbParams);
+
+
+
+        $itemId = $insertedItem->getId();
+
+        // enrich information with DB id
+        $extraData['id'] = $itemId;
+        $extraData['time_create_view'] = date('Y-m-d H:i', $dbParams['time_create'] ?? time());
+        $extraData['time_update_view'] = date('Y-m-d H:i', $dbParams['time_update'] ?? time());
+
+        // UPDATE information field AFTER insert
+        $this->updateItemInformation($itemId, $extraData);
+
+        return $this->canonizeItem($insertedItem);
+    }
+
+    /**
+     * Split DB columns vs extra JSON data
+     */
+    protected function splitObject(array $object): array
+    {
+        $dbParams = [];
+        $extraData = $object;
+
+        $allowedColumns = [
+            'source',
+            'title',
+            'slug',
+            'parent_slug',
+            'type',
+            'status',
+            'priority',
+            'user_id',
+            'time_create',
+            'time_update',
+        ];
+
+        foreach ($allowedColumns as $key) {
+            if (isset($object[$key])) {
+                $dbParams[$key] = $object[$key];
+//                unset($extraData[$key]);
+            }
+        }
+
+        if ($object['user_id'] !== null) {
+            $dbParams['user_id'] = $object['user_id'];
+        }
+
+        if (!isset($dbParams['status'])) {
+            $dbParams['status'] = 1;
+        }
+
+        return [$dbParams, $extraData];
+    }
+
+    /**
+     * Update information field after insert
+     */
+    protected function updateItemInformation(mixed $itemId, array $enrichedObject): void
+    {
+        $this->itemRepository->editItem([
+            'id' => $itemId,
+            'information' => json_encode($enrichedObject, JSON_UNESCAPED_UNICODE),
+            'time_update' => time(),
+        ]);
+    }
+
+    /**
+     * Validate required DB fields
+     */
+    protected function validateItemParams(array $params): array
     {
         $errors = [];
 
         if (empty($params['title'])) {
             $errors['title'] = 'Title is required';
         }
+
         if (empty($params['slug'])) {
             $errors['slug'] = 'Slug is required';
         }
+
         if (empty($params['type'])) {
             $errors['type'] = 'Type is required';
         }
+
         return [
             'valid' => empty($errors),
             'errors' => $errors
