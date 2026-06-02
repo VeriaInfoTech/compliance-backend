@@ -1,0 +1,4210 @@
+{
+  "result": true,
+  "data": {
+    "last_updated": "2026-05-30",
+    "reporting_period": "2024 Annual",
+    "total_kpis": 192,
+    "governance": {
+      "summary": {
+        "total_kpis": 72,
+        "answered": 71,
+        "unanswered": 1,
+        "completion": 98.6,
+        "avg_score": 81.4
+      },
+      "domains": [
+        {
+          "code": "GOV-CGS",
+          "title": "ساختار حاکمیت شرکتی",
+          "slug": "corporate-governance-structure",
+          "order": 1,
+          "kpi_count": 6,
+          "answered": 6,
+          "avg_score": 58,
+          "kpis": [
+            {
+              "code": "GOV-CGS-006",
+              "title": "تعداد کمیته‌های فعال نظارتی، ریسک، حسابرسی یا پایداری چند مورد است؟",
+              "value": 4,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-CGS-005",
+              "title": "تعداد جلسات هیئت‌مدیره یا کمیته‌ها که موضوع ESG در دستور کار داشته‌اند چند جلسه است؟",
+              "value": 11,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-CGS-004",
+              "title": "میانگین نرخ حضور اعضا در جلسات هیئت‌مدیره چقدر است؟",
+              "value": 97,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-CGS-003",
+              "title": "چه درصدی از اعضای هیئت‌مدیره زن هستند؟",
+              "value": 33,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-CGS-002",
+              "title": "چه درصدی از اعضای هیئت‌مدیره مستقل هستند؟",
+              "value": 44,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-CGS-001",
+              "title": "تعداد اعضای هیئت‌مدیره یا نهاد راهبری سازمان چند نفر است؟",
+              "value": 9,
+              "unit": "person",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "code": "GOV-ETH",
+          "title": "اخلاق و درستکاری سازمانی",
+          "slug": "ethics-integrity",
+          "order": 2,
+          "kpi_count": 6,
+          "answered": 6,
+          "avg_score": 88.5,
+          "kpis": [
+            {
+              "code": "GOV-ETH-006",
+              "title": "تعداد ارزیابی‌های ریسک فساد یا اخلاق انجام‌شده در دوره گزارش چند مورد است؟",
+              "value": 4,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-ETH-005",
+              "title": "چه درصدی از گزارش‌های اخلاقی در موعد مقرر بررسی و بسته شده‌اند؟",
+              "value": 85,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-ETH-004",
+              "title": "تعداد گزارش‌های دریافت‌شده از کانال افشاگری یا سوت‌زنی چند مورد است؟",
+              "value": 8,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-ETH-003",
+              "title": "تعداد افشاگری‌ها یا گزارش‌های تضاد منافع ثبت‌شده چند مورد است؟",
+              "value": 5,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-ETH-002",
+              "title": "تعداد موارد ثبت‌شده فساد، رشوه یا تخلف اخلاقی در دوره گزارش چند مورد است؟",
+              "value": 3,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-ETH-001",
+              "title": "چه درصدی از کارکنان آموزش اخلاق سازمانی و مبارزه با فساد را تکمیل کرده‌اند؟",
+              "value": 92,
+              "unit": "percent",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "code": "GOV-CMP",
+          "title": "مدیریت انطباق",
+          "slug": "compliance-management",
+          "order": 3,
+          "kpi_count": 6,
+          "answered": 6,
+          "avg_score": 88.8,
+          "kpis": [
+            {
+              "code": "GOV-CMP-006",
+              "title": "تعداد تغییرات قانونی یا مقرراتی پایش و ثبت‌شده در دوره گزارش چند مورد است؟",
+              "value": 24,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-CMP-005",
+              "title": "چه درصدی از اقدامات اصلاحی انطباق در موعد مقرر بسته شده‌اند؟",
+              "value": 85.3,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-CMP-004",
+              "title": "چه درصدی از کارکنان هدف آموزش‌های انطباق را تکمیل کرده‌اند؟",
+              "value": 88.7,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-CMP-003",
+              "title": "تعداد موارد عدم انطباق قانونی یا مقرراتی ثبت‌شده چند مورد است؟",
+              "value": 3,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-CMP-002",
+              "title": "تعداد کنترل‌های انطباق تست‌شده در دوره گزارش چند مورد است؟",
+              "value": 156,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-CMP-001",
+              "title": "چه درصدی از الزامات قانونی و مقرراتی شناسایی‌شده دارای کنترل انطباق تعریف‌شده هستند؟",
+              "value": 92.5,
+              "unit": "percent",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "code": "GOV-RSK",
+          "title": "مدیریت ریسک",
+          "slug": "risk-management",
+          "order": 4,
+          "kpi_count": 6,
+          "answered": 6,
+          "avg_score": 58.3,
+          "kpis": [
+            {
+              "code": "GOV-RSK-006",
+              "title": "تعداد جلسات رسمی بازبینی ریسک در دوره گزارش چند جلسه بوده است؟",
+              "value": 12,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-RSK-005",
+              "title": "تعداد موارد عبور از حدود اشتهای ریسک در دوره گزارش چند مورد است؟",
+              "value": 3,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-RSK-004",
+              "title": "چه درصدی از برنامه‌های درمان ریسک در موعد مقرر انجام شده‌اند؟",
+              "value": 72,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-RSK-003",
+              "title": "چه درصدی از ریسک‌ها دارای ارزیابی به‌روز احتمال و اثر هستند؟",
+              "value": 85,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-RSK-002",
+              "title": "چه درصدی از ریسک‌های ثبت‌شده در سطح بالا یا بحرانی طبقه‌بندی شده‌اند؟",
+              "value": 18,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-RSK-001",
+              "title": "تعداد ریسک‌های سازمانی یا ESG شناسایی‌شده و ثبت‌شده چند مورد است؟",
+              "value": 42,
+              "unit": "count",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "code": "GOV-DPC",
+          "title": "حریم خصوصی داده و امنیت سایبری",
+          "slug": "data-privacy-cybersecurity",
+          "order": 5,
+          "kpi_count": 6,
+          "answered": 6,
+          "avg_score": 91.3,
+          "kpis": [
+            {
+              "code": "GOV-DPC-006",
+              "title": "چه درصدی از درخواست‌های صاحبان داده در مهلت قانونی پاسخ داده شده‌اند؟",
+              "value": 94,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-DPC-005",
+              "title": "چه درصدی از آسیب‌پذیری‌های پرریسک در موعد مقرر رفع شده‌اند؟",
+              "value": 90,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-DPC-004",
+              "title": "چه درصدی از سامانه‌های حیاتی تحت ارزیابی امنیتی یا تست نفوذ قرار گرفته‌اند؟",
+              "value": 93,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-DPC-003",
+              "title": "چه درصدی از کارکنان آموزش امنیت اطلاعات و حریم خصوصی را تکمیل کرده‌اند؟",
+              "value": 88,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-DPC-002",
+              "title": "تعداد رخدادهای امنیت سایبری ثبت‌شده در دوره گزارش چند مورد است؟",
+              "value": 7,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-DPC-001",
+              "title": "تعداد رخدادهای نقض حریم خصوصی داده‌ها در دوره گزارش چند مورد است؟",
+              "value": 2,
+              "unit": "count",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "code": "GOV-SCG",
+          "title": "حاکمیت زنجیره تأمین",
+          "slug": "supply-chain-governance",
+          "order": 6,
+          "kpi_count": 6,
+          "answered": 6,
+          "avg_score": 78.8,
+          "kpis": [
+            {
+              "code": "GOV-SCG-006",
+              "title": "چه درصدی از هزینه خرید از تأمین‌کنندگان محلی یا تأمین‌کنندگان تأییدشده انجام شده است؟",
+              "value": 64,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-SCG-005",
+              "title": "چه درصدی از اقدامات اصلاحی تأمین‌کنندگان در موعد مقرر بسته شده‌اند؟",
+              "value": 81,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-SCG-004",
+              "title": "چه درصدی از تأمین‌کنندگان منشور اخلاقی یا الزامات ESG سازمان را پذیرفته‌اند؟",
+              "value": 92,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-SCG-003",
+              "title": "تعداد ممیزی‌های انجام‌شده از تأمین‌کنندگان در دوره گزارش چند مورد است؟",
+              "value": 27,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-SCG-002",
+              "title": "تعداد تأمین‌کنندگان پرریسک شناسایی‌شده در زنجیره تأمین چند مورد است؟",
+              "value": 14,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-SCG-001",
+              "title": "چه درصدی از تأمین‌کنندگان کلیدی از نظر معیارهای ESG ارزیابی شده‌اند؟",
+              "value": 78,
+              "unit": "percent",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "code": "GOV-EGR",
+          "title": "حاکمیت و گزارش‌دهی ESG",
+          "slug": "esg-governance-reporting",
+          "order": 7,
+          "kpi_count": 6,
+          "answered": 6,
+          "avg_score": 84.3,
+          "kpis": [
+            {
+              "code": "GOV-EGR-006",
+              "title": "تعداد مسائل حاکمیت ESG شناسایی و بسته‌شده در دوره گزارش چند مورد است؟",
+              "value": 2,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-EGR-005",
+              "title": "چه درصدی از چرخه گزارش‌دهی داخلی ESG در موعد مقرر تکمیل شده است؟",
+              "value": 76,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-EGR-004",
+              "title": "تعداد گزارش‌های مدیریتی ESG تولیدشده در دوره گزارش چند گزارش است؟",
+              "value": 5,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-EGR-003",
+              "title": "چه درصدی از دامنه‌های ESG دارای KPI تعریف‌شده و قابل محاسبه هستند؟",
+              "value": 85,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-EGR-002",
+              "title": "چه درصدی از دامنه‌های ESG دارای مالک داده مشخص هستند؟",
+              "value": 92,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-EGR-001",
+              "title": "تعداد جلسات کمیته یا کارگروه ESG در دوره گزارش چند جلسه بوده است؟",
+              "value": 8,
+              "unit": "count",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "code": "GOV-IAC",
+          "title": "حسابرسی داخلی و سیستم‌های کنترلی",
+          "slug": "internal-audit-control-systems",
+          "order": 8,
+          "kpi_count": 6,
+          "answered": 6,
+          "avg_score": 86,
+          "kpis": [
+            {
+              "code": "GOV-IAC-006",
+              "title": "چه درصدی از کنترل‌های کلیدی دارای شواهد قابل ردیابی هستند؟",
+              "value": 88,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-IAC-005",
+              "title": "تعداد اقدامات اصلاحی عقب‌افتاده یا overdue چند مورد است؟",
+              "value": 3,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-IAC-004",
+              "title": "چه درصدی از کنترل‌های کلیدی به صورت دوره‌ای تست شده‌اند؟",
+              "value": 92,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-IAC-003",
+              "title": "چه درصدی از یافته‌های پرریسک ممیزی در موعد مقرر بسته شده‌اند؟",
+              "value": 78,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-IAC-002",
+              "title": "تعداد یافته‌های ممیزی داخلی ثبت‌شده در دوره گزارش چند مورد است؟",
+              "value": 25,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-IAC-001",
+              "title": "تعداد ممیزی‌های داخلی انجام‌شده مرتبط با ESG، ریسک یا انطباق چند مورد است؟",
+              "value": 7,
+              "unit": "count",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "code": "GOV-FTT",
+          "title": "شفافیت مالی و مالیاتی",
+          "slug": "financial-tax-transparency",
+          "order": 9,
+          "kpi_count": 6,
+          "answered": 6,
+          "avg_score": 68,
+          "kpis": [
+            {
+              "code": "GOV-FTT-006",
+              "title": "چه درصدی از پرداخت‌ها یا تعهدات مالیاتی در موعد مقرر انجام شده‌اند؟",
+              "value": 95,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-FTT-005",
+              "title": "تعداد تراکنش‌های اشخاص وابسته افشاشده یا بررسی‌شده چند مورد است؟",
+              "value": 6,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-FTT-004",
+              "title": "نرخ مؤثر مالیاتی سازمان در دوره گزارش چقدر است؟",
+              "value": 21,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-FTT-003",
+              "title": "تعداد موارد عدم انطباق مالیاتی یا اختلاف مالیاتی ثبت‌شده چند مورد است؟",
+              "value": 1,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-FTT-002",
+              "title": "تعداد اصلاحات یا بازارائه‌های مالی مهم در دوره گزارش چند مورد است؟",
+              "value": 2,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-FTT-001",
+              "title": "چه درصدی از اطلاعات مالی کلیدی برای گزارش مدیریتی به‌موقع تکمیل شده است؟",
+              "value": 88,
+              "unit": "percent",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "code": "GOV-RLC",
+          "title": "ریسک انطباق قانونی و حقوقی",
+          "slug": "regulatory-legal-compliance-risk",
+          "order": 10,
+          "kpi_count": 6,
+          "answered": 6,
+          "avg_score": 97.5,
+          "kpis": [
+            {
+              "code": "GOV-RLC-006",
+              "title": "تعداد هشدارهای مقرراتی یا legal watch ثبت‌شده در دوره گزارش چند مورد است؟",
+              "value": 2,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-RLC-005",
+              "title": "چه درصدی از پرونده‌های حقوقی بسته‌شده با نتیجه قابل قبول یا کنترل‌شده خاتمه یافته‌اند؟",
+              "value": 100,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-RLC-004",
+              "title": "چه درصدی از الزامات قانونی کلیدی در موعد مقرر بازبینی شده‌اند؟",
+              "value": 95,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-RLC-003",
+              "title": "تعداد ریسک‌های قانونی یا مقرراتی شناسایی‌شده در دوره گزارش چند مورد است؟",
+              "value": 4,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-RLC-002",
+              "title": "مبلغ جرایم، خسارات یا ذخایر حقوقی مرتبط با دعاوی چقدر است؟",
+              "value": 250000,
+              "unit": "currency",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-RLC-001",
+              "title": "تعداد دعاوی حقوقی یا پرونده‌های قانونی فعال سازمان چند مورد است؟",
+              "value": 3,
+              "unit": "count",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "code": "GOV-AML",
+          "title": "مبارزه با پولشویی و جرایم مالی",
+          "slug": "anti-money-laundering-financial-crime",
+          "order": 11,
+          "kpi_count": 6,
+          "answered": 6,
+          "avg_score": 92.2,
+          "kpis": [
+            {
+              "code": "GOV-AML-006",
+              "title": "چه درصدی از پرونده‌های AML در مهلت مقرر بررسی و بسته شده‌اند؟",
+              "value": 88.2,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-AML-005",
+              "title": "تعداد موارد تطبیق تحریم، PEP یا فهرست‌های پرریسک شناسایی‌شده چند مورد است؟",
+              "value": 14,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-AML-004",
+              "title": "چه درصدی از کارکنان هدف آموزش AML و جرایم مالی را تکمیل کرده‌اند؟",
+              "value": 91.5,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-AML-003",
+              "title": "چه درصدی از مشتریان یا تراکنش‌های هدف تحت غربالگری AML قرار گرفته‌اند؟",
+              "value": 96.8,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-AML-002",
+              "title": "تعداد گزارش‌های تراکنش مشکوک یا موارد ارجاع‌شده چند مورد است؟",
+              "value": 27,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-AML-001",
+              "title": "تعداد هشدارهای مبارزه با پولشویی تولیدشده در دوره گزارش چند مورد است؟",
+              "value": 184,
+              "unit": "count",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "code": "GOV-DGQ",
+          "title": "حاکمیت داده و کیفیت داده ESG",
+          "slug": "esg-data-governance-data-quality",
+          "order": 12,
+          "kpi_count": 6,
+          "answered": 5,
+          "avg_score": 90.7,
+          "kpis": [
+            {
+              "code": "GOV-DGQ-006",
+              "title": "تعداد کنترل‌ها یا اعتبارسنجی‌های خودکار داده ESG فعال در سامانه چند مورد است؟",
+              "value": 36,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-DGQ-005",
+              "title": "تعداد خطاها یا مغایرت‌های داده ESG شناسایی‌شده در دوره گزارش چند مورد است؟",
+              "value": 14,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-DGQ-004",
+              "title": "چه درصدی از رکوردهای ESG دارای منبع، تاریخچه تغییر و قابلیت ردیابی هستند؟",
+              "value": null,
+              "unit": "percent",
+              "status": "unanswered"
+            },
+            {
+              "code": "GOV-DGQ-003",
+              "title": "درصد صحت یا قبولی داده‌های ESG پس از کنترل کیفیت چقدر است؟",
+              "value": 91.2,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-DGQ-002",
+              "title": "درصد تکمیل بودن داده‌های ESG برای دوره گزارش چقدر است؟",
+              "value": 88.3,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-DGQ-001",
+              "title": "چه درصدی از فیلدهای داده ESG دارای مالک داده مشخص هستند؟",
+              "value": 92.5,
+              "unit": "percent",
+              "status": "answered"
+            }
+          ]
+        }
+      ],
+      "all_kpis": [
+        {
+          "code": "GOV-SCG-006",
+          "title": "چه درصدی از هزینه خرید از تأمین‌کنندگان محلی یا تأمین‌کنندگان تأییدشده انجام شده است؟",
+          "domain": "حاکمیت زنجیره تأمین",
+          "value": 64,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-SCG-005",
+          "title": "چه درصدی از اقدامات اصلاحی تأمین‌کنندگان در موعد مقرر بسته شده‌اند؟",
+          "domain": "حاکمیت زنجیره تأمین",
+          "value": 81,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-SCG-004",
+          "title": "چه درصدی از تأمین‌کنندگان منشور اخلاقی یا الزامات ESG سازمان را پذیرفته‌اند؟",
+          "domain": "حاکمیت زنجیره تأمین",
+          "value": 92,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-SCG-003",
+          "title": "تعداد ممیزی‌های انجام‌شده از تأمین‌کنندگان در دوره گزارش چند مورد است؟",
+          "domain": "حاکمیت زنجیره تأمین",
+          "value": 27,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-SCG-002",
+          "title": "تعداد تأمین‌کنندگان پرریسک شناسایی‌شده در زنجیره تأمین چند مورد است؟",
+          "domain": "حاکمیت زنجیره تأمین",
+          "value": 14,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-SCG-001",
+          "title": "چه درصدی از تأمین‌کنندگان کلیدی از نظر معیارهای ESG ارزیابی شده‌اند؟",
+          "domain": "حاکمیت زنجیره تأمین",
+          "value": 78,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-RSK-006",
+          "title": "تعداد جلسات رسمی بازبینی ریسک در دوره گزارش چند جلسه بوده است؟",
+          "domain": "مدیریت ریسک",
+          "value": 12,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-RSK-005",
+          "title": "تعداد موارد عبور از حدود اشتهای ریسک در دوره گزارش چند مورد است؟",
+          "domain": "مدیریت ریسک",
+          "value": 3,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-RSK-004",
+          "title": "چه درصدی از برنامه‌های درمان ریسک در موعد مقرر انجام شده‌اند؟",
+          "domain": "مدیریت ریسک",
+          "value": 72,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-RSK-003",
+          "title": "چه درصدی از ریسک‌ها دارای ارزیابی به‌روز احتمال و اثر هستند؟",
+          "domain": "مدیریت ریسک",
+          "value": 85,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-RSK-002",
+          "title": "چه درصدی از ریسک‌های ثبت‌شده در سطح بالا یا بحرانی طبقه‌بندی شده‌اند؟",
+          "domain": "مدیریت ریسک",
+          "value": 18,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-RSK-001",
+          "title": "تعداد ریسک‌های سازمانی یا ESG شناسایی‌شده و ثبت‌شده چند مورد است؟",
+          "domain": "مدیریت ریسک",
+          "value": 42,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-RLC-006",
+          "title": "تعداد هشدارهای مقرراتی یا legal watch ثبت‌شده در دوره گزارش چند مورد است؟",
+          "domain": "ریسک انطباق قانونی و حقوقی",
+          "value": 2,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-RLC-005",
+          "title": "چه درصدی از پرونده‌های حقوقی بسته‌شده با نتیجه قابل قبول یا کنترل‌شده خاتمه یافته‌اند؟",
+          "domain": "ریسک انطباق قانونی و حقوقی",
+          "value": 100,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-RLC-004",
+          "title": "چه درصدی از الزامات قانونی کلیدی در موعد مقرر بازبینی شده‌اند؟",
+          "domain": "ریسک انطباق قانونی و حقوقی",
+          "value": 95,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-RLC-003",
+          "title": "تعداد ریسک‌های قانونی یا مقرراتی شناسایی‌شده در دوره گزارش چند مورد است؟",
+          "domain": "ریسک انطباق قانونی و حقوقی",
+          "value": 4,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-RLC-002",
+          "title": "مبلغ جرایم، خسارات یا ذخایر حقوقی مرتبط با دعاوی چقدر است؟",
+          "domain": "ریسک انطباق قانونی و حقوقی",
+          "value": 250000,
+          "unit": "currency",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-RLC-001",
+          "title": "تعداد دعاوی حقوقی یا پرونده‌های قانونی فعال سازمان چند مورد است؟",
+          "domain": "ریسک انطباق قانونی و حقوقی",
+          "value": 3,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-IAC-006",
+          "title": "چه درصدی از کنترل‌های کلیدی دارای شواهد قابل ردیابی هستند؟",
+          "domain": "حسابرسی داخلی و سیستم‌های کنترلی",
+          "value": 88,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-IAC-005",
+          "title": "تعداد اقدامات اصلاحی عقب‌افتاده یا overdue چند مورد است؟",
+          "domain": "حسابرسی داخلی و سیستم‌های کنترلی",
+          "value": 3,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-IAC-004",
+          "title": "چه درصدی از کنترل‌های کلیدی به صورت دوره‌ای تست شده‌اند؟",
+          "domain": "حسابرسی داخلی و سیستم‌های کنترلی",
+          "value": 92,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-IAC-003",
+          "title": "چه درصدی از یافته‌های پرریسک ممیزی در موعد مقرر بسته شده‌اند؟",
+          "domain": "حسابرسی داخلی و سیستم‌های کنترلی",
+          "value": 78,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-IAC-002",
+          "title": "تعداد یافته‌های ممیزی داخلی ثبت‌شده در دوره گزارش چند مورد است؟",
+          "domain": "حسابرسی داخلی و سیستم‌های کنترلی",
+          "value": 25,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-IAC-001",
+          "title": "تعداد ممیزی‌های داخلی انجام‌شده مرتبط با ESG، ریسک یا انطباق چند مورد است؟",
+          "domain": "حسابرسی داخلی و سیستم‌های کنترلی",
+          "value": 7,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-FTT-006",
+          "title": "چه درصدی از پرداخت‌ها یا تعهدات مالیاتی در موعد مقرر انجام شده‌اند؟",
+          "domain": "شفافیت مالی و مالیاتی",
+          "value": 95,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-FTT-005",
+          "title": "تعداد تراکنش‌های اشخاص وابسته افشاشده یا بررسی‌شده چند مورد است؟",
+          "domain": "شفافیت مالی و مالیاتی",
+          "value": 6,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-FTT-004",
+          "title": "نرخ مؤثر مالیاتی سازمان در دوره گزارش چقدر است؟",
+          "domain": "شفافیت مالی و مالیاتی",
+          "value": 21,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-FTT-003",
+          "title": "تعداد موارد عدم انطباق مالیاتی یا اختلاف مالیاتی ثبت‌شده چند مورد است؟",
+          "domain": "شفافیت مالی و مالیاتی",
+          "value": 1,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-FTT-002",
+          "title": "تعداد اصلاحات یا بازارائه‌های مالی مهم در دوره گزارش چند مورد است؟",
+          "domain": "شفافیت مالی و مالیاتی",
+          "value": 2,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-FTT-001",
+          "title": "چه درصدی از اطلاعات مالی کلیدی برای گزارش مدیریتی به‌موقع تکمیل شده است؟",
+          "domain": "شفافیت مالی و مالیاتی",
+          "value": 88,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-ETH-006",
+          "title": "تعداد ارزیابی‌های ریسک فساد یا اخلاق انجام‌شده در دوره گزارش چند مورد است؟",
+          "domain": "اخلاق و درستکاری سازمانی",
+          "value": 4,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-ETH-005",
+          "title": "چه درصدی از گزارش‌های اخلاقی در موعد مقرر بررسی و بسته شده‌اند؟",
+          "domain": "اخلاق و درستکاری سازمانی",
+          "value": 85,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-ETH-004",
+          "title": "تعداد گزارش‌های دریافت‌شده از کانال افشاگری یا سوت‌زنی چند مورد است؟",
+          "domain": "اخلاق و درستکاری سازمانی",
+          "value": 8,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-ETH-003",
+          "title": "تعداد افشاگری‌ها یا گزارش‌های تضاد منافع ثبت‌شده چند مورد است؟",
+          "domain": "اخلاق و درستکاری سازمانی",
+          "value": 5,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-ETH-002",
+          "title": "تعداد موارد ثبت‌شده فساد، رشوه یا تخلف اخلاقی در دوره گزارش چند مورد است؟",
+          "domain": "اخلاق و درستکاری سازمانی",
+          "value": 3,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-ETH-001",
+          "title": "چه درصدی از کارکنان آموزش اخلاق سازمانی و مبارزه با فساد را تکمیل کرده‌اند؟",
+          "domain": "اخلاق و درستکاری سازمانی",
+          "value": 92,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-EGR-006",
+          "title": "تعداد مسائل حاکمیت ESG شناسایی و بسته‌شده در دوره گزارش چند مورد است؟",
+          "domain": "حاکمیت و گزارش‌دهی ESG",
+          "value": 2,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-EGR-005",
+          "title": "چه درصدی از چرخه گزارش‌دهی داخلی ESG در موعد مقرر تکمیل شده است؟",
+          "domain": "حاکمیت و گزارش‌دهی ESG",
+          "value": 76,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-EGR-004",
+          "title": "تعداد گزارش‌های مدیریتی ESG تولیدشده در دوره گزارش چند گزارش است؟",
+          "domain": "حاکمیت و گزارش‌دهی ESG",
+          "value": 5,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-EGR-003",
+          "title": "چه درصدی از دامنه‌های ESG دارای KPI تعریف‌شده و قابل محاسبه هستند؟",
+          "domain": "حاکمیت و گزارش‌دهی ESG",
+          "value": 85,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-EGR-002",
+          "title": "چه درصدی از دامنه‌های ESG دارای مالک داده مشخص هستند؟",
+          "domain": "حاکمیت و گزارش‌دهی ESG",
+          "value": 92,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-EGR-001",
+          "title": "تعداد جلسات کمیته یا کارگروه ESG در دوره گزارش چند جلسه بوده است؟",
+          "domain": "حاکمیت و گزارش‌دهی ESG",
+          "value": 8,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-DGQ-006",
+          "title": "تعداد کنترل‌ها یا اعتبارسنجی‌های خودکار داده ESG فعال در سامانه چند مورد است؟",
+          "domain": "حاکمیت داده و کیفیت داده ESG",
+          "value": 36,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-DGQ-005",
+          "title": "تعداد خطاها یا مغایرت‌های داده ESG شناسایی‌شده در دوره گزارش چند مورد است؟",
+          "domain": "حاکمیت داده و کیفیت داده ESG",
+          "value": 14,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-DGQ-004",
+          "title": "چه درصدی از رکوردهای ESG دارای منبع، تاریخچه تغییر و قابلیت ردیابی هستند؟",
+          "domain": "حاکمیت داده و کیفیت داده ESG",
+          "value": null,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "unanswered"
+        },
+        {
+          "code": "GOV-DGQ-003",
+          "title": "درصد صحت یا قبولی داده‌های ESG پس از کنترل کیفیت چقدر است؟",
+          "domain": "حاکمیت داده و کیفیت داده ESG",
+          "value": 91.2,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-DGQ-002",
+          "title": "درصد تکمیل بودن داده‌های ESG برای دوره گزارش چقدر است؟",
+          "domain": "حاکمیت داده و کیفیت داده ESG",
+          "value": 88.3,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-DGQ-001",
+          "title": "چه درصدی از فیلدهای داده ESG دارای مالک داده مشخص هستند؟",
+          "domain": "حاکمیت داده و کیفیت داده ESG",
+          "value": 92.5,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-DPC-006",
+          "title": "چه درصدی از درخواست‌های صاحبان داده در مهلت قانونی پاسخ داده شده‌اند؟",
+          "domain": "حریم خصوصی داده و امنیت سایبری",
+          "value": 94,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-DPC-005",
+          "title": "چه درصدی از آسیب‌پذیری‌های پرریسک در موعد مقرر رفع شده‌اند؟",
+          "domain": "حریم خصوصی داده و امنیت سایبری",
+          "value": 90,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-DPC-004",
+          "title": "چه درصدی از سامانه‌های حیاتی تحت ارزیابی امنیتی یا تست نفوذ قرار گرفته‌اند؟",
+          "domain": "حریم خصوصی داده و امنیت سایبری",
+          "value": 93,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-DPC-003",
+          "title": "چه درصدی از کارکنان آموزش امنیت اطلاعات و حریم خصوصی را تکمیل کرده‌اند؟",
+          "domain": "حریم خصوصی داده و امنیت سایبری",
+          "value": 88,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-DPC-002",
+          "title": "تعداد رخدادهای امنیت سایبری ثبت‌شده در دوره گزارش چند مورد است؟",
+          "domain": "حریم خصوصی داده و امنیت سایبری",
+          "value": 7,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-DPC-001",
+          "title": "تعداد رخدادهای نقض حریم خصوصی داده‌ها در دوره گزارش چند مورد است؟",
+          "domain": "حریم خصوصی داده و امنیت سایبری",
+          "value": 2,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-CGS-006",
+          "title": "تعداد کمیته‌های فعال نظارتی، ریسک، حسابرسی یا پایداری چند مورد است؟",
+          "domain": "ساختار حاکمیت شرکتی",
+          "value": 4,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-CGS-005",
+          "title": "تعداد جلسات هیئت‌مدیره یا کمیته‌ها که موضوع ESG در دستور کار داشته‌اند چند جلسه است؟",
+          "domain": "ساختار حاکمیت شرکتی",
+          "value": 11,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-CGS-004",
+          "title": "میانگین نرخ حضور اعضا در جلسات هیئت‌مدیره چقدر است؟",
+          "domain": "ساختار حاکمیت شرکتی",
+          "value": 97,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-CGS-003",
+          "title": "چه درصدی از اعضای هیئت‌مدیره زن هستند؟",
+          "domain": "ساختار حاکمیت شرکتی",
+          "value": 33,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-CGS-002",
+          "title": "چه درصدی از اعضای هیئت‌مدیره مستقل هستند؟",
+          "domain": "ساختار حاکمیت شرکتی",
+          "value": 44,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-CGS-001",
+          "title": "تعداد اعضای هیئت‌مدیره یا نهاد راهبری سازمان چند نفر است؟",
+          "domain": "ساختار حاکمیت شرکتی",
+          "value": 9,
+          "unit": "person",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-CMP-006",
+          "title": "تعداد تغییرات قانونی یا مقرراتی پایش و ثبت‌شده در دوره گزارش چند مورد است؟",
+          "domain": "مدیریت انطباق",
+          "value": 24,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-CMP-005",
+          "title": "چه درصدی از اقدامات اصلاحی انطباق در موعد مقرر بسته شده‌اند؟",
+          "domain": "مدیریت انطباق",
+          "value": 85.3,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-CMP-004",
+          "title": "چه درصدی از کارکنان هدف آموزش‌های انطباق را تکمیل کرده‌اند؟",
+          "domain": "مدیریت انطباق",
+          "value": 88.7,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-CMP-003",
+          "title": "تعداد موارد عدم انطباق قانونی یا مقرراتی ثبت‌شده چند مورد است؟",
+          "domain": "مدیریت انطباق",
+          "value": 3,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-CMP-002",
+          "title": "تعداد کنترل‌های انطباق تست‌شده در دوره گزارش چند مورد است؟",
+          "domain": "مدیریت انطباق",
+          "value": 156,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-CMP-001",
+          "title": "چه درصدی از الزامات قانونی و مقرراتی شناسایی‌شده دارای کنترل انطباق تعریف‌شده هستند؟",
+          "domain": "مدیریت انطباق",
+          "value": 92.5,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-AML-006",
+          "title": "چه درصدی از پرونده‌های AML در مهلت مقرر بررسی و بسته شده‌اند؟",
+          "domain": "مبارزه با پولشویی و جرایم مالی",
+          "value": 88.2,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-AML-005",
+          "title": "تعداد موارد تطبیق تحریم، PEP یا فهرست‌های پرریسک شناسایی‌شده چند مورد است؟",
+          "domain": "مبارزه با پولشویی و جرایم مالی",
+          "value": 14,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-AML-004",
+          "title": "چه درصدی از کارکنان هدف آموزش AML و جرایم مالی را تکمیل کرده‌اند؟",
+          "domain": "مبارزه با پولشویی و جرایم مالی",
+          "value": 91.5,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-AML-003",
+          "title": "چه درصدی از مشتریان یا تراکنش‌های هدف تحت غربالگری AML قرار گرفته‌اند؟",
+          "domain": "مبارزه با پولشویی و جرایم مالی",
+          "value": 96.8,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-AML-002",
+          "title": "تعداد گزارش‌های تراکنش مشکوک یا موارد ارجاع‌شده چند مورد است؟",
+          "domain": "مبارزه با پولشویی و جرایم مالی",
+          "value": 27,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "GOV-AML-001",
+          "title": "تعداد هشدارهای مبارزه با پولشویی تولیدشده در دوره گزارش چند مورد است؟",
+          "domain": "مبارزه با پولشویی و جرایم مالی",
+          "value": 184,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        }
+      ],
+      "framework_coverage": [
+        {
+          "name": "GRI Standards",
+          "count": 84
+        },
+        {
+          "name": "ISSB",
+          "count": 84
+        },
+        {
+          "name": "COSO ERM",
+          "count": 84
+        },
+        {
+          "name": "EcoVadis",
+          "count": 84
+        },
+        {
+          "name": "TCFD",
+          "count": 18
+        }
+      ],
+      "charts": {
+        "radar_data": [
+          {
+            "domain": "ساختار حاکمیت شرکتی",
+            "score": 58
+          },
+          {
+            "domain": "اخلاق و درستکاری سازمانی",
+            "score": 88.5
+          },
+          {
+            "domain": "مدیریت انطباق",
+            "score": 88.8
+          },
+          {
+            "domain": "مدیریت ریسک",
+            "score": 58.3
+          },
+          {
+            "domain": "حریم خصوصی داده و امنیت سایبری",
+            "score": 91.3
+          },
+          {
+            "domain": "حاکمیت زنجیره تأمین",
+            "score": 78.8
+          },
+          {
+            "domain": "حاکمیت و گزارش‌دهی ESG",
+            "score": 84.3
+          },
+          {
+            "domain": "حسابرسی داخلی و سیستم‌های کنترلی",
+            "score": 86
+          },
+          {
+            "domain": "شفافیت مالی و مالیاتی",
+            "score": 68
+          },
+          {
+            "domain": "ریسک انطباق قانونی و حقوقی",
+            "score": 97.5
+          },
+          {
+            "domain": "مبارزه با پولشویی و جرایم مالی",
+            "score": 92.2
+          },
+          {
+            "domain": "حاکمیت داده و کیفیت داده ESG",
+            "score": 90.7
+          }
+        ],
+        "domain_bar_percent": [
+          {
+            "domain": "ساختار حاکمیت شرکتی",
+            "score": 58
+          },
+          {
+            "domain": "اخلاق و درستکاری سازمانی",
+            "score": 88.5
+          },
+          {
+            "domain": "مدیریت انطباق",
+            "score": 88.8
+          },
+          {
+            "domain": "مدیریت ریسک",
+            "score": 58.3
+          },
+          {
+            "domain": "حریم خصوصی داده و امنیت سایبری",
+            "score": 91.3
+          },
+          {
+            "domain": "حاکمیت زنجیره تأمین",
+            "score": 78.8
+          },
+          {
+            "domain": "حاکمیت و گزارش‌دهی ESG",
+            "score": 84.3
+          },
+          {
+            "domain": "حسابرسی داخلی و سیستم‌های کنترلی",
+            "score": 86
+          },
+          {
+            "domain": "شفافیت مالی و مالیاتی",
+            "score": 68
+          },
+          {
+            "domain": "ریسک انطباق قانونی و حقوقی",
+            "score": 97.5
+          },
+          {
+            "domain": "مبارزه با پولشویی و جرایم مالی",
+            "score": 92.2
+          },
+          {
+            "domain": "حاکمیت داده و کیفیت داده ESG",
+            "score": 90.7
+          }
+        ],
+        "domain_bar_count": [
+          {
+            "domain": "ساختار حاکمیت شرکتی",
+            "count": 6
+          },
+          {
+            "domain": "اخلاق و درستکاری سازمانی",
+            "count": 6
+          },
+          {
+            "domain": "مدیریت انطباق",
+            "count": 6
+          },
+          {
+            "domain": "مدیریت ریسک",
+            "count": 6
+          },
+          {
+            "domain": "حریم خصوصی داده و امنیت سایبری",
+            "count": 6
+          },
+          {
+            "domain": "حاکمیت زنجیره تأمین",
+            "count": 6
+          },
+          {
+            "domain": "حاکمیت و گزارش‌دهی ESG",
+            "count": 6
+          },
+          {
+            "domain": "حسابرسی داخلی و سیستم‌های کنترلی",
+            "count": 6
+          },
+          {
+            "domain": "شفافیت مالی و مالیاتی",
+            "count": 6
+          },
+          {
+            "domain": "ریسک انطباق قانونی و حقوقی",
+            "count": 6
+          },
+          {
+            "domain": "مبارزه با پولشویی و جرایم مالی",
+            "count": 6
+          },
+          {
+            "domain": "حاکمیت داده و کیفیت داده ESG",
+            "count": 6
+          }
+        ]
+      },
+      "detailed_sections": [
+        {
+          "domain": "حاکمیت زنجیره تأمین",
+          "kpis": [
+            {
+              "code": "GOV-SCG-006",
+              "title": "چه درصدی از هزینه خرید از تأمین‌کنندگان محلی یا تأمین‌کنندگان تأییدشده انجام شده است؟",
+              "value": 64,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-SCG-005",
+              "title": "چه درصدی از اقدامات اصلاحی تأمین‌کنندگان در موعد مقرر بسته شده‌اند؟",
+              "value": 81,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-SCG-004",
+              "title": "چه درصدی از تأمین‌کنندگان منشور اخلاقی یا الزامات ESG سازمان را پذیرفته‌اند؟",
+              "value": 92,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-SCG-003",
+              "title": "تعداد ممیزی‌های انجام‌شده از تأمین‌کنندگان در دوره گزارش چند مورد است؟",
+              "value": 27,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-SCG-002",
+              "title": "تعداد تأمین‌کنندگان پرریسک شناسایی‌شده در زنجیره تأمین چند مورد است؟",
+              "value": 14,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-SCG-001",
+              "title": "چه درصدی از تأمین‌کنندگان کلیدی از نظر معیارهای ESG ارزیابی شده‌اند؟",
+              "value": 78,
+              "unit": "percent",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "domain": "مدیریت ریسک",
+          "kpis": [
+            {
+              "code": "GOV-RSK-006",
+              "title": "تعداد جلسات رسمی بازبینی ریسک در دوره گزارش چند جلسه بوده است؟",
+              "value": 12,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-RSK-005",
+              "title": "تعداد موارد عبور از حدود اشتهای ریسک در دوره گزارش چند مورد است؟",
+              "value": 3,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-RSK-004",
+              "title": "چه درصدی از برنامه‌های درمان ریسک در موعد مقرر انجام شده‌اند؟",
+              "value": 72,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-RSK-003",
+              "title": "چه درصدی از ریسک‌ها دارای ارزیابی به‌روز احتمال و اثر هستند؟",
+              "value": 85,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-RSK-002",
+              "title": "چه درصدی از ریسک‌های ثبت‌شده در سطح بالا یا بحرانی طبقه‌بندی شده‌اند؟",
+              "value": 18,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-RSK-001",
+              "title": "تعداد ریسک‌های سازمانی یا ESG شناسایی‌شده و ثبت‌شده چند مورد است؟",
+              "value": 42,
+              "unit": "count",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "domain": "ریسک انطباق قانونی و حقوقی",
+          "kpis": [
+            {
+              "code": "GOV-RLC-006",
+              "title": "تعداد هشدارهای مقرراتی یا legal watch ثبت‌شده در دوره گزارش چند مورد است؟",
+              "value": 2,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-RLC-005",
+              "title": "چه درصدی از پرونده‌های حقوقی بسته‌شده با نتیجه قابل قبول یا کنترل‌شده خاتمه یافته‌اند؟",
+              "value": 100,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-RLC-004",
+              "title": "چه درصدی از الزامات قانونی کلیدی در موعد مقرر بازبینی شده‌اند؟",
+              "value": 95,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-RLC-003",
+              "title": "تعداد ریسک‌های قانونی یا مقرراتی شناسایی‌شده در دوره گزارش چند مورد است؟",
+              "value": 4,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-RLC-002",
+              "title": "مبلغ جرایم، خسارات یا ذخایر حقوقی مرتبط با دعاوی چقدر است؟",
+              "value": 250000,
+              "unit": "currency",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-RLC-001",
+              "title": "تعداد دعاوی حقوقی یا پرونده‌های قانونی فعال سازمان چند مورد است؟",
+              "value": 3,
+              "unit": "count",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "domain": "حسابرسی داخلی و سیستم‌های کنترلی",
+          "kpis": [
+            {
+              "code": "GOV-IAC-006",
+              "title": "چه درصدی از کنترل‌های کلیدی دارای شواهد قابل ردیابی هستند؟",
+              "value": 88,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-IAC-005",
+              "title": "تعداد اقدامات اصلاحی عقب‌افتاده یا overdue چند مورد است؟",
+              "value": 3,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-IAC-004",
+              "title": "چه درصدی از کنترل‌های کلیدی به صورت دوره‌ای تست شده‌اند؟",
+              "value": 92,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-IAC-003",
+              "title": "چه درصدی از یافته‌های پرریسک ممیزی در موعد مقرر بسته شده‌اند؟",
+              "value": 78,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-IAC-002",
+              "title": "تعداد یافته‌های ممیزی داخلی ثبت‌شده در دوره گزارش چند مورد است؟",
+              "value": 25,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-IAC-001",
+              "title": "تعداد ممیزی‌های داخلی انجام‌شده مرتبط با ESG، ریسک یا انطباق چند مورد است؟",
+              "value": 7,
+              "unit": "count",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "domain": "شفافیت مالی و مالیاتی",
+          "kpis": [
+            {
+              "code": "GOV-FTT-006",
+              "title": "چه درصدی از پرداخت‌ها یا تعهدات مالیاتی در موعد مقرر انجام شده‌اند؟",
+              "value": 95,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-FTT-005",
+              "title": "تعداد تراکنش‌های اشخاص وابسته افشاشده یا بررسی‌شده چند مورد است؟",
+              "value": 6,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-FTT-004",
+              "title": "نرخ مؤثر مالیاتی سازمان در دوره گزارش چقدر است؟",
+              "value": 21,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-FTT-003",
+              "title": "تعداد موارد عدم انطباق مالیاتی یا اختلاف مالیاتی ثبت‌شده چند مورد است؟",
+              "value": 1,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-FTT-002",
+              "title": "تعداد اصلاحات یا بازارائه‌های مالی مهم در دوره گزارش چند مورد است؟",
+              "value": 2,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-FTT-001",
+              "title": "چه درصدی از اطلاعات مالی کلیدی برای گزارش مدیریتی به‌موقع تکمیل شده است؟",
+              "value": 88,
+              "unit": "percent",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "domain": "اخلاق و درستکاری سازمانی",
+          "kpis": [
+            {
+              "code": "GOV-ETH-006",
+              "title": "تعداد ارزیابی‌های ریسک فساد یا اخلاق انجام‌شده در دوره گزارش چند مورد است؟",
+              "value": 4,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-ETH-005",
+              "title": "چه درصدی از گزارش‌های اخلاقی در موعد مقرر بررسی و بسته شده‌اند؟",
+              "value": 85,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-ETH-004",
+              "title": "تعداد گزارش‌های دریافت‌شده از کانال افشاگری یا سوت‌زنی چند مورد است؟",
+              "value": 8,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-ETH-003",
+              "title": "تعداد افشاگری‌ها یا گزارش‌های تضاد منافع ثبت‌شده چند مورد است؟",
+              "value": 5,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-ETH-002",
+              "title": "تعداد موارد ثبت‌شده فساد، رشوه یا تخلف اخلاقی در دوره گزارش چند مورد است؟",
+              "value": 3,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-ETH-001",
+              "title": "چه درصدی از کارکنان آموزش اخلاق سازمانی و مبارزه با فساد را تکمیل کرده‌اند؟",
+              "value": 92,
+              "unit": "percent",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "domain": "حاکمیت و گزارش‌دهی ESG",
+          "kpis": [
+            {
+              "code": "GOV-EGR-006",
+              "title": "تعداد مسائل حاکمیت ESG شناسایی و بسته‌شده در دوره گزارش چند مورد است؟",
+              "value": 2,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-EGR-005",
+              "title": "چه درصدی از چرخه گزارش‌دهی داخلی ESG در موعد مقرر تکمیل شده است؟",
+              "value": 76,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-EGR-004",
+              "title": "تعداد گزارش‌های مدیریتی ESG تولیدشده در دوره گزارش چند گزارش است؟",
+              "value": 5,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-EGR-003",
+              "title": "چه درصدی از دامنه‌های ESG دارای KPI تعریف‌شده و قابل محاسبه هستند؟",
+              "value": 85,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-EGR-002",
+              "title": "چه درصدی از دامنه‌های ESG دارای مالک داده مشخص هستند؟",
+              "value": 92,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-EGR-001",
+              "title": "تعداد جلسات کمیته یا کارگروه ESG در دوره گزارش چند جلسه بوده است؟",
+              "value": 8,
+              "unit": "count",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "domain": "حاکمیت داده و کیفیت داده ESG",
+          "kpis": [
+            {
+              "code": "GOV-DGQ-006",
+              "title": "تعداد کنترل‌ها یا اعتبارسنجی‌های خودکار داده ESG فعال در سامانه چند مورد است؟",
+              "value": 36,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-DGQ-005",
+              "title": "تعداد خطاها یا مغایرت‌های داده ESG شناسایی‌شده در دوره گزارش چند مورد است؟",
+              "value": 14,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-DGQ-004",
+              "title": "چه درصدی از رکوردهای ESG دارای منبع، تاریخچه تغییر و قابلیت ردیابی هستند؟",
+              "value": null,
+              "unit": "percent",
+              "status": "unanswered"
+            },
+            {
+              "code": "GOV-DGQ-003",
+              "title": "درصد صحت یا قبولی داده‌های ESG پس از کنترل کیفیت چقدر است؟",
+              "value": 91.2,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-DGQ-002",
+              "title": "درصد تکمیل بودن داده‌های ESG برای دوره گزارش چقدر است؟",
+              "value": 88.3,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-DGQ-001",
+              "title": "چه درصدی از فیلدهای داده ESG دارای مالک داده مشخص هستند؟",
+              "value": 92.5,
+              "unit": "percent",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "domain": "حریم خصوصی داده و امنیت سایبری",
+          "kpis": [
+            {
+              "code": "GOV-DPC-006",
+              "title": "چه درصدی از درخواست‌های صاحبان داده در مهلت قانونی پاسخ داده شده‌اند؟",
+              "value": 94,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-DPC-005",
+              "title": "چه درصدی از آسیب‌پذیری‌های پرریسک در موعد مقرر رفع شده‌اند؟",
+              "value": 90,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-DPC-004",
+              "title": "چه درصدی از سامانه‌های حیاتی تحت ارزیابی امنیتی یا تست نفوذ قرار گرفته‌اند؟",
+              "value": 93,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-DPC-003",
+              "title": "چه درصدی از کارکنان آموزش امنیت اطلاعات و حریم خصوصی را تکمیل کرده‌اند؟",
+              "value": 88,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-DPC-002",
+              "title": "تعداد رخدادهای امنیت سایبری ثبت‌شده در دوره گزارش چند مورد است؟",
+              "value": 7,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-DPC-001",
+              "title": "تعداد رخدادهای نقض حریم خصوصی داده‌ها در دوره گزارش چند مورد است؟",
+              "value": 2,
+              "unit": "count",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "domain": "ساختار حاکمیت شرکتی",
+          "kpis": [
+            {
+              "code": "GOV-CGS-006",
+              "title": "تعداد کمیته‌های فعال نظارتی، ریسک، حسابرسی یا پایداری چند مورد است؟",
+              "value": 4,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-CGS-005",
+              "title": "تعداد جلسات هیئت‌مدیره یا کمیته‌ها که موضوع ESG در دستور کار داشته‌اند چند جلسه است؟",
+              "value": 11,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-CGS-004",
+              "title": "میانگین نرخ حضور اعضا در جلسات هیئت‌مدیره چقدر است؟",
+              "value": 97,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-CGS-003",
+              "title": "چه درصدی از اعضای هیئت‌مدیره زن هستند؟",
+              "value": 33,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-CGS-002",
+              "title": "چه درصدی از اعضای هیئت‌مدیره مستقل هستند؟",
+              "value": 44,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-CGS-001",
+              "title": "تعداد اعضای هیئت‌مدیره یا نهاد راهبری سازمان چند نفر است؟",
+              "value": 9,
+              "unit": "person",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "domain": "مدیریت انطباق",
+          "kpis": [
+            {
+              "code": "GOV-CMP-006",
+              "title": "تعداد تغییرات قانونی یا مقرراتی پایش و ثبت‌شده در دوره گزارش چند مورد است؟",
+              "value": 24,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-CMP-005",
+              "title": "چه درصدی از اقدامات اصلاحی انطباق در موعد مقرر بسته شده‌اند؟",
+              "value": 85.3,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-CMP-004",
+              "title": "چه درصدی از کارکنان هدف آموزش‌های انطباق را تکمیل کرده‌اند؟",
+              "value": 88.7,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-CMP-003",
+              "title": "تعداد موارد عدم انطباق قانونی یا مقرراتی ثبت‌شده چند مورد است؟",
+              "value": 3,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-CMP-002",
+              "title": "تعداد کنترل‌های انطباق تست‌شده در دوره گزارش چند مورد است؟",
+              "value": 156,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-CMP-001",
+              "title": "چه درصدی از الزامات قانونی و مقرراتی شناسایی‌شده دارای کنترل انطباق تعریف‌شده هستند؟",
+              "value": 92.5,
+              "unit": "percent",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "domain": "مبارزه با پولشویی و جرایم مالی",
+          "kpis": [
+            {
+              "code": "GOV-AML-006",
+              "title": "چه درصدی از پرونده‌های AML در مهلت مقرر بررسی و بسته شده‌اند؟",
+              "value": 88.2,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-AML-005",
+              "title": "تعداد موارد تطبیق تحریم، PEP یا فهرست‌های پرریسک شناسایی‌شده چند مورد است؟",
+              "value": 14,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-AML-004",
+              "title": "چه درصدی از کارکنان هدف آموزش AML و جرایم مالی را تکمیل کرده‌اند؟",
+              "value": 91.5,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-AML-003",
+              "title": "چه درصدی از مشتریان یا تراکنش‌های هدف تحت غربالگری AML قرار گرفته‌اند؟",
+              "value": 96.8,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-AML-002",
+              "title": "تعداد گزارش‌های تراکنش مشکوک یا موارد ارجاع‌شده چند مورد است؟",
+              "value": 27,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "GOV-AML-001",
+              "title": "تعداد هشدارهای مبارزه با پولشویی تولیدشده در دوره گزارش چند مورد است؟",
+              "value": 184,
+              "unit": "count",
+              "status": "answered"
+            }
+          ]
+        }
+      ]
+    },
+    "social": {
+      "summary": {
+        "total_kpis": 66,
+        "answered": 66,
+        "completion": 100,
+        "avg_score": 65
+      },
+      "domains": [
+        {
+          "code": "SOC-WSD",
+          "title": "ساختار و جمعیت‌شناسی نیروی انسانی",
+          "slug": "workforce-structure-demographics",
+          "order": 1,
+          "kpi_count": 6,
+          "answered": 6,
+          "avg_score": 33.8,
+          "kpis": [
+            {
+              "code": "SOC-WSD-006",
+              "title": "چه درصدی از مدیران یا سرپرستان سازمان زن هستند؟",
+              "value": 31,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-WSD-005",
+              "title": "چه درصدی از کارکنان بیش از ۵۰ سال سن دارند؟",
+              "value": 21,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-WSD-004",
+              "title": "چه درصدی از کارکنان بین ۳۰ تا ۵۰ سال سن دارند؟",
+              "value": 52,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-WSD-003",
+              "title": "چه درصدی از کارکنان کمتر از ۳۰ سال سن دارند؟",
+              "value": 27,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-WSD-002",
+              "title": "چه درصدی از کارکنان سازمان زن هستند؟",
+              "value": 38,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-WSD-001",
+              "title": "تعداد کل کارکنان سازمان در پایان دوره گزارش چند نفر است؟",
+              "value": 284,
+              "unit": "employee",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "code": "SOC-DEI",
+          "title": "تنوع، برابری و شمول",
+          "slug": "diversity-equity-inclusion",
+          "order": 2,
+          "kpi_count": 6,
+          "answered": 6,
+          "avg_score": 45.2,
+          "kpis": [
+            {
+              "code": "SOC-DEI-006",
+              "title": "چه درصدی از فرایندهای جذب و ارتقا با معیارهای ضدتبعیض بازبینی شده‌اند؟",
+              "value": 85,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-DEI-005",
+              "title": "درصد شکاف پرداختی بین گروه‌های جنسیتی یا جمعیتی چقدر است؟",
+              "value": 6,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-DEI-004",
+              "title": "تعداد شکایات یا موارد ثبت‌شده تبعیض در دوره گزارش چند مورد است؟",
+              "value": 3,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-DEI-003",
+              "title": "چه درصدی از کارکنان آموزش‌های تنوع، برابری و شمول را تکمیل کرده‌اند؟",
+              "value": 79,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-DEI-002",
+              "title": "چه درصدی از مدیران ارشد متعلق به گروه‌های کمترنماینده‌شده یا هدف تنوع هستند؟",
+              "value": 22,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-DEI-001",
+              "title": "چه درصدی از کل کارکنان متعلق به گروه‌های کمترنماینده‌شده یا هدف تنوع هستند؟",
+              "value": 34,
+              "unit": "percent",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "code": "SOC-EMC",
+          "title": "شرایط اشتغال",
+          "slug": "employment-conditions",
+          "order": 3,
+          "kpi_count": 6,
+          "answered": 6,
+          "avg_score": 84.3,
+          "kpis": [
+            {
+              "code": "SOC-EMC-006",
+              "title": "چه درصدی از کارکنان ارزیابی رسمی شرایط کاری یا رضایت از شرایط کار را تکمیل کرده‌اند؟",
+              "value": 76,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-EMC-005",
+              "title": "نسبت میانگین حقوق پایه سازمان به حداقل حقوق قانونی چقدر است؟",
+              "value": 1.8,
+              "unit": "ratio",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-EMC-004",
+              "title": "مجموع ساعات اضافه‌کاری ثبت‌شده در دوره گزارش چقدر است؟",
+              "value": 12800,
+              "unit": "hour",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-EMC-003",
+              "title": "میانگین ساعات کاری هفتگی کارکنان چقدر است؟",
+              "value": 42,
+              "unit": "hour_per_week",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-EMC-002",
+              "title": "چه درصدی از کارکنان تحت پوشش مزایای اصلی سازمان قرار دارند؟",
+              "value": 95,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-EMC-001",
+              "title": "چه درصدی از کارکنان دارای قرارداد دائمی یا بلندمدت هستند؟",
+              "value": 82,
+              "unit": "percent",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "code": "SOC-HSW",
+          "title": "سلامت، ایمنی و رفاه",
+          "slug": "health-safety-wellbeing",
+          "order": 4,
+          "kpi_count": 6,
+          "answered": 6,
+          "avg_score": 54.7,
+          "kpis": [
+            {
+              "code": "SOC-HSW-006",
+              "title": "تعداد فوتی‌های مرتبط با کار در دوره گزارش چند مورد است؟",
+              "value": 0,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-HSW-005",
+              "title": "چه درصدی از کارکنان در برنامه‌های رفاه، سلامت روان یا تندرستی مشارکت کرده‌اند؟",
+              "value": 68,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-HSW-004",
+              "title": "نرخ غیبت کارکنان به دلیل بیماری یا آسیب شغلی چقدر است؟",
+              "value": 4.1,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-HSW-003",
+              "title": "چه درصدی از کارکنان آموزش ایمنی و سلامت شغلی را تکمیل کرده‌اند؟",
+              "value": 92,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-HSW-002",
+              "title": "تعداد حوادث منجر به از دست رفتن زمان کاری چند مورد بوده است؟",
+              "value": 18,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-HSW-001",
+              "title": "نرخ حوادث قابل ثبت شغلی در دوره گزارش چقدر است؟",
+              "value": 2.4,
+              "unit": "rate",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "code": "SOC-LND",
+          "title": "آموزش و توسعه",
+          "slug": "learning-development",
+          "order": 5,
+          "kpi_count": 6,
+          "answered": 6,
+          "avg_score": 78.7,
+          "kpis": [
+            {
+              "code": "SOC-LND-006",
+              "title": "چه درصدی از کارکنان دارای برنامه توسعه فردی یا مسیر رشد حرفه‌ای هستند؟",
+              "value": 67,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-LND-005",
+              "title": "مبلغ هزینه آموزش و توسعه کارکنان در دوره گزارش چقدر است؟",
+              "value": 325000,
+              "unit": "currency",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-LND-004",
+              "title": "چه درصدی از مدیران آموزش رهبری یا مدیریتی دریافت کرده‌اند؟",
+              "value": 78,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-LND-003",
+              "title": "چه درصدی از کارکنان حداقل یک دوره آموزشی را تکمیل کرده‌اند؟",
+              "value": 91,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-LND-002",
+              "title": "میانگین ساعات آموزش به ازای هر کارمند چقدر است؟",
+              "value": 18.6,
+              "unit": "hour_per_employee",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-LND-001",
+              "title": "مجموع ساعات آموزش ارائه‌شده به کارکنان در دوره گزارش چقدر است؟",
+              "value": 12450,
+              "unit": "hour",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "code": "SOC-EER",
+          "title": "مشارکت و نگهداشت کارکنان",
+          "slug": "employee-engagement-retention",
+          "order": 6,
+          "kpi_count": 6,
+          "answered": 6,
+          "avg_score": 60.2,
+          "kpis": [
+            {
+              "code": "SOC-EER-006",
+              "title": "تعداد اقدامات بهبود تجربه کارکنان اجراشده در دوره گزارش چند مورد است؟",
+              "value": 12,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-EER-005",
+              "title": "چه درصدی از موقعیت‌های باز از طریق جابه‌جایی یا ارتقای داخلی پر شده‌اند؟",
+              "value": 41,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-EER-004",
+              "title": "چه درصدی از کارکنان در نظرسنجی مشارکت کارکنان شرکت کرده‌اند؟",
+              "value": 76,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-EER-003",
+              "title": "نرخ نگهداشت کارکنان کلیدی یا حیاتی چقدر است؟",
+              "value": 93,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-EER-002",
+              "title": "نرخ ترک خدمت داوطلبانه کارکنان در دوره گزارش چقدر است؟",
+              "value": 9,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-EER-001",
+              "title": "امتیاز یا درصد رضایت و مشارکت کارکنان در آخرین نظرسنجی چقدر است؟",
+              "value": 82,
+              "unit": "percent",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "code": "SOC-HRL",
+          "title": "حقوق بشر و رویه‌های کار",
+          "slug": "human-rights-labor-practices",
+          "order": 7,
+          "kpi_count": 6,
+          "answered": 6,
+          "avg_score": 81.7,
+          "kpis": [
+            {
+              "code": "SOC-HRL-006",
+              "title": "تعداد اقدامات اصلاحی مرتبط با حقوق بشر و استانداردهای کار اجراشده چند مورد است؟",
+              "value": 8,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-HRL-005",
+              "title": "چه درصدی از تأمین‌کنندگان پرریسک از نظر حقوق بشر ارزیابی شده‌اند؟",
+              "value": 70,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-HRL-004",
+              "title": "چه درصدی از شکایات حقوق بشر در موعد مقرر رسیدگی و بسته شده‌اند؟",
+              "value": 85,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-HRL-003",
+              "title": "تعداد شکایات مرتبط با حقوق بشر یا رفتار ناعادلانه در دوره گزارش چند مورد است؟",
+              "value": 12,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-HRL-002",
+              "title": "تعداد موارد ثبت‌شده کار اجباری، کار کودک یا نقض جدی حقوق کار چند مورد است؟",
+              "value": 0,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-HRL-001",
+              "title": "چه درصدی از عملیات سازمان از نظر ریسک‌های حقوق بشر و کار منصفانه ارزیابی شده‌اند؟",
+              "value": 90,
+              "unit": "percent",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "code": "SOC-COM",
+          "title": "اثرگذاری اجتماعی بر جامعه",
+          "slug": "community-impact",
+          "order": 8,
+          "kpi_count": 6,
+          "answered": 6,
+          "avg_score": 68,
+          "kpis": [
+            {
+              "code": "SOC-COM-006",
+              "title": "تعداد پروژه‌های فعال مسئولیت اجتماعی یا توسعه محلی چند مورد است؟",
+              "value": 12,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-COM-005",
+              "title": "تعداد شکایات یا نگرانی‌های جامعه محلی ثبت‌شده در دوره گزارش چند مورد است؟",
+              "value": 7,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-COM-004",
+              "title": "چه درصدی از خریدها یا هزینه‌ها از تأمین‌کنندگان محلی انجام شده است؟",
+              "value": 68,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-COM-003",
+              "title": "تعداد ذی‌نفعان یا افراد بهره‌مند از برنامه‌های اجتماعی سازمان چند نفر است؟",
+              "value": 8750,
+              "unit": "person",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-COM-002",
+              "title": "تعداد ساعات داوطلبانه کارکنان در فعالیت‌های اجتماعی چقدر است؟",
+              "value": 1840,
+              "unit": "hour",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-COM-001",
+              "title": "مبلغ سرمایه‌گذاری اجتماعی یا کمک‌های جامعه‌محور سازمان در دوره گزارش چقدر است؟",
+              "value": 1250000,
+              "unit": "currency",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "code": "SOC-CRP",
+          "title": "مسئولیت در برابر مشتری و ایمنی محصول",
+          "slug": "customer-responsibility-product-safety",
+          "order": 9,
+          "kpi_count": 6,
+          "answered": 6,
+          "avg_score": 91,
+          "kpis": [
+            {
+              "code": "SOC-CRP-006",
+              "title": "تعداد اقدامات اصلاحی برای بهبود کیفیت یا ایمنی محصول و خدمت چند مورد است؟",
+              "value": 6,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-CRP-005",
+              "title": "چه درصدی از محصولات یا خدمات از نظر اثرات اجتماعی یا ایمنی ارزیابی شده‌اند؟",
+              "value": 95,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-CRP-004",
+              "title": "امتیاز یا درصد رضایت مشتریان از کیفیت خدمات چقدر است؟",
+              "value": 87,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-CRP-003",
+              "title": "تعداد رخدادهای ایمنی محصول یا خدمت در دوره گزارش چند مورد است؟",
+              "value": 2,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-CRP-002",
+              "title": "چه درصدی از شکایات مشتریان در زمان هدف‌گذاری‌شده رسیدگی و بسته شده‌اند؟",
+              "value": 91,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-CRP-001",
+              "title": "تعداد شکایات مشتریان درباره کیفیت، ایمنی یا اثرات اجتماعی خدمات چند مورد است؟",
+              "value": 18,
+              "unit": "count",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "code": "SOC-LIR",
+          "title": "روابط کار و روابط صنعتی",
+          "slug": "labor-relations-industrial-relations",
+          "order": 10,
+          "kpi_count": 6,
+          "answered": 6,
+          "avg_score": 81.7,
+          "kpis": [
+            {
+              "code": "SOC-LIR-006",
+              "title": "چه درصدی از تغییرات مهم سازمانی با اطلاع‌رسانی یا مشورت قبلی با کارکنان انجام شده است؟",
+              "value": 85,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-LIR-005",
+              "title": "تعداد روزهای توقف کار، اعتصاب یا تعلیق ناشی از اختلافات کارگری چند روز بوده است؟",
+              "value": 1,
+              "unit": "day",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-LIR-004",
+              "title": "تعداد جلسات رسمی تعامل کارفرما و نمایندگان کارکنان چند جلسه بوده است؟",
+              "value": 10,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-LIR-003",
+              "title": "چه درصدی از شکایات روابط کار در موعد مقرر رسیدگی و بسته شده‌اند؟",
+              "value": 88,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-LIR-002",
+              "title": "تعداد اختلافات کارگری ثبت‌شده در دوره گزارش چند مورد است؟",
+              "value": 4,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-LIR-001",
+              "title": "چه درصدی از کارکنان تحت پوشش پیمان جمعی، نمایندگی کارکنان یا سازوکار رسمی روابط کار هستند؟",
+              "value": 72,
+              "unit": "percent",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "code": "SOC-TAW",
+          "title": "جذب استعداد و برنامه‌ریزی نیروی انسانی",
+          "slug": "talent-attraction-workforce-planning",
+          "order": 11,
+          "kpi_count": 6,
+          "answered": 6,
+          "avg_score": 75.3,
+          "kpis": [
+            {
+              "code": "SOC-TAW-006",
+              "title": "تعداد کارکنان شناسایی‌شده به عنوان استعدادهای کلیدی یا با پتانسیل بالا چند نفر است؟",
+              "value": 96,
+              "unit": "employee",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-TAW-005",
+              "title": "چه درصدی از واحدها دارای برنامه‌ریزی رسمی نیروی انسانی هستند؟",
+              "value": 82,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-TAW-004",
+              "title": "چه درصدی از نقش‌های کلیدی دارای جانشین یا برنامه جانشین‌پروری هستند؟",
+              "value": 68,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-TAW-003",
+              "title": "نرخ پذیرش پیشنهادهای شغلی توسط متقاضیان چقدر است؟",
+              "value": 76,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-TAW-002",
+              "title": "میانگین زمان جذب تا تکمیل موقعیت شغلی چقدر است؟",
+              "value": 34,
+              "unit": "day",
+              "status": "answered"
+            },
+            {
+              "code": "SOC-TAW-001",
+              "title": "تعداد موقعیت‌های شغلی باز در پایان دوره گزارش چند مورد است؟",
+              "value": 18,
+              "unit": "count",
+              "status": "answered"
+            }
+          ]
+        }
+      ],
+      "all_kpis": [
+        {
+          "code": "SOC-WSD-006",
+          "title": "چه درصدی از مدیران یا سرپرستان سازمان زن هستند؟",
+          "domain": "ساختار و جمعیت‌شناسی نیروی انسانی",
+          "value": 31,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-WSD-005",
+          "title": "چه درصدی از کارکنان بیش از ۵۰ سال سن دارند؟",
+          "domain": "ساختار و جمعیت‌شناسی نیروی انسانی",
+          "value": 21,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-WSD-004",
+          "title": "چه درصدی از کارکنان بین ۳۰ تا ۵۰ سال سن دارند؟",
+          "domain": "ساختار و جمعیت‌شناسی نیروی انسانی",
+          "value": 52,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-WSD-003",
+          "title": "چه درصدی از کارکنان کمتر از ۳۰ سال سن دارند؟",
+          "domain": "ساختار و جمعیت‌شناسی نیروی انسانی",
+          "value": 27,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-WSD-002",
+          "title": "چه درصدی از کارکنان سازمان زن هستند؟",
+          "domain": "ساختار و جمعیت‌شناسی نیروی انسانی",
+          "value": 38,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-WSD-001",
+          "title": "تعداد کل کارکنان سازمان در پایان دوره گزارش چند نفر است؟",
+          "domain": "ساختار و جمعیت‌شناسی نیروی انسانی",
+          "value": 284,
+          "unit": "employee",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-TAW-006",
+          "title": "تعداد کارکنان شناسایی‌شده به عنوان استعدادهای کلیدی یا با پتانسیل بالا چند نفر است؟",
+          "domain": "جذب استعداد و برنامه‌ریزی نیروی انسانی",
+          "value": 96,
+          "unit": "employee",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-TAW-005",
+          "title": "چه درصدی از واحدها دارای برنامه‌ریزی رسمی نیروی انسانی هستند؟",
+          "domain": "جذب استعداد و برنامه‌ریزی نیروی انسانی",
+          "value": 82,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-TAW-004",
+          "title": "چه درصدی از نقش‌های کلیدی دارای جانشین یا برنامه جانشین‌پروری هستند؟",
+          "domain": "جذب استعداد و برنامه‌ریزی نیروی انسانی",
+          "value": 68,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-TAW-003",
+          "title": "نرخ پذیرش پیشنهادهای شغلی توسط متقاضیان چقدر است؟",
+          "domain": "جذب استعداد و برنامه‌ریزی نیروی انسانی",
+          "value": 76,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-TAW-002",
+          "title": "میانگین زمان جذب تا تکمیل موقعیت شغلی چقدر است؟",
+          "domain": "جذب استعداد و برنامه‌ریزی نیروی انسانی",
+          "value": 34,
+          "unit": "day",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-TAW-001",
+          "title": "تعداد موقعیت‌های شغلی باز در پایان دوره گزارش چند مورد است؟",
+          "domain": "جذب استعداد و برنامه‌ریزی نیروی انسانی",
+          "value": 18,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-LND-006",
+          "title": "چه درصدی از کارکنان دارای برنامه توسعه فردی یا مسیر رشد حرفه‌ای هستند؟",
+          "domain": "آموزش و توسعه",
+          "value": 67,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-LND-005",
+          "title": "مبلغ هزینه آموزش و توسعه کارکنان در دوره گزارش چقدر است؟",
+          "domain": "آموزش و توسعه",
+          "value": 325000,
+          "unit": "currency",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-LND-004",
+          "title": "چه درصدی از مدیران آموزش رهبری یا مدیریتی دریافت کرده‌اند؟",
+          "domain": "آموزش و توسعه",
+          "value": 78,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-LND-003",
+          "title": "چه درصدی از کارکنان حداقل یک دوره آموزشی را تکمیل کرده‌اند؟",
+          "domain": "آموزش و توسعه",
+          "value": 91,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-LND-002",
+          "title": "میانگین ساعات آموزش به ازای هر کارمند چقدر است؟",
+          "domain": "آموزش و توسعه",
+          "value": 18.6,
+          "unit": "hour_per_employee",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-LND-001",
+          "title": "مجموع ساعات آموزش ارائه‌شده به کارکنان در دوره گزارش چقدر است؟",
+          "domain": "آموزش و توسعه",
+          "value": 12450,
+          "unit": "hour",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-LIR-006",
+          "title": "چه درصدی از تغییرات مهم سازمانی با اطلاع‌رسانی یا مشورت قبلی با کارکنان انجام شده است؟",
+          "domain": "روابط کار و روابط صنعتی",
+          "value": 85,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-LIR-005",
+          "title": "تعداد روزهای توقف کار، اعتصاب یا تعلیق ناشی از اختلافات کارگری چند روز بوده است؟",
+          "domain": "روابط کار و روابط صنعتی",
+          "value": 1,
+          "unit": "day",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-LIR-004",
+          "title": "تعداد جلسات رسمی تعامل کارفرما و نمایندگان کارکنان چند جلسه بوده است؟",
+          "domain": "روابط کار و روابط صنعتی",
+          "value": 10,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-LIR-003",
+          "title": "چه درصدی از شکایات روابط کار در موعد مقرر رسیدگی و بسته شده‌اند؟",
+          "domain": "روابط کار و روابط صنعتی",
+          "value": 88,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-LIR-002",
+          "title": "تعداد اختلافات کارگری ثبت‌شده در دوره گزارش چند مورد است؟",
+          "domain": "روابط کار و روابط صنعتی",
+          "value": 4,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-LIR-001",
+          "title": "چه درصدی از کارکنان تحت پوشش پیمان جمعی، نمایندگی کارکنان یا سازوکار رسمی روابط کار هستند؟",
+          "domain": "روابط کار و روابط صنعتی",
+          "value": 72,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-HRL-006",
+          "title": "تعداد اقدامات اصلاحی مرتبط با حقوق بشر و استانداردهای کار اجراشده چند مورد است؟",
+          "domain": "حقوق بشر و رویه‌های کار",
+          "value": 8,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-HRL-005",
+          "title": "چه درصدی از تأمین‌کنندگان پرریسک از نظر حقوق بشر ارزیابی شده‌اند؟",
+          "domain": "حقوق بشر و رویه‌های کار",
+          "value": 70,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-HRL-004",
+          "title": "چه درصدی از شکایات حقوق بشر در موعد مقرر رسیدگی و بسته شده‌اند؟",
+          "domain": "حقوق بشر و رویه‌های کار",
+          "value": 85,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-HRL-003",
+          "title": "تعداد شکایات مرتبط با حقوق بشر یا رفتار ناعادلانه در دوره گزارش چند مورد است؟",
+          "domain": "حقوق بشر و رویه‌های کار",
+          "value": 12,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-HRL-002",
+          "title": "تعداد موارد ثبت‌شده کار اجباری، کار کودک یا نقض جدی حقوق کار چند مورد است؟",
+          "domain": "حقوق بشر و رویه‌های کار",
+          "value": 0,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-HRL-001",
+          "title": "چه درصدی از عملیات سازمان از نظر ریسک‌های حقوق بشر و کار منصفانه ارزیابی شده‌اند؟",
+          "domain": "حقوق بشر و رویه‌های کار",
+          "value": 90,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-HSW-006",
+          "title": "تعداد فوتی‌های مرتبط با کار در دوره گزارش چند مورد است؟",
+          "domain": "سلامت، ایمنی و رفاه",
+          "value": 0,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-HSW-005",
+          "title": "چه درصدی از کارکنان در برنامه‌های رفاه، سلامت روان یا تندرستی مشارکت کرده‌اند؟",
+          "domain": "سلامت، ایمنی و رفاه",
+          "value": 68,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-HSW-004",
+          "title": "نرخ غیبت کارکنان به دلیل بیماری یا آسیب شغلی چقدر است؟",
+          "domain": "سلامت، ایمنی و رفاه",
+          "value": 4.1,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-HSW-003",
+          "title": "چه درصدی از کارکنان آموزش ایمنی و سلامت شغلی را تکمیل کرده‌اند؟",
+          "domain": "سلامت، ایمنی و رفاه",
+          "value": 92,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-HSW-002",
+          "title": "تعداد حوادث منجر به از دست رفتن زمان کاری چند مورد بوده است؟",
+          "domain": "سلامت، ایمنی و رفاه",
+          "value": 18,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-HSW-001",
+          "title": "نرخ حوادث قابل ثبت شغلی در دوره گزارش چقدر است؟",
+          "domain": "سلامت، ایمنی و رفاه",
+          "value": 2.4,
+          "unit": "rate",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-EMC-006",
+          "title": "چه درصدی از کارکنان ارزیابی رسمی شرایط کاری یا رضایت از شرایط کار را تکمیل کرده‌اند؟",
+          "domain": "شرایط اشتغال",
+          "value": 76,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-EMC-005",
+          "title": "نسبت میانگین حقوق پایه سازمان به حداقل حقوق قانونی چقدر است؟",
+          "domain": "شرایط اشتغال",
+          "value": 1.8,
+          "unit": "ratio",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-EMC-004",
+          "title": "مجموع ساعات اضافه‌کاری ثبت‌شده در دوره گزارش چقدر است؟",
+          "domain": "شرایط اشتغال",
+          "value": 12800,
+          "unit": "hour",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-EMC-003",
+          "title": "میانگین ساعات کاری هفتگی کارکنان چقدر است؟",
+          "domain": "شرایط اشتغال",
+          "value": 42,
+          "unit": "hour_per_week",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-EMC-002",
+          "title": "چه درصدی از کارکنان تحت پوشش مزایای اصلی سازمان قرار دارند؟",
+          "domain": "شرایط اشتغال",
+          "value": 95,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-EMC-001",
+          "title": "چه درصدی از کارکنان دارای قرارداد دائمی یا بلندمدت هستند؟",
+          "domain": "شرایط اشتغال",
+          "value": 82,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-EER-006",
+          "title": "تعداد اقدامات بهبود تجربه کارکنان اجراشده در دوره گزارش چند مورد است؟",
+          "domain": "مشارکت و نگهداشت کارکنان",
+          "value": 12,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-EER-005",
+          "title": "چه درصدی از موقعیت‌های باز از طریق جابه‌جایی یا ارتقای داخلی پر شده‌اند؟",
+          "domain": "مشارکت و نگهداشت کارکنان",
+          "value": 41,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-EER-004",
+          "title": "چه درصدی از کارکنان در نظرسنجی مشارکت کارکنان شرکت کرده‌اند؟",
+          "domain": "مشارکت و نگهداشت کارکنان",
+          "value": 76,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-EER-003",
+          "title": "نرخ نگهداشت کارکنان کلیدی یا حیاتی چقدر است؟",
+          "domain": "مشارکت و نگهداشت کارکنان",
+          "value": 93,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-EER-002",
+          "title": "نرخ ترک خدمت داوطلبانه کارکنان در دوره گزارش چقدر است؟",
+          "domain": "مشارکت و نگهداشت کارکنان",
+          "value": 9,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-EER-001",
+          "title": "امتیاز یا درصد رضایت و مشارکت کارکنان در آخرین نظرسنجی چقدر است؟",
+          "domain": "مشارکت و نگهداشت کارکنان",
+          "value": 82,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-DEI-006",
+          "title": "چه درصدی از فرایندهای جذب و ارتقا با معیارهای ضدتبعیض بازبینی شده‌اند؟",
+          "domain": "تنوع، برابری و شمول",
+          "value": 85,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-DEI-005",
+          "title": "درصد شکاف پرداختی بین گروه‌های جنسیتی یا جمعیتی چقدر است؟",
+          "domain": "تنوع، برابری و شمول",
+          "value": 6,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-DEI-004",
+          "title": "تعداد شکایات یا موارد ثبت‌شده تبعیض در دوره گزارش چند مورد است؟",
+          "domain": "تنوع، برابری و شمول",
+          "value": 3,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-DEI-003",
+          "title": "چه درصدی از کارکنان آموزش‌های تنوع، برابری و شمول را تکمیل کرده‌اند؟",
+          "domain": "تنوع، برابری و شمول",
+          "value": 79,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-DEI-002",
+          "title": "چه درصدی از مدیران ارشد متعلق به گروه‌های کمترنماینده‌شده یا هدف تنوع هستند؟",
+          "domain": "تنوع، برابری و شمول",
+          "value": 22,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-DEI-001",
+          "title": "چه درصدی از کل کارکنان متعلق به گروه‌های کمترنماینده‌شده یا هدف تنوع هستند؟",
+          "domain": "تنوع، برابری و شمول",
+          "value": 34,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-CRP-006",
+          "title": "تعداد اقدامات اصلاحی برای بهبود کیفیت یا ایمنی محصول و خدمت چند مورد است؟",
+          "domain": "مسئولیت در برابر مشتری و ایمنی محصول",
+          "value": 6,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-CRP-005",
+          "title": "چه درصدی از محصولات یا خدمات از نظر اثرات اجتماعی یا ایمنی ارزیابی شده‌اند؟",
+          "domain": "مسئولیت در برابر مشتری و ایمنی محصول",
+          "value": 95,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-CRP-004",
+          "title": "امتیاز یا درصد رضایت مشتریان از کیفیت خدمات چقدر است؟",
+          "domain": "مسئولیت در برابر مشتری و ایمنی محصول",
+          "value": 87,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-CRP-003",
+          "title": "تعداد رخدادهای ایمنی محصول یا خدمت در دوره گزارش چند مورد است؟",
+          "domain": "مسئولیت در برابر مشتری و ایمنی محصول",
+          "value": 2,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-CRP-002",
+          "title": "چه درصدی از شکایات مشتریان در زمان هدف‌گذاری‌شده رسیدگی و بسته شده‌اند؟",
+          "domain": "مسئولیت در برابر مشتری و ایمنی محصول",
+          "value": 91,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-CRP-001",
+          "title": "تعداد شکایات مشتریان درباره کیفیت، ایمنی یا اثرات اجتماعی خدمات چند مورد است؟",
+          "domain": "مسئولیت در برابر مشتری و ایمنی محصول",
+          "value": 18,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-COM-006",
+          "title": "تعداد پروژه‌های فعال مسئولیت اجتماعی یا توسعه محلی چند مورد است؟",
+          "domain": "اثرگذاری اجتماعی بر جامعه",
+          "value": 12,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-COM-005",
+          "title": "تعداد شکایات یا نگرانی‌های جامعه محلی ثبت‌شده در دوره گزارش چند مورد است؟",
+          "domain": "اثرگذاری اجتماعی بر جامعه",
+          "value": 7,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-COM-004",
+          "title": "چه درصدی از خریدها یا هزینه‌ها از تأمین‌کنندگان محلی انجام شده است؟",
+          "domain": "اثرگذاری اجتماعی بر جامعه",
+          "value": 68,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-COM-003",
+          "title": "تعداد ذی‌نفعان یا افراد بهره‌مند از برنامه‌های اجتماعی سازمان چند نفر است؟",
+          "domain": "اثرگذاری اجتماعی بر جامعه",
+          "value": 8750,
+          "unit": "person",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-COM-002",
+          "title": "تعداد ساعات داوطلبانه کارکنان در فعالیت‌های اجتماعی چقدر است؟",
+          "domain": "اثرگذاری اجتماعی بر جامعه",
+          "value": 1840,
+          "unit": "hour",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "SOC-COM-001",
+          "title": "مبلغ سرمایه‌گذاری اجتماعی یا کمک‌های جامعه‌محور سازمان در دوره گزارش چقدر است؟",
+          "domain": "اثرگذاری اجتماعی بر جامعه",
+          "value": 1250000,
+          "unit": "currency",
+          "type": "number",
+          "status": "answered"
+        }
+      ]
+    },
+    "environmental": {
+      "summary": {
+        "total_kpis": 54,
+        "answered": 54,
+        "completion": 100,
+        "avg_score": 53.6
+      },
+      "domains": [
+        {
+          "code": "ENV-ENR",
+          "title": "مدیریت انرژی و منابع",
+          "slug": "energy-resource-management",
+          "order": 1,
+          "kpi_count": 6,
+          "answered": 6,
+          "avg_score": 12.7,
+          "kpis": [
+            {
+              "code": "ENV-ENR-006",
+              "title": "درصد کاهش مصرف انرژی نسبت به دوره قبل چقدر بوده است؟",
+              "value": 7.4,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-ENR-005",
+              "title": "میزان مصرف انرژی به ازای هر کارمند چقدر است؟",
+              "value": 9250,
+              "unit": "kwh_per_employee",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-ENR-004",
+              "title": "چه درصدی از انرژی مصرفی سازمان از منابع تجدیدپذیر تأمین شده است؟",
+              "value": 18,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-ENR-003",
+              "title": "میزان کل مصرف سوخت مایع یا دیزل در دوره گزارش چقدر است؟",
+              "value": 145000,
+              "unit": "liter",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-ENR-002",
+              "title": "میزان کل مصرف گاز طبیعی سازمان در دوره گزارش چقدر است؟",
+              "value": 620000,
+              "unit": "m3",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-ENR-001",
+              "title": "میزان کل مصرف برق سازمان در دوره گزارش چقدر است؟",
+              "value": 1850000,
+              "unit": "kWh",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "code": "ENV-GHG",
+          "title": "انتشار گازهای گلخانه‌ای",
+          "slug": "greenhouse-gas-emissions",
+          "order": 2,
+          "kpi_count": 6,
+          "answered": 6,
+          "avg_score": 12,
+          "kpis": [
+            {
+              "code": "ENV-GHG-006",
+              "title": "درصد کاهش انتشار کربن نسبت به سال پایه یا دوره قبل چقدر است؟",
+              "value": 12,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-GHG-005",
+              "title": "شدت انتشار کربن سازمان به ازای درآمد یا واحد فعالیت چقدر است؟",
+              "value": 0.35,
+              "unit": "tco2e_per_unit",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-GHG-004",
+              "title": "مجموع انتشار گازهای گلخانه‌ای سازمان در دوره گزارش چقدر است؟",
+              "value": 11700,
+              "unit": "tco2e",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-GHG-003",
+              "title": "میزان انتشار گازهای گلخانه‌ای Scope 3 در دوره گزارش چقدر است؟",
+              "value": 8000,
+              "unit": "tco2e",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-GHG-002",
+              "title": "میزان انتشار گازهای گلخانه‌ای Scope 2 در دوره گزارش چقدر است؟",
+              "value": 2500,
+              "unit": "tco2e",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-GHG-001",
+              "title": "میزان انتشار گازهای گلخانه‌ای Scope 1 در دوره گزارش چقدر است؟",
+              "value": 1200,
+              "unit": "tco2e",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "code": "ENV-WTR",
+          "title": "مدیریت آب",
+          "slug": "water-management",
+          "order": 3,
+          "kpi_count": 6,
+          "answered": 6,
+          "avg_score": 22.3,
+          "kpis": [
+            {
+              "code": "ENV-WTR-006",
+              "title": "درصد کاهش مصرف آب نسبت به دوره قبل چقدر بوده است؟",
+              "value": 6.8,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-WTR-005",
+              "title": "چه درصدی از واحدها یا شعب در مناطق دارای تنش آبی قرار دارند؟",
+              "value": 38,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-WTR-004",
+              "title": "شدت مصرف آب به ازای درآمد، کارمند یا واحد فعالیت چقدر است؟",
+              "value": 12.4,
+              "unit": "m3_per_unit",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-WTR-003",
+              "title": "میزان کل تخلیه فاضلاب یا پساب در دوره گزارش چقدر است؟",
+              "value": 62300,
+              "unit": "m3",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-WTR-002",
+              "title": "چه درصدی از آب مصرفی سازمان بازیافت یا بازچرخانی شده است؟",
+              "value": 22,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-WTR-001",
+              "title": "میزان کل برداشت یا مصرف آب سازمان در دوره گزارش چقدر است؟",
+              "value": 84500,
+              "unit": "m3",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "code": "ENV-WCE",
+          "title": "مدیریت پسماند و اقتصاد چرخشی",
+          "slug": "waste-management-circular-economy",
+          "order": 4,
+          "kpi_count": 6,
+          "answered": 6,
+          "avg_score": 47,
+          "kpis": [
+            {
+              "code": "ENV-WCE-006",
+              "title": "تعداد پروژه‌های فعال کاهش پسماند یا اقتصاد چرخشی چند مورد است؟",
+              "value": 18,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-WCE-005",
+              "title": "چه درصدی از مواد مصرفی از مواد بازیافتی یا قابل استفاده مجدد تأمین شده است؟",
+              "value": 41,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-WCE-004",
+              "title": "چه درصدی از پسماند سازمان به دفن یا دفع نهایی ارسال شده است؟",
+              "value": 36,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-WCE-003",
+              "title": "چه درصدی از کل پسماند سازمان بازیافت یا استفاده مجدد شده است؟",
+              "value": 64,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-WCE-002",
+              "title": "میزان پسماند خطرناک تولیدشده در دوره گزارش چقدر است؟",
+              "value": 86,
+              "unit": "ton",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-WCE-001",
+              "title": "میزان کل پسماند تولیدشده سازمان در دوره گزارش چقدر است؟",
+              "value": 1280,
+              "unit": "ton",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "code": "ENV-PEI",
+          "title": "آلودگی و اثرات زیست‌محیطی",
+          "slug": "pollution-environmental-impact",
+          "order": 5,
+          "kpi_count": 6,
+          "answered": 6,
+          "avg_score": 87,
+          "kpis": [
+            {
+              "code": "ENV-PEI-006",
+              "title": "تعداد شکایات زیست‌محیطی ثبت‌شده در دوره گزارش چند مورد است؟",
+              "value": 1,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-PEI-005",
+              "title": "چه درصدی از سایت‌ها یا شعب دارای پایش منظم اثرات زیست‌محیطی هستند؟",
+              "value": 80,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-PEI-004",
+              "title": "حجم کل نشت یا ریزش مواد آلاینده در دوره گزارش چقدر بوده است؟",
+              "value": 320,
+              "unit": "liter",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-PEI-003",
+              "title": "چه درصدی از خروجی‌های پساب با حدود مجاز آلایندگی انطباق داشته‌اند؟",
+              "value": 94,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-PEI-002",
+              "title": "تعداد رخدادهای آلودگی هوا، خاک یا آب در دوره گزارش چند مورد بوده است؟",
+              "value": 2,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-PEI-001",
+              "title": "میزان کل آلاینده‌های هوای منتشرشده از فعالیت‌های سازمان چقدر است؟",
+              "value": 18500,
+              "unit": "kg",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "code": "ENV-CCS",
+          "title": "استراتژی تغییرات اقلیمی",
+          "slug": "climate-change-strategy",
+          "order": 6,
+          "kpi_count": 6,
+          "answered": 6,
+          "avg_score": 86,
+          "kpis": [
+            {
+              "code": "ENV-CCS-006",
+              "title": "چه درصدی از اهداف اقلیمی مصوب در دوره گزارش محقق شده است؟",
+              "value": 84,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-CCS-005",
+              "title": "تعداد سناریوهای اقلیمی تحلیل‌شده برای برنامه‌ریزی مدیریتی چند مورد است؟",
+              "value": 5,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-CCS-004",
+              "title": "درصد پیشرفت برنامه‌های کاهش انتشار یا سازگاری اقلیمی چقدر است؟",
+              "value": 78,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-CCS-003",
+              "title": "مبلغ سرمایه‌گذاری یا هزینه انجام‌شده برای کاهش یا سازگاری با تغییرات اقلیمی چقدر است؟",
+              "value": 2850000,
+              "unit": "currency",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-CCS-002",
+              "title": "چه درصدی از دارایی‌ها یا فعالیت‌ها در معرض ریسک‌های اقلیمی ارزیابی شده‌اند؟",
+              "value": 96,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-CCS-001",
+              "title": "تعداد ریسک‌های اقلیمی شناسایی‌شده برای سازمان چند مورد است؟",
+              "value": 14,
+              "unit": "count",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "code": "ENV-BIO",
+          "title": "تنوع زیستی و اثر بر اکوسیستم",
+          "slug": "biodiversity-ecosystem-impact",
+          "order": 7,
+          "kpi_count": 6,
+          "answered": 6,
+          "avg_score": 92,
+          "kpis": [
+            {
+              "code": "ENV-BIO-006",
+              "title": "تعداد برنامه‌های فعال حفاظت از تنوع زیستی یا اکوسیستم چند مورد است؟",
+              "value": 8,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-BIO-005",
+              "title": "مساحت تغییر کاربری زمین ناشی از فعالیت‌های سازمان چقدر است؟",
+              "value": 6.4,
+              "unit": "hectare",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-BIO-004",
+              "title": "چه درصدی از پروژه‌های دارای اثر بالقوه بر تنوع زیستی ارزیابی اثرات زیست‌محیطی داشته‌اند؟",
+              "value": 92,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-BIO-003",
+              "title": "مساحت مناطق احیاشده یا بازسازی‌شده در دوره گزارش چقدر است؟",
+              "value": 11.8,
+              "unit": "hectare",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-BIO-002",
+              "title": "مساحت زمین تحت تأثیر مستقیم فعالیت‌های سازمان چقدر است؟",
+              "value": 42.5,
+              "unit": "hectare",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-BIO-001",
+              "title": "تعداد سایت‌ها، شعب یا پروژه‌های واقع در مناطق حساس زیستی چند مورد است؟",
+              "value": 3,
+              "unit": "count",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "code": "ENV-REM",
+          "title": "بهره‌وری منابع و مصرف مواد",
+          "slug": "resource-efficiency-material-use",
+          "order": 8,
+          "kpi_count": 6,
+          "answered": 6,
+          "avg_score": 24.8,
+          "kpis": [
+            {
+              "code": "ENV-REM-006",
+              "title": "درصد کاهش مصرف مواد نسبت به دوره قبل چقدر بوده است؟",
+              "value": 9.2,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-REM-005",
+              "title": "تعداد پروژه‌های بهره‌وری منابع و کاهش مصرف مواد چند مورد است؟",
+              "value": 16,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-REM-004",
+              "title": "چه درصدی از بسته‌بندی یا اقلام مصرفی کاهش، جایگزین یا حذف شده است؟",
+              "value": 23.8,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-REM-003",
+              "title": "شدت مصرف مواد به ازای درآمد، تولید یا واحد فعالیت چقدر است؟",
+              "value": 0.44,
+              "unit": "ton_per_unit",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-REM-002",
+              "title": "چه درصدی از مواد مصرفی از منابع بازیافتی، پایدار یا کم‌اثر تأمین شده است؟",
+              "value": 41.5,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-REM-001",
+              "title": "میزان کل مواد اولیه یا مواد مصرفی سازمان در دوره گزارش چقدر است؟",
+              "value": 12540,
+              "unit": "ton",
+              "status": "answered"
+            }
+          ]
+        },
+        {
+          "code": "ENV-ECP",
+          "title": "انطباق و مجوزهای محیط زیستی",
+          "slug": "environmental-compliance-permitting",
+          "order": 9,
+          "kpi_count": 6,
+          "answered": 6,
+          "avg_score": 93.7,
+          "kpis": [
+            {
+              "code": "ENV-ECP-006",
+              "title": "تعداد الزامات قانونی محیط‌زیستی پایش‌شده در دوره گزارش چند مورد است؟",
+              "value": 120,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-ECP-005",
+              "title": "درصد اقدامات اصلاحی محیط‌زیستی بسته‌شده در موعد مقرر چقدر است؟",
+              "value": 87,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-ECP-004",
+              "title": "چه درصدی از بازرسی‌های محیط‌زیستی با نتیجه قابل قبول یا بدون تخلف انجام شده‌اند؟",
+              "value": 98,
+              "unit": "percent",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-ECP-003",
+              "title": "مبلغ جرایم یا خسارت‌های محیط‌زیستی پرداخت‌شده در دوره گزارش چقدر است؟",
+              "value": 12500,
+              "unit": "currency",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-ECP-002",
+              "title": "تعداد عدم انطباق‌های محیط‌زیستی ثبت‌شده در دوره گزارش چند مورد است؟",
+              "value": 3,
+              "unit": "count",
+              "status": "answered"
+            },
+            {
+              "code": "ENV-ECP-001",
+              "title": "چه درصدی از مجوزهای محیط‌زیستی موردنیاز سازمان معتبر و به‌روز هستند؟",
+              "value": 96,
+              "unit": "percent",
+              "status": "answered"
+            }
+          ]
+        }
+      ],
+      "all_kpis": [
+        {
+          "code": "ENV-WTR-006",
+          "title": "درصد کاهش مصرف آب نسبت به دوره قبل چقدر بوده است؟",
+          "domain": "مدیریت آب",
+          "value": 6.8,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-WTR-005",
+          "title": "چه درصدی از واحدها یا شعب در مناطق دارای تنش آبی قرار دارند؟",
+          "domain": "مدیریت آب",
+          "value": 38,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-WTR-004",
+          "title": "شدت مصرف آب به ازای درآمد، کارمند یا واحد فعالیت چقدر است؟",
+          "domain": "مدیریت آب",
+          "value": 12.4,
+          "unit": "m3_per_unit",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-WTR-003",
+          "title": "میزان کل تخلیه فاضلاب یا پساب در دوره گزارش چقدر است؟",
+          "domain": "مدیریت آب",
+          "value": 62300,
+          "unit": "m3",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-WTR-002",
+          "title": "چه درصدی از آب مصرفی سازمان بازیافت یا بازچرخانی شده است؟",
+          "domain": "مدیریت آب",
+          "value": 22,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-WTR-001",
+          "title": "میزان کل برداشت یا مصرف آب سازمان در دوره گزارش چقدر است؟",
+          "domain": "مدیریت آب",
+          "value": 84500,
+          "unit": "m3",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-WCE-006",
+          "title": "تعداد پروژه‌های فعال کاهش پسماند یا اقتصاد چرخشی چند مورد است؟",
+          "domain": "مدیریت پسماند و اقتصاد چرخشی",
+          "value": 18,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-WCE-005",
+          "title": "چه درصدی از مواد مصرفی از مواد بازیافتی یا قابل استفاده مجدد تأمین شده است؟",
+          "domain": "مدیریت پسماند و اقتصاد چرخشی",
+          "value": 41,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-WCE-004",
+          "title": "چه درصدی از پسماند سازمان به دفن یا دفع نهایی ارسال شده است؟",
+          "domain": "مدیریت پسماند و اقتصاد چرخشی",
+          "value": 36,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-WCE-003",
+          "title": "چه درصدی از کل پسماند سازمان بازیافت یا استفاده مجدد شده است؟",
+          "domain": "مدیریت پسماند و اقتصاد چرخشی",
+          "value": 64,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-WCE-002",
+          "title": "میزان پسماند خطرناک تولیدشده در دوره گزارش چقدر است؟",
+          "domain": "مدیریت پسماند و اقتصاد چرخشی",
+          "value": 86,
+          "unit": "ton",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-WCE-001",
+          "title": "میزان کل پسماند تولیدشده سازمان در دوره گزارش چقدر است؟",
+          "domain": "مدیریت پسماند و اقتصاد چرخشی",
+          "value": 1280,
+          "unit": "ton",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-REM-006",
+          "title": "درصد کاهش مصرف مواد نسبت به دوره قبل چقدر بوده است؟",
+          "domain": "بهره‌وری منابع و مصرف مواد",
+          "value": 9.2,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-REM-005",
+          "title": "تعداد پروژه‌های بهره‌وری منابع و کاهش مصرف مواد چند مورد است؟",
+          "domain": "بهره‌وری منابع و مصرف مواد",
+          "value": 16,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-REM-004",
+          "title": "چه درصدی از بسته‌بندی یا اقلام مصرفی کاهش، جایگزین یا حذف شده است؟",
+          "domain": "بهره‌وری منابع و مصرف مواد",
+          "value": 23.8,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-REM-003",
+          "title": "شدت مصرف مواد به ازای درآمد، تولید یا واحد فعالیت چقدر است؟",
+          "domain": "بهره‌وری منابع و مصرف مواد",
+          "value": 0.44,
+          "unit": "ton_per_unit",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-REM-002",
+          "title": "چه درصدی از مواد مصرفی از منابع بازیافتی، پایدار یا کم‌اثر تأمین شده است؟",
+          "domain": "بهره‌وری منابع و مصرف مواد",
+          "value": 41.5,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-REM-001",
+          "title": "میزان کل مواد اولیه یا مواد مصرفی سازمان در دوره گزارش چقدر است؟",
+          "domain": "بهره‌وری منابع و مصرف مواد",
+          "value": 12540,
+          "unit": "ton",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-PEI-006",
+          "title": "تعداد شکایات زیست‌محیطی ثبت‌شده در دوره گزارش چند مورد است؟",
+          "domain": "آلودگی و اثرات زیست‌محیطی",
+          "value": 1,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-PEI-005",
+          "title": "چه درصدی از سایت‌ها یا شعب دارای پایش منظم اثرات زیست‌محیطی هستند؟",
+          "domain": "آلودگی و اثرات زیست‌محیطی",
+          "value": 80,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-PEI-004",
+          "title": "حجم کل نشت یا ریزش مواد آلاینده در دوره گزارش چقدر بوده است؟",
+          "domain": "آلودگی و اثرات زیست‌محیطی",
+          "value": 320,
+          "unit": "liter",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-PEI-003",
+          "title": "چه درصدی از خروجی‌های پساب با حدود مجاز آلایندگی انطباق داشته‌اند؟",
+          "domain": "آلودگی و اثرات زیست‌محیطی",
+          "value": 94,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-PEI-002",
+          "title": "تعداد رخدادهای آلودگی هوا، خاک یا آب در دوره گزارش چند مورد بوده است؟",
+          "domain": "آلودگی و اثرات زیست‌محیطی",
+          "value": 2,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-PEI-001",
+          "title": "میزان کل آلاینده‌های هوای منتشرشده از فعالیت‌های سازمان چقدر است؟",
+          "domain": "آلودگی و اثرات زیست محیطی",
+          "value": 18500,
+          "unit": "kg",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-GHG-006",
+          "title": "درصد کاهش انتشار کربن نسبت به سال پایه یا دوره قبل چقدر است؟",
+          "domain": "انتشار گازهای گلخانه‌ای",
+          "value": 12,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-GHG-005",
+          "title": "شدت انتشار کربن سازمان به ازای درآمد یا واحد فعالیت چقدر است؟",
+          "domain": "انتشار گازهای گلخانه‌ای",
+          "value": 0.35,
+          "unit": "tco2e_per_unit",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-GHG-004",
+          "title": "مجموع انتشار گازهای گلخانه‌ای سازمان در دوره گزارش چقدر است؟",
+          "domain": "انتشار گازهای گلخانه‌ای",
+          "value": 11700,
+          "unit": "tco2e",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-GHG-003",
+          "title": "میزان انتشار گازهای گلخانه‌ای Scope 3 در دوره گزارش چقدر است؟",
+          "domain": "انتشار گازهای گلخانه‌ای",
+          "value": 8000,
+          "unit": "tco2e",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-GHG-002",
+          "title": "میزان انتشار گازهای گلخانه‌ای Scope 2 در دوره گزارش چقدر است؟",
+          "domain": "انتشار گازهای گلخانه‌ای",
+          "value": 2500,
+          "unit": "tco2e",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-GHG-001",
+          "title": "میزان انتشار گازهای گلخانه‌ای Scope 1 در دوره گزارش چقدر است؟",
+          "domain": "انتشار گازهای گلخانه‌ای",
+          "value": 1200,
+          "unit": "tco2e",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-ECP-006",
+          "title": "تعداد الزامات قانونی محیط‌زیستی پایش‌شده در دوره گزارش چند مورد است؟",
+          "domain": "انطباق و مجوزهای محیط زیستی",
+          "value": 120,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-ECP-005",
+          "title": "درصد اقدامات اصلاحی محیط‌زیستی بسته‌شده در موعد مقرر چقدر است؟",
+          "domain": "انطباق و مجوزهای محیط زیستی",
+          "value": 87,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-ECP-004",
+          "title": "چه درصدی از بازرسی‌های محیط‌زیستی با نتیجه قابل قبول یا بدون تخلف انجام شده‌اند؟",
+          "domain": "انطباق و مجوزهای محیط زیستی",
+          "value": 98,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-ECP-003",
+          "title": "مبلغ جرایم یا خسارت‌های محیط‌زیستی پرداخت‌شده در دوره گزارش چقدر است؟",
+          "domain": "انطباق و مجوزهای محیط زیستی",
+          "value": 12500,
+          "unit": "currency",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-ECP-002",
+          "title": "تعداد عدم انطباق‌های محیط‌زیستی ثبت‌شده در دوره گزارش چند مورد است؟",
+          "domain": "انطباق و مجوزهای محیط زیستی",
+          "value": 3,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-ECP-001",
+          "title": "چه درصدی از مجوزهای محیط‌زیستی موردنیاز سازمان معتبر و به‌روز هستند؟",
+          "domain": "انطباق و مجوزهای محیط زیستی",
+          "value": 96,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-ENR-006",
+          "title": "درصد کاهش مصرف انرژی نسبت به دوره قبل چقدر بوده است؟",
+          "domain": "مدیریت انرژی و منابع",
+          "value": 7.4,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-ENR-005",
+          "title": "میزان مصرف انرژی به ازای هر کارمند چقدر است؟",
+          "domain": "مدیریت انرژی و منابع",
+          "value": 9250,
+          "unit": "kwh_per_employee",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-ENR-004",
+          "title": "چه درصدی از انرژی مصرفی سازمان از منابع تجدیدپذیر تأمین شده است؟",
+          "domain": "مدیریت انرژی و منابع",
+          "value": 18,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-ENR-003",
+          "title": "میزان کل مصرف سوخت مایع یا دیزل در دوره گزارش چقدر است؟",
+          "domain": "مدیریت انرژی و منابع",
+          "value": 145000,
+          "unit": "liter",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-ENR-002",
+          "title": "میزان کل مصرف گاز طبیعی سازمان در دوره گزارش چقدر است؟",
+          "domain": "مدیریت انرژی و منابع",
+          "value": 620000,
+          "unit": "m3",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-ENR-001",
+          "title": "میزان کل مصرف برق سازمان در دوره گزارش چقدر است؟",
+          "domain": "مدیریت انرژی و منابع",
+          "value": 1850000,
+          "unit": "kWh",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-CCS-006",
+          "title": "چه درصدی از اهداف اقلیمی مصوب در دوره گزارش محقق شده است؟",
+          "domain": "استراتژی تغییرات اقلیمی",
+          "value": 84,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-CCS-005",
+          "title": "تعداد سناریوهای اقلیمی تحلیل‌شده برای برنامه‌ریزی مدیریتی چند مورد است؟",
+          "domain": "استراتژی تغییرات اقلیمی",
+          "value": 5,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-CCS-004",
+          "title": "درصد پیشرفت برنامه‌های کاهش انتشار یا سازگاری اقلیمی چقدر است؟",
+          "domain": "استراتژی تغییرات اقلیمی",
+          "value": 78,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-CCS-003",
+          "title": "مبلغ سرمایه‌گذاری یا هزینه انجام‌شده برای کاهش یا سازگاری با تغییرات اقلیمی چقدر است؟",
+          "domain": "استراتژی تغییرات اقلیمی",
+          "value": 2850000,
+          "unit": "currency",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-CCS-002",
+          "title": "چه درصدی از دارایی‌ها یا فعالیت‌ها در معرض ریسک‌های اقلیمی ارزیابی شده‌اند؟",
+          "domain": "استراتژی تغییرات اقلیمی",
+          "value": 96,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-CCS-001",
+          "title": "تعداد ریسک‌های اقلیمی شناسایی‌شده برای سازمان چند مورد است؟",
+          "domain": "استراتژی تغییرات اقلیمی",
+          "value": 14,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-BIO-006",
+          "title": "تعداد برنامه‌های فعال حفاظت از تنوع زیستی یا اکوسیستم چند مورد است؟",
+          "domain": "تنوع زیستی و اثر بر اکوسیستم",
+          "value": 8,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-BIO-005",
+          "title": "مساحت تغییر کاربری زمین ناشی از فعالیت‌های سازمان چقدر است؟",
+          "domain": "تنوع زیستی و اثر بر اکوسیستم",
+          "value": 6.4,
+          "unit": "hectare",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-BIO-004",
+          "title": "چه درصدی از پروژه‌های دارای اثر بالقوه بر تنوع زیستی ارزیابی اثرات زیست‌محیطی داشته‌اند؟",
+          "domain": "تنوع زیستی و اثر بر اکوسیستم",
+          "value": 92,
+          "unit": "percent",
+          "type": "percentage",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-BIO-003",
+          "title": "مساحت مناطق احیاشده یا بازسازی‌شده در دوره گزارش چقدر است؟",
+          "domain": "تنوع زیستی و اثر بر اکوسیستم",
+          "value": 11.8,
+          "unit": "hectare",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-BIO-002",
+          "title": "مساحت زمین تحت تأثیر مستقیم فعالیت‌های سازمان چقدر است؟",
+          "domain": "تنوع زیستی و اثر بر اکوسیستم",
+          "value": 42.5,
+          "unit": "hectare",
+          "type": "number",
+          "status": "answered"
+        },
+        {
+          "code": "ENV-BIO-001",
+          "title": "تعداد سایت‌ها، شعب یا پروژه‌های واقع در مناطق حساس زیستی چند مورد است؟",
+          "domain": "تنوع زیستی و اثر بر اکوسیستم",
+          "value": 3,
+          "unit": "count",
+          "type": "number",
+          "status": "answered"
+        }
+      ]
+    }
+  },
+  "error": []
+}

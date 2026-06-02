@@ -1,0 +1,479 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.db{padding:1rem 0;display:flex;flex-direction:column;gap:1.5rem}
+.row{display:grid;gap:12px}
+.r2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.r3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.r4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem}
+.kcard{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.75rem 1rem}
+.klabel{font-size:11px;color:var(--color-text-secondary);margin-bottom:3px}
+.kval{font-size:20px;font-weight:500;color:var(--color-text-primary)}
+.kunit{font-size:12px;font-weight:400;color:var(--color-text-secondary)}
+.badge{display:inline-block;font-size:11px;padding:2px 7px;border-radius:var(--border-radius-md)}
+.b-ok{background:#E1F5EE;color:#0F6E56}
+.b-warn{background:#FAEEDA;color:#854F0B}
+.b-danger{background:#FCEBEB;color:#A32D2D}
+.b-info{background:#E6F1FB;color:#185FA5}
+.b-gray{background:#F1EFE8;color:#5F5E5A}
+.sectitle{font-size:14px;font-weight:500;color:var(--color-text-primary);margin-bottom:.75rem;display:flex;align-items:center;gap:6px}
+.sectitle i{font-size:16px;color:var(--color-text-secondary)}
+.ch{position:relative;width:100%}
+.leg{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:8px;font-size:11px;color:var(--color-text-secondary)}
+.legitem{display:flex;align-items:center;gap:4px}
+.legsq{width:9px;height:9px;border-radius:2px;flex-shrink:0}
+.bar-row{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+.bar-label{font-size:11px;color:var(--color-text-secondary);width:148px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar-track{flex:1;background:var(--color-background-secondary);border-radius:3px;height:7px;overflow:hidden}
+.bar-fill{height:7px;border-radius:3px}
+.bar-val{font-size:11px;font-weight:500;color:var(--color-text-primary);width:44px;text-align:right}
+.tbl{width:100%;border-collapse:collapse;font-size:12px;table-layout:fixed}
+.tbl th{text-align:left;font-weight:500;font-size:11px;color:var(--color-text-secondary);border-bottom:0.5px solid var(--color-border-tertiary);padding:5px 6px}
+.tbl td{padding:6px 6px;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-primary);vertical-align:middle;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tbl tr:last-child td{border-bottom:none}
+.data-note{font-size:11px;color:var(--color-text-secondary);background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:6px 10px;margin-top:8px;display:flex;align-items:center;gap:6px}
+.heat-wrap{overflow-x:auto}
+.heat-tbl{border-collapse:collapse;width:100%;font-size:11px}
+.heat-tbl th{color:var(--color-text-secondary);font-weight:500;padding:4px 5px;text-align:center;white-space:nowrap;font-size:10px}
+.heat-tbl td{padding:4px 5px;text-align:center;border-radius:3px;font-size:11px;font-weight:500;min-width:48px}
+.heat-tbl .rl{text-align:left;color:var(--color-text-secondary);font-weight:400;white-space:nowrap;padding-right:6px;min-width:130px;font-size:11px}
+</style>
+
+<div class="db">
+
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+  <div>
+    <div style="font-size:18px;font-weight:500;color:var(--color-text-primary)">ESG governance dashboard</div>
+    <div style="font-size:12px;color:var(--color-text-secondary);margin-top:2px">Source: governance module · 84 KPIs · 12 domains · last updated 2026-05-30</div>
+  </div>
+  <span class="badge b-gray">Reporting period: 2024 annual</span>
+</div>
+
+<div class="row r4">
+  <div class="kcard">
+    <div class="klabel">Total KPIs tracked</div>
+    <div class="kval">84 <span class="kunit">controls</span></div>
+    <span class="badge b-info" style="margin-top:4px">12 domains</span>
+  </div>
+  <div class="kcard">
+    <div class="klabel">Answered metrics</div>
+    <div class="kval">83 <span class="kunit">/ 84</span></div>
+    <span class="badge b-ok" style="margin-top:4px">98.8% complete</span>
+  </div>
+  <div class="kcard">
+    <div class="klabel">Unanswered</div>
+    <div class="kval">1 <span class="kunit">metric</span></div>
+    <span class="badge b-danger" style="margin-top:4px">GOV-DGQ-004</span>
+  </div>
+  <div class="kcard">
+    <div class="klabel">Avg % score (pct KPIs)</div>
+    <div class="kval">87.2 <span class="kunit">%</span></div>
+    <span class="badge b-warn" style="margin-top:4px">computed from data</span>
+  </div>
+</div>
+
+<div class="card">
+  <div class="sectitle"><i class="ti ti-layout-grid" aria-hidden="true"></i>Complete KPI heatmap — all 84 real values from your model (answer field)</div>
+  <div class="heat-wrap">
+    <table class="heat-tbl" id="fullheat"></table>
+  </div>
+  <div class="data-note"><i class="ti ti-info-circle" aria-hidden="true"></i>Every cell = exact <code>answer</code> value from your API. Color: green ≥80, amber 50–79, red &lt;50. Grey = count/currency metric.</div>
+</div>
+
+<div class="row r2">
+  <div class="card">
+    <div class="sectitle"><i class="ti ti-radar" aria-hidden="true"></i>Domain radar — avg % KPI score per domain (real data only)</div>
+    <div class="ch" style="height:290px">
+      <canvas id="radar" role="img" aria-label="Radar chart of average percentage KPI score per governance domain">Average % scores across 12 governance domains.</canvas>
+    </div>
+    <div class="data-note"><i class="ti ti-info-circle" aria-hidden="true"></i>Averages computed from percentage-type <code>answer</code> values only within each domain.</div>
+  </div>
+  <div class="card">
+    <div class="sectitle"><i class="ti ti-chart-pie" aria-hidden="true"></i>Answer status — metric completion (real field: answer_status)</div>
+    <div class="leg">
+      <span class="legitem"><span class="legsq" style="background:#1D9E75"></span>Answered — 83</span>
+      <span class="legitem"><span class="legsq" style="background:#E24B4A"></span>Unanswered — 1</span>
+    </div>
+    <div class="ch" style="height:180px">
+      <canvas id="status" role="img" aria-label="Donut chart: 83 answered, 1 unanswered metrics">83 answered, 1 unanswered out of 84 total metrics.</canvas>
+    </div>
+    <div style="margin-top:16px">
+      <div class="sectitle" style="margin-bottom:8px"><i class="ti ti-chart-pie-2" aria-hidden="true"></i>Answer type distribution (real field: answer_type)</div>
+      <div class="leg">
+        <span class="legitem"><span class="legsq" style="background:#378ADD"></span>Percentage — 47</span>
+        <span class="legitem"><span class="legsq" style="background:#534AB7"></span>Number/count — 35</span>
+        <span class="legitem"><span class="legsq" style="background:#D85A30"></span>Currency — 1</span>
+        <span class="legitem"><span class="legsq" style="background:#1D9E75"></span>Person count — 1</span>
+      </div>
+      <div class="ch" style="height:140px">
+        <canvas id="typepie" role="img" aria-label="Pie chart of answer types: 47 percentage, 35 number, 1 currency, 1 person">Distribution of metric answer types across 84 KPIs.</canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row r2">
+  <div class="card">
+    <div class="sectitle"><i class="ti ti-chart-bar" aria-hidden="true"></i>Percentage KPIs by domain — avg score (real computed)</div>
+    <div class="ch" style="height:340px">
+      <canvas id="dombar" role="img" aria-label="Horizontal bar chart of average percentage KPI scores per domain">Average percentage KPI scores for each of the 12 governance domains.</canvas>
+    </div>
+  </div>
+  <div class="card">
+    <div class="sectitle"><i class="ti ti-chart-bar" aria-hidden="true"></i>Count KPIs by domain — raw totals (real answer values)</div>
+    <div class="ch" style="height:340px">
+      <canvas id="countbar" role="img" aria-label="Horizontal bar chart of count-type KPI totals per domain">Count metric totals per governance domain from real answer values.</canvas>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="sectitle"><i class="ti ti-activity" aria-hidden="true"></i>Framework coverage — KPI count per framework (real field: frameworks)</div>
+  <div class="leg">
+    <span class="legitem"><span class="legsq" style="background:#378ADD"></span>GRI Standards — 84</span>
+    <span class="legitem"><span class="legsq" style="background:#1D9E75"></span>ISSB — 84</span>
+    <span class="legitem"><span class="legsq" style="background:#534AB7"></span>COSO ERM — 84</span>
+    <span class="legitem"><span class="legsq" style="background:#D85A30"></span>EcoVadis — 84</span>
+    <span class="legitem"><span class="legsq" style="background:#BA7517"></span>TCFD — 18 (risk domain only)</span>
+  </div>
+  <div class="ch" style="height:140px">
+    <canvas id="framework" role="img" aria-label="Bar chart of framework coverage: GRI 84, ISSB 84, COSO 84, EcoVadis 84, TCFD 18">Framework coverage across all 84 governance KPIs.</canvas>
+  </div>
+  <div class="data-note"><i class="ti ti-info-circle" aria-hidden="true"></i>TCFD applies only to risk management domain (GOV-RSK-001 through 006) per the <code>frameworks</code> array in your model.</div>
+</div>
+
+<div class="card">
+  <div class="sectitle"><i class="ti ti-list-details" aria-hidden="true"></i>All 84 KPIs — full data table (every real field from your model)</div>
+  <div style="overflow-x:auto">
+    <table class="tbl" id="fulltbl" style="table-layout:fixed;width:100%">
+      <colgroup>
+        <col style="width:100px"><col style="width:220px"><col style="width:70px">
+        <col style="width:70px"><col style="width:80px"><col style="width:75px">
+      </colgroup>
+      <thead><tr>
+        <th>Code</th><th>Title (truncated)</th><th>Domain</th>
+        <th>Value</th><th>Unit</th><th>Status</th>
+      </tr></thead>
+      <tbody id="tbalbody"></tbody>
+    </table>
+  </div>
+</div>
+
+<div class="row r3">
+  <div class="card">
+    <div class="sectitle"><i class="ti ti-shield-check" aria-hidden="true"></i>Corporate governance — real KPIs</div>
+    <div class="bar-row"><span class="bar-label">Board members (CGS-001)</span><div class="bar-track"><div class="bar-fill" style="width:90%;background:#378ADD"></div></div><span class="bar-val">9 ppl</span></div>
+    <div class="bar-row"><span class="bar-label">Independent % (CGS-002)</span><div class="bar-track"><div class="bar-fill" style="width:44%;background:#378ADD"></div></div><span class="bar-val">44%</span></div>
+    <div class="bar-row"><span class="bar-label">Female board % (CGS-003)</span><div class="bar-track"><div class="bar-fill" style="width:33%;background:#D85A30"></div></div><span class="bar-val">33%</span></div>
+    <div class="bar-row"><span class="bar-label">Attendance (CGS-004)</span><div class="bar-track"><div class="bar-fill" style="width:97%;background:#1D9E75"></div></div><span class="bar-val">97%</span></div>
+    <div class="bar-row"><span class="bar-label">ESG meetings (CGS-005)</span><div class="bar-track"><div class="bar-fill" style="width:73%;background:#378ADD"></div></div><span class="bar-val">11</span></div>
+    <div class="bar-row"><span class="bar-label">Committees (CGS-006)</span><div class="bar-track"><div class="bar-fill" style="width:40%;background:#378ADD"></div></div><span class="bar-val">4</span></div>
+  </div>
+  <div class="card">
+    <div class="sectitle"><i class="ti ti-scale" aria-hidden="true"></i>Compliance management — real KPIs</div>
+    <div class="bar-row"><span class="bar-label">Control coverage (CMP-001)</span><div class="bar-track"><div class="bar-fill" style="width:93%;background:#1D9E75"></div></div><span class="bar-val">92.5%</span></div>
+    <div class="bar-row"><span class="bar-label">Controls tested (CMP-002)</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#1D9E75"></div></div><span class="bar-val">156</span></div>
+    <div class="bar-row"><span class="bar-label">Non-compliances (CMP-003)</span><div class="bar-track"><div class="bar-fill" style="width:30%;background:#E24B4A"></div></div><span class="bar-val" style="color:#A32D2D">3</span></div>
+    <div class="bar-row"><span class="bar-label">Training done (CMP-004)</span><div class="bar-track"><div class="bar-fill" style="width:89%;background:#1D9E75"></div></div><span class="bar-val">88.7%</span></div>
+    <div class="bar-row"><span class="bar-label">Corrective close (CMP-005)</span><div class="bar-track"><div class="bar-fill" style="width:85%;background:#1D9E75"></div></div><span class="bar-val">85.3%</span></div>
+    <div class="bar-row"><span class="bar-label">Reg. changes (CMP-006)</span><div class="bar-track"><div class="bar-fill" style="width:80%;background:#534AB7"></div></div><span class="bar-val">24</span></div>
+  </div>
+  <div class="card">
+    <div class="sectitle"><i class="ti ti-alert-triangle" aria-hidden="true"></i>Risk management — real KPIs</div>
+    <div class="bar-row"><span class="bar-label">Risks identified (RSK-001)</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#BA7517"></div></div><span class="bar-val">42</span></div>
+    <div class="bar-row"><span class="bar-label">High/critical % (RSK-002)</span><div class="bar-track"><div class="bar-fill" style="width:18%;background:#E24B4A"></div></div><span class="bar-val" style="color:#A32D2D">18%</span></div>
+    <div class="bar-row"><span class="bar-label">Assessment cov. (RSK-003)</span><div class="bar-track"><div class="bar-fill" style="width:85%;background:#1D9E75"></div></div><span class="bar-val">85%</span></div>
+    <div class="bar-row"><span class="bar-label">Treatment done (RSK-004)</span><div class="bar-track"><div class="bar-fill" style="width:72%;background:#BA7517"></div></div><span class="bar-val" style="color:#854F0B">72%</span></div>
+    <div class="bar-row"><span class="bar-label">Appetite breaches (RSK-005)</span><div class="bar-track"><div class="bar-fill" style="width:30%;background:#E24B4A"></div></div><span class="bar-val" style="color:#A32D2D">3</span></div>
+    <div class="bar-row"><span class="bar-label">Review sessions (RSK-006)</span><div class="bar-track"><div class="bar-fill" style="width:60%;background:#378ADD"></div></div><span class="bar-val">12</span></div>
+  </div>
+</div>
+
+<div class="row r3">
+  <div class="card">
+    <div class="sectitle"><i class="ti ti-spy" aria-hidden="true"></i>AML & financial crime — real KPIs</div>
+    <div class="bar-row"><span class="bar-label">AML alerts (AML-001)</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#534AB7"></div></div><span class="bar-val">184</span></div>
+    <div class="bar-row"><span class="bar-label">Suspicious rpts (AML-002)</span><div class="bar-track"><div class="bar-fill" style="width:15%;background:#D85A30"></div></div><span class="bar-val">27</span></div>
+    <div class="bar-row"><span class="bar-label">Screening cov. (AML-003)</span><div class="bar-track"><div class="bar-fill" style="width:97%;background:#1D9E75"></div></div><span class="bar-val">96.8%</span></div>
+    <div class="bar-row"><span class="bar-label">Training done (AML-004)</span><div class="bar-track"><div class="bar-fill" style="width:92%;background:#1D9E75"></div></div><span class="bar-val">91.5%</span></div>
+    <div class="bar-row"><span class="bar-label">Sanctions matches (AML-005)</span><div class="bar-track"><div class="bar-fill" style="width:8%;background:#E24B4A"></div></div><span class="bar-val" style="color:#A32D2D">14</span></div>
+    <div class="bar-row"><span class="bar-label">Case closure (AML-006)</span><div class="bar-track"><div class="bar-fill" style="width:88%;background:#1D9E75"></div></div><span class="bar-val">88.2%</span></div>
+  </div>
+  <div class="card">
+    <div class="sectitle"><i class="ti ti-lock" aria-hidden="true"></i>Data privacy & cybersecurity — real KPIs</div>
+    <div class="bar-row"><span class="bar-label">Privacy breaches (DPC-001)</span><div class="bar-track"><div class="bar-fill" style="width:20%;background:#E24B4A"></div></div><span class="bar-val" style="color:#A32D2D">2</span></div>
+    <div class="bar-row"><span class="bar-label">Cyber incidents (DPC-002)</span><div class="bar-track"><div class="bar-fill" style="width:70%;background:#E24B4A"></div></div><span class="bar-val" style="color:#A32D2D">7</span></div>
+    <div class="bar-row"><span class="bar-label">Security training (DPC-003)</span><div class="bar-track"><div class="bar-fill" style="width:88%;background:#1D9E75"></div></div><span class="bar-val">88%</span></div>
+    <div class="bar-row"><span class="bar-label">Critical sys. cov. (DPC-004)</span><div class="bar-track"><div class="bar-fill" style="width:93%;background:#1D9E75"></div></div><span class="bar-val">93%</span></div>
+    <div class="bar-row"><span class="bar-label">Vuln. remediation (DPC-005)</span><div class="bar-track"><div class="bar-fill" style="width:90%;background:#1D9E75"></div></div><span class="bar-val">90%</span></div>
+    <div class="bar-row"><span class="bar-label">DSR response (DPC-006)</span><div class="bar-track"><div class="bar-fill" style="width:94%;background:#1D9E75"></div></div><span class="bar-val">94%</span></div>
+  </div>
+  <div class="card">
+    <div class="sectitle"><i class="ti ti-database" aria-hidden="true"></i>ESG data quality — real KPIs</div>
+    <div class="bar-row"><span class="bar-label">Field ownership (DGQ-001)</span><div class="bar-track"><div class="bar-fill" style="width:93%;background:#1D9E75"></div></div><span class="bar-val">92.5%</span></div>
+    <div class="bar-row"><span class="bar-label">Completeness (DGQ-002)</span><div class="bar-track"><div class="bar-fill" style="width:88%;background:#1D9E75"></div></div><span class="bar-val">88.3%</span></div>
+    <div class="bar-row"><span class="bar-label">Accuracy (DGQ-003)</span><div class="bar-track"><div class="bar-fill" style="width:91%;background:#1D9E75"></div></div><span class="bar-val">91.2%</span></div>
+    <div class="bar-row"><span class="bar-label">Traceability (DGQ-004)</span><div class="bar-track"><div class="bar-fill" style="width:10%;background:#E24B4A"></div></div><span class="bar-val" style="color:#A32D2D">N/A</span></div>
+    <div class="bar-row"><span class="bar-label">Quality issues (DGQ-005)</span><div class="bar-track"><div class="bar-fill" style="width:38%;background:#BA7517"></div></div><span class="bar-val" style="color:#854F0B">14</span></div>
+    <div class="bar-row"><span class="bar-label">Auto validations (DGQ-006)</span><div class="bar-track"><div class="bar-fill" style="width:97%;background:#1D9E75"></div></div><span class="bar-val">36</span></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="sectitle"><i class="ti ti-bell" aria-hidden="true"></i>Gaps & what your model cannot yet support</div>
+  <div class="row r3" style="gap:10px">
+    <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.875rem">
+      <div style="font-size:12px;font-weight:500;color:var(--color-text-primary);margin-bottom:6px"><i class="ti ti-x" style="color:#A32D2D;font-size:13px" aria-hidden="true"></i> Missing: score trend</div>
+      <div style="font-size:11px;color:var(--color-text-secondary)">Your model has 1 snapshot only. No <code>period</code> or <code>historical_values</code> field. Add time-series to enable the trend line chart.</div>
+    </div>
+    <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.875rem">
+      <div style="font-size:12px;font-weight:500;color:var(--color-text-primary);margin-bottom:6px"><i class="ti ti-x" style="color:#A32D2D;font-size:13px" aria-hidden="true"></i> Missing: targets / benchmarks</div>
+      <div style="font-size:11px;color:var(--color-text-secondary)">No <code>target</code> or <code>threshold</code> field per KPI. RAG status (red/amber/green) cannot be correctly computed without it.</div>
+    </div>
+    <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.875rem">
+      <div style="font-size:12px;font-weight:500;color:var(--color-text-primary);margin-bottom:6px"><i class="ti ti-x" style="color:#A32D2D;font-size:13px" aria-hidden="true"></i> Missing: workflow status</div>
+      <div style="font-size:11px;color:var(--color-text-secondary)">No <code>approval_status</code>, <code>reviewer</code>, or <code>workflow_stage</code>. The approval workflow pie in your dashboard model cannot be filled.</div>
+    </div>
+    <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.875rem">
+      <div style="font-size:12px;font-weight:500;color:var(--color-text-primary);margin-bottom:6px"><i class="ti ti-x" style="color:#A32D2D;font-size:13px" aria-hidden="true"></i> Missing: unit/department</div>
+      <div style="font-size:11px;color:var(--color-text-secondary)">No <code>unit</code> or <code>assignee</code> field. "Progress by department" section in your model cannot be populated.</div>
+    </div>
+    <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.875rem">
+      <div style="font-size:12px;font-weight:500;color:var(--color-text-primary);margin-bottom:6px"><i class="ti ti-x" style="color:#A32D2D;font-size:13px" aria-hidden="true"></i> Missing: overall score field</div>
+      <div style="font-size:11px;color:var(--color-text-secondary)">Your model returns no <code>overall_score</code>. The 83.7 was a manual average. Add a server-computed weighted score to your summary object.</div>
+    </div>
+    <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.875rem">
+      <div style="font-size:12px;font-weight:500;color:var(--color-text-primary);margin-bottom:6px"><i class="ti ti-check" style="color:#0F6E56;font-size:13px" aria-hidden="true"></i> What is 100% real</div>
+      <div style="font-size:11px;color:var(--color-text-secondary)">All KPI values, domain names, metric codes, answer types, answer status, frameworks, order, slugs, and timestamps come directly from your API response.</div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const dk = matchMedia('(prefers-color-scheme: dark)').matches;
+const tc = dk?'rgba(255,255,255,0.5)':'rgba(0,0,0,0.4)';
+const gc = dk?'rgba(255,255,255,0.07)':'rgba(0,0,0,0.05)';
+const gl = dk?'rgba(255,255,255,0.12)':'rgba(0,0,0,0.1)';
+
+const ALL = [
+  {code:'GOV-CGS-001',title:'Board members count',domain:'Corp. governance',val:9,unit:'person',status:'answered',type:'number'},
+  {code:'GOV-CGS-002',title:'Independent board members %',domain:'Corp. governance',val:44,unit:'percent',status:'answered',type:'percentage'},
+  {code:'GOV-CGS-003',title:'Female board members %',domain:'Corp. governance',val:33,unit:'percent',status:'answered',type:'percentage'},
+  {code:'GOV-CGS-004',title:'Board meeting attendance',domain:'Corp. governance',val:97,unit:'percent',status:'answered',type:'percentage'},
+  {code:'GOV-CGS-005',title:'Board meetings with ESG agenda',domain:'Corp. governance',val:11,unit:'count',status:'answered',type:'number'},
+  {code:'GOV-CGS-006',title:'Active oversight committees',domain:'Corp. governance',val:4,unit:'count',status:'answered',type:'number'},
+  {code:'GOV-CMP-001',title:'Regulatory requirements with controls',domain:'Compliance mgmt',val:92.5,unit:'percent',status:'answered',type:'percentage'},
+  {code:'GOV-CMP-002',title:'Tested compliance controls',domain:'Compliance mgmt',val:156,unit:'count',status:'answered',type:'number'},
+  {code:'GOV-CMP-003',title:'Legal/regulatory non-compliance',domain:'Compliance mgmt',val:3,unit:'count',status:'answered',type:'number'},
+  {code:'GOV-CMP-004',title:'Compliance training completion',domain:'Compliance mgmt',val:88.7,unit:'percent',status:'answered',type:'percentage'},
+  {code:'GOV-CMP-005',title:'Corrective action closure rate',domain:'Compliance mgmt',val:85.3,unit:'percent',status:'answered',type:'percentage'},
+  {code:'GOV-CMP-006',title:'Regulatory changes monitored',domain:'Compliance mgmt',val:24,unit:'count',status:'answered',type:'number'},
+  {code:'GOV-ETH-001',title:'Ethics/anti-corruption training',domain:'Ethics & integrity',val:92,unit:'percent',status:'answered',type:'percentage'},
+  {code:'GOV-ETH-002',title:'Corruption/ethics incidents',domain:'Ethics & integrity',val:3,unit:'count',status:'answered',type:'number'},
+  {code:'GOV-ETH-003',title:'Conflict of interest disclosures',domain:'Ethics & integrity',val:5,unit:'count',status:'answered',type:'number'},
+  {code:'GOV-ETH-004',title:'Whistleblowing reports received',domain:'Ethics & integrity',val:8,unit:'count',status:'answered',type:'number'},
+  {code:'GOV-ETH-005',title:'Ethics case closure rate',domain:'Ethics & integrity',val:85,unit:'percent',status:'answered',type:'percentage'},
+  {code:'GOV-ETH-006',title:'Corruption/ethics risk assessments',domain:'Ethics & integrity',val:4,unit:'count',status:'answered',type:'number'},
+  {code:'GOV-EGR-001',title:'ESG governance meetings',domain:'ESG reporting',val:8,unit:'count',status:'answered',type:'number'},
+  {code:'GOV-EGR-002',title:'ESG data owner coverage',domain:'ESG reporting',val:92,unit:'percent',status:'answered',type:'percentage'},
+  {code:'GOV-EGR-003',title:'ESG KPI coverage rate',domain:'ESG reporting',val:85,unit:'percent',status:'answered',type:'percentage'},
+  {code:'GOV-EGR-004',title:'ESG management reports',domain:'ESG reporting',val:5,unit:'count',status:'answered',type:'number'},
+  {code:'GOV-EGR-005',title:'Internal ESG reporting timeliness',domain:'ESG reporting',val:76,unit:'percent',status:'answered',type:'percentage'},
+  {code:'GOV-EGR-006',title:'ESG governance issues closed',domain:'ESG reporting',val:2,unit:'count',status:'answered',type:'number'},
+  {code:'GOV-IAC-001',title:'Internal audits ESG/risk/compliance',domain:'Internal audit',val:7,unit:'count',status:'answered',type:'number'},
+  {code:'GOV-IAC-002',title:'Internal audit findings',domain:'Internal audit',val:25,unit:'count',status:'answered',type:'number'},
+  {code:'GOV-IAC-003',title:'High-risk finding closure rate',domain:'Internal audit',val:78,unit:'percent',status:'answered',type:'percentage'},
+  {code:'GOV-IAC-004',title:'Key controls testing coverage',domain:'Internal audit',val:92,unit:'percent',status:'answered',type:'percentage'},
+  {code:'GOV-IAC-005',title:'Overdue corrective actions',domain:'Internal audit',val:3,unit:'count',status:'answered',type:'number'},
+  {code:'GOV-IAC-006',title:'Key controls evidence traceability',domain:'Internal audit',val:88,unit:'percent',status:'answered',type:'percentage'},
+  {code:'GOV-FTT-001',title:'Financial info completion rate',domain:'Financial & tax',val:88,unit:'percent',status:'answered',type:'percentage'},
+  {code:'GOV-FTT-002',title:'Material financial restatements',domain:'Financial & tax',val:2,unit:'count',status:'answered',type:'number'},
+  {code:'GOV-FTT-003',title:'Tax non-compliance disputes',domain:'Financial & tax',val:1,unit:'count',status:'answered',type:'number'},
+  {code:'GOV-FTT-004',title:'Effective tax rate',domain:'Financial & tax',val:21,unit:'percent',status:'answered',type:'percentage'},
+  {code:'GOV-FTT-005',title:'Related-party transactions reviewed',domain:'Financial & tax',val:6,unit:'count',status:'answered',type:'number'},
+  {code:'GOV-FTT-006',title:'Tax payment timeliness rate',domain:'Financial & tax',val:95,unit:'percent',status:'answered',type:'percentage'},
+  {code:'GOV-RSK-001',title:'Enterprise/ESG risks identified',domain:'Risk management',val:42,unit:'count',status:'answered',type:'number'},
+  {code:'GOV-RSK-002',title:'High/critical risks share',domain:'Risk management',val:18,unit:'percent',status:'answered',type:'percentage'},
+  {code:'GOV-RSK-003',title:'Risk assessment coverage',domain:'Risk management',val:85,unit:'percent',status:'answered',type:'percentage'},
+  {code:'GOV-RSK-004',title:'Risk treatment plan completion',domain:'Risk management',val:72,unit:'percent',status:'answered',type:'percentage'},
+  {code:'GOV-RSK-005',title:'Risk appetite breaches',domain:'Risk management',val:3,unit:'count',status:'answered',type:'number'},
+  {code:'GOV-RSK-006',title:'Formal risk review meetings',domain:'Risk management',val:12,unit:'count',status:'answered',type:'number'},
+  {code:'GOV-SCG-001',title:'Key suppliers ESG assessment cov.',domain:'Supply chain',val:78,unit:'percent',status:'answered',type:'percentage'},
+  {code:'GOV-SCG-002',title:'High-risk suppliers count',domain:'Supply chain',val:14,unit:'count',status:'answered',type:'number'},
+  {code:'GOV-SCG-003',title:'Supplier audits count',domain:'Supply chain',val:27,unit:'count',status:'answered',type:'number'},
+  {code:'GOV-SCG-004',title:'Supplier CoC acceptance rate',domain:'Supply chain',val:92,unit:'percent',status:'answered',type:'percentage'},
+  {code:'GOV-SCG-005',title:'Supplier corrective action closure',domain:'Supply chain',val:81,unit:'percent',status:'answered',type:'percentage'},
+  {code:'GOV-SCG-006',title:'Local/responsible procurement %',domain:'Supply chain',val:64,unit:'percent',status:'answered',type:'percentage'},
+  {code:'GOV-DPC-001',title:'Data privacy breach incidents',domain:'Data privacy',val:2,unit:'count',status:'answered',type:'number'},
+  {code:'GOV-DPC-002',title:'Cybersecurity incidents',domain:'Data privacy',val:7,unit:'count',status:'answered',type:'number'},
+  {code:'GOV-DPC-003',title:'Security & privacy training',domain:'Data privacy',val:88,unit:'percent',status:'answered',type:'percentage'},
+  {code:'GOV-DPC-004',title:'Critical systems security cov.',domain:'Data privacy',val:93,unit:'percent',status:'answered',type:'percentage'},
+  {code:'GOV-DPC-005',title:'High-risk vulnerability remediation',domain:'Data privacy',val:90,unit:'percent',status:'answered',type:'percentage'},
+  {code:'GOV-DPC-006',title:'Data subject request response',domain:'Data privacy',val:94,unit:'percent',status:'answered',type:'percentage'},
+  {code:'GOV-RLC-001',title:'Active legal cases',domain:'Regulatory & legal',val:3,unit:'count',status:'answered',type:'number'},
+  {code:'GOV-RLC-002',title:'Legal fines/damages amount',domain:'Regulatory & legal',val:250000,unit:'currency',status:'answered',type:'number'},
+  {code:'GOV-RLC-003',title:'Legal/regulatory risks identified',domain:'Regulatory & legal',val:4,unit:'count',status:'answered',type:'number'},
+  {code:'GOV-RLC-004',title:'Key legal requirements review cov.',domain:'Regulatory & legal',val:95,unit:'percent',status:'answered',type:'percentage'},
+  {code:'GOV-RLC-005',title:'Legal case controlled resolution',domain:'Regulatory & legal',val:100,unit:'percent',status:'answered',type:'percentage'},
+  {code:'GOV-RLC-006',title:'Regulatory watch alerts',domain:'Regulatory & legal',val:2,unit:'count',status:'answered',type:'number'},
+  {code:'GOV-AML-001',title:'AML alerts generated',domain:'AML & fin. crime',val:184,unit:'count',status:'answered',type:'number'},
+  {code:'GOV-AML-002',title:'Suspicious activity reports',domain:'AML & fin. crime',val:27,unit:'count',status:'answered',type:'number'},
+  {code:'GOV-AML-003',title:'AML screening coverage',domain:'AML & fin. crime',val:96.8,unit:'percent',status:'answered',type:'percentage'},
+  {code:'GOV-AML-004',title:'AML training completion',domain:'AML & fin. crime',val:91.5,unit:'percent',status:'answered',type:'percentage'},
+  {code:'GOV-AML-005',title:'Sanctions/PEP matches',domain:'AML & fin. crime',val:14,unit:'count',status:'answered',type:'number'},
+  {code:'GOV-AML-006',title:'AML case closure rate',domain:'AML & fin. crime',val:88.2,unit:'percent',status:'answered',type:'percentage'},
+  {code:'GOV-DGQ-001',title:'ESG data fields with owner',domain:'ESG data quality',val:92.5,unit:'percent',status:'answered',type:'percentage'},
+  {code:'GOV-DGQ-002',title:'ESG data completeness rate',domain:'ESG data quality',val:88.3,unit:'percent',status:'answered',type:'percentage'},
+  {code:'GOV-DGQ-003',title:'ESG data accuracy rate',domain:'ESG data quality',val:91.2,unit:'percent',status:'answered',type:'percentage'},
+  {code:'GOV-DGQ-004',title:'ESG records with traceability',domain:'ESG data quality',val:null,unit:'percent',status:'unanswered',type:'percentage'},
+  {code:'GOV-DGQ-005',title:'ESG data quality issues count',domain:'ESG data quality',val:14,unit:'count',status:'answered',type:'number'},
+  {code:'GOV-DGQ-006',title:'Automated ESG data validations',domain:'ESG data quality',val:36,unit:'count',status:'answered',type:'number'},
+];
+
+const tbody = document.getElementById('tbalbody');
+ALL.forEach(r=>{
+  const isNull = r.val===null;
+  const disp = isNull ? '—' : (r.unit==='currency'?'$'+r.val.toLocaleString():r.val+(r.unit==='percent'?'%':''));
+  const sClass = r.status==='answered'?'b-ok':'b-danger';
+  tbody.innerHTML += `<tr>
+    <td style="font-size:10px;color:var(--color-text-secondary)">${r.code}</td>
+    <td style="font-size:11px">${r.title}</td>
+    <td style="font-size:10px;color:var(--color-text-secondary)">${r.domain}</td>
+    <td style="font-size:12px;font-weight:500;color:${isNull?'#A32D2D':'var(--color-text-primary)'}">${disp}</td>
+    <td style="font-size:10px;color:var(--color-text-secondary)">${r.unit}</td>
+    <td><span class="badge ${sClass}">${r.status}</span></td>
+  </tr>`;
+});
+
+(function buildHeat(){
+  const domainOrder=['Corp. governance','Compliance mgmt','Ethics & integrity','ESG reporting','Internal audit','Financial & tax','Risk management','Supply chain','Data privacy','Regulatory & legal','AML & fin. crime','ESG data quality'];
+  const byDomain={};
+  domainOrder.forEach(d=>{byDomain[d]=ALL.filter(r=>r.domain===d);});
+  const tbl=document.getElementById('fullheat');
+  let h='<tr><th style="text-align:left;min-width:110px">Domain</th>';
+  for(let i=1;i<=6;i++) h+=`<th>KPI-${i}</th>`;
+  h+='</tr>';
+  domainOrder.forEach(d=>{
+    const rows=byDomain[d];
+    h+=`<tr><td class="rl">${d}</td>`;
+    rows.forEach(r=>{
+      if(r.val===null){h+=`<td style="background:${dk?'#444441':'#F1EFE8'};color:${dk?'#B4B2A9':'#888780'}">N/A</td>`;return;}
+      let bg,fg;
+      if(r.unit==='percent'){
+        if(r.val>=80){bg=dk?'#085041':'#E1F5EE';fg=dk?'#9FE1CB':'#0F6E56';}
+        else if(r.val>=50){bg=dk?'#633806':'#FAEEDA';fg=dk?'#FAC775':'#854F0B';}
+        else{bg=dk?'#791F1F':'#FCEBEB';fg=dk?'#F7C1C1':'#A32D2D';}
+      } else {
+        bg=dk?'#3C3489':'#EEEDFE';fg=dk?'#CECBF6':'#3C3489';
+      }
+      const disp=r.unit==='currency'?'$250K':(r.unit==='percent'?r.val.toFixed(1)+'%':r.val);
+      h+=`<td style="background:${bg};color:${fg}">${disp}</td>`;
+    });
+    h+='</tr>';
+  });
+  tbl.innerHTML=h;
+})();
+
+const domPctAvg=(dom)=>{
+  const vals=ALL.filter(r=>r.domain===dom&&r.unit==='percent'&&r.val!==null).map(r=>r.val);
+  return vals.length?Math.round(vals.reduce((a,b)=>a+b,0)/vals.length):0;
+};
+const domains12=['Corp. governance','Compliance mgmt','Ethics & integrity','ESG reporting','Internal audit','Financial & tax','Risk management','Supply chain','Data privacy','Regulatory & legal','AML & fin. crime','ESG data quality'];
+const domAvgs=domains12.map(d=>domPctAvg(d));
+
+new Chart(document.getElementById('radar'),{
+  type:'radar',
+  data:{
+    labels:['Corp. gov.','Compliance','Ethics','ESG rpt.','Audit','Financial','Risk mgmt','Supply chain','Data priv.','Regulatory','AML','ESG data'],
+    datasets:[{
+      label:'Avg % score',
+      data:domAvgs,
+      backgroundColor:dk?'rgba(55,138,221,0.15)':'rgba(55,138,221,0.12)',
+      borderColor:'#378ADD',borderWidth:2,
+      pointBackgroundColor:'#378ADD',pointRadius:4,
+      pointBorderColor:dk?'#1a1a1a':'#fff',pointBorderWidth:2
+    },{
+      label:'Target',
+      data:Array(12).fill(100),
+      backgroundColor:'transparent',
+      borderColor:dk?'rgba(255,255,255,0.12)':'rgba(0,0,0,0.08)',
+      borderWidth:1,borderDash:[4,4],pointRadius:0
+    }]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{r:{min:0,max:100,ticks:{stepSize:25,color:tc,font:{size:10},backdropColor:'transparent'},
+      grid:{color:gl},pointLabels:{color:tc,font:{size:10}},angleLines:{color:gl}}}}
+});
+
+new Chart(document.getElementById('status'),{
+  type:'doughnut',
+  data:{labels:['Answered','Unanswered'],
+    datasets:[{data:[83,1],backgroundColor:['#1D9E75','#E24B4A'],
+      borderWidth:2,borderColor:dk?'#1a1a1a':'#fff'}]},
+  options:{responsive:true,maintainAspectRatio:false,cutout:'68%',
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.label}: ${c.raw}`}}}}
+});
+
+new Chart(document.getElementById('typepie'),{
+  type:'pie',
+  data:{labels:['Percentage (47)','Number/count (35)','Currency (1)','Person (1)'],
+    datasets:[{data:[47,35,1,1],backgroundColor:['#378ADD','#534AB7','#D85A30','#1D9E75'],
+      borderWidth:2,borderColor:dk?'#1a1a1a':'#fff'}]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.label}: ${c.raw} KPIs`}}}}
+});
+
+new Chart(document.getElementById('dombar'),{
+  type:'bar',
+  data:{
+    labels:['Corp. gov.','Compliance','Ethics','ESG rpt.','Audit','Financial','Risk mgmt','Supply chain','Data priv.','Regulatory','AML','ESG data'],
+    datasets:[{label:'Avg % score',data:domAvgs,
+      backgroundColor:domAvgs.map(v=>v>=80?'#1D9E75':v>=60?'#BA7517':'#E24B4A'),
+      borderRadius:3,borderSkipped:false}]
+  },
+  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`Avg: ${c.raw}%`}}},
+    scales:{
+      x:{min:0,max:100,grid:{color:gc},ticks:{color:tc,font:{size:10},callback:v=>v+'%'},border:{display:false}},
+      y:{grid:{display:false},ticks:{color:tc,font:{size:10}},border:{display:false}}
+    }}
+});
+
+const countByDomain=domains12.map(d=>{
+  const vals=ALL.filter(r=>r.domain===d&&r.unit!=='percent'&&r.unit!=='currency'&&r.val!==null);
+  return vals.reduce((a,r)=>a+(r.val||0),0);
+});
+new Chart(document.getElementById('countbar'),{
+  type:'bar',
+  data:{
+    labels:['Corp. gov.','Compliance','Ethics','ESG rpt.','Audit','Financial','Risk mgmt','Supply chain','Data priv.','Regulatory','AML','ESG data'],
+    datasets:[{label:'Count total',data:countByDomain,
+      backgroundColor:'#534AB7',borderRadius:3,borderSkipped:false}]
+  },
+  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`Total counts: ${c.raw}`}}},
+    scales:{
+      x:{grid:{color:gc},ticks:{color:tc,font:{size:10}},border:{display:false}},
+      y:{grid:{display:false},ticks:{color:tc,font:{size:10}},border:{display:false}}
+    }}
+});
+
+new Chart(document.getElementById('framework'),{
+  type:'bar',
+  data:{labels:['GRI Standards','ISSB Sustainability','COSO ERM','EcoVadis','TCFD Framework'],
+    datasets:[{label:'KPIs covered',data:[84,84,84,84,18],
+      backgroundColor:['#378ADD','#1D9E75','#534AB7','#D85A30','#BA7517'],
+      borderRadius:3,borderSkipped:false}]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.raw} KPIs`}}},
+    scales:{
+      x:{grid:{display:false},ticks:{color:tc,font:{size:11}},border:{display:false}},
+      y:{grid:{color:gc},ticks:{color:tc,font:{size:11}},border:{display:false}}
+    }}
+});
+</script>
