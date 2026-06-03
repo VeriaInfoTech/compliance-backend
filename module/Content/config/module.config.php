@@ -37,6 +37,9 @@ return [
             // Dashboard
             Handler\Api\Dashboard\DashboardGetHandler::class  => Factory\Handler\Api\Dashboard\DashboardGetHandlerFactory::class,
 
+            // Report
+            Handler\Api\Report\ReportGetHandler::class  => Factory\Handler\Api\Report\ReportGetHandlerFactory::class,
+
             ///Public Section
             // Item
             Handler\Public\Item\ItemListHandler::class   => Factory\Handler\Public\Item\ItemListHandlerFactory::class,
@@ -273,6 +276,37 @@ return [
                                             AuthenticationMiddleware::class,
                                             AuthorizationMiddleware::class,
                                             Handler\Api\Dashboard\DashboardGetHandler::class
+                                        ),
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                    'report'   => [
+                        'type'         => Literal::class,
+                        'options'      => [
+                            'route'    => '/report',
+                            'defaults' => [],
+                        ],
+                        'child_routes' => [
+                            'detail' => [
+                                'type'    => Literal::class,
+                                'options' => [
+                                    'route'    => '/get',
+                                    'defaults' => [
+                                        'module'     => 'content',
+                                        'section'    => 'api',
+                                        'package'    => 'item',
+                                        'handler'    => 'list',
+                                        'permission' => 'api-content-item-detail',
+                                        'validator'  => 'global',
+                                        'controller' => PipeSpec::class,
+                                        'middleware' => new PipeSpec(
+                                            SecurityMiddleware::class,
+                                            RawDataValidationMiddleware::class,
+                                            AuthenticationMiddleware::class,
+                                            AuthorizationMiddleware::class,
+                                            Handler\Api\Report\ReportGetHandler::class
                                         ),
                                     ],
                                 ],
