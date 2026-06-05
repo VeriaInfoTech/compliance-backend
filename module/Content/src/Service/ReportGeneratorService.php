@@ -82,7 +82,7 @@ class ReportGeneratorService
     }
 
     /**
-     * Build dynamic narratives from normalized data
+     * Build dynamic narratives from normalized data with title/body structure
      * All values are extracted from controls, no hardcoded numbers
      */
     private function buildNarratives(array $normalized): array
@@ -90,11 +90,19 @@ class ReportGeneratorService
         $year = (int) date('Y');
         
         return [
-            'report_intro' => $this->buildReportIntro($year),
+            'about_report' => [
+                'title' => 'درباره این گزارش',
+                'body' => "گزارش پایداری سال {$year} بر اساس استاندارهای بین‌المللی GRI و SASB تهیه شده است. " .
+                         "این گزارش عملکرد سازمان در سه حوزه زیست‌محیطی، اجتماعی و حاکمیتی را پوشش می‌دهد."
+            ],
             'environmental' => $this->buildEnvironmentalNarratives($normalized),
             'social' => $this->buildSocialNarratives($normalized),
             'governance' => $this->buildGovernanceNarratives($normalized),
-            'report_conclusion' => $this->buildReportConclusion(),
+            'report_conclusion' => [
+                'title' => 'نتیجه‌گیری کلی',
+                'body' => 'سازمان در این دوره مسیر مشخصی در جهت توسعه پایدار طی کرده است. ' .
+                         'تعهد به بهبود مستمر عملکرد ESG و پاسخگویی به ذی‌نفعان پایه‌های استراتژی سازمان را تشکیل می‌دهند.'
+            ]
         ];
     }
 
