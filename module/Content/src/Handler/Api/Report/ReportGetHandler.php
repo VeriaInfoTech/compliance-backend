@@ -2,8 +2,8 @@
 
 namespace Content\Handler\Api\Report;
 
-use Content\Service\ItemService;
-use Content\Service\ReportService;
+use Content\Service\ReportGeneratorService;
+use InvalidArgumentException;
 use Laminas\Diactoros\Response\JsonResponse;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -11,29 +11,35 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 class ReportGetHandler implements RequestHandlerInterface
 {
-    protected ItemService $itemService;
-    protected ReportService $reportService;
+    private ReportGeneratorService $reportGeneratorService;
 
-    public function __construct(ItemService $itemService, ReportService $reportService)
+    public function __construct(ReportGeneratorService $reportGeneratorService)
     {
-        $this->itemService = $itemService;
-        $this->reportService = $reportService;
+        $this->reportGeneratorService = $reportGeneratorService;
     }
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         try {
-            // Get parameters from request body
-            $params = $request->getParsedBody() ?? [];
+            // Get raw JSON data from request body
+            $rawJson = $request->getParsedBody() ?? [];
 
-            // Generate comprehensive report
-            $report = $this->reportService->generateReport($params);
+            // Generate comprehensive report from raw data
+            $report = $this->reportGeneratorService->generate($rawJson);
 
             return new JsonResponse([
                 'result' => true,
                 'data' => $report,
                 'error' => [],
             ]);
+        } catch (InvalidArgumentException $e) {
+            return new JsonResponse([
+                'result' => false,
+                'data' => [],
+                'error' => [
+                    'message' => $e->getMessage(),
+                ],
+            ], 422);
         } catch (\Exception $e) {
             return new JsonResponse([
                 'result' => false,
@@ -46,3 +52,4 @@ class ReportGetHandler implements RequestHandlerInterface
         }
     }
 }
+
