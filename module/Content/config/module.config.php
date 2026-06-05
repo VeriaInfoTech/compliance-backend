@@ -19,6 +19,7 @@ return [
             Repository\ItemRepository::class             => Factory\Repository\ItemRepositoryFactory::class,
             Service\ItemService::class                   => Factory\Service\ItemServiceFactory::class,
             Service\ItemBulkService::class               => Factory\Service\ItemBulkServiceFactory::class,
+            Service\ReportService::class                 => Factory\Service\ReportServiceFactory::class,
             Middleware\ValidationMiddleware::class       => Factory\Middleware\ValidationMiddlewareFactory::class,
             Validator\SlugValidator::class               => Factory\Validator\SlugValidatorFactory::class,
             Validator\TypeValidator::class               => Factory\Validator\TypeValidatorFactory::class,
