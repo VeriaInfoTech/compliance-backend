@@ -1,0 +1,1643 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>گزارش پایداری ESG – ۱۴۰۵</title>
+<script src="%DA%AF%D8%B2%D8%A7%D8%B1%D8%B4%20%D9%BE%D8%A7%DB%8C%D8%AF%D8%A7%D8%B1%DB%8C%20ESG%20%E2%80%93%20%DB%B1%DB%B4%DB%B0%DB%B5_files/chart.umd.js"></script>
+<script src="%DA%AF%D8%B2%D8%A7%D8%B1%D8%B4%20%D9%BE%D8%A7%DB%8C%D8%AF%D8%A7%D8%B1%DB%8C%20ESG%20%E2%80%93%20%DB%B1%DB%B4%DB%B0%DB%B5_files/html2canvas.min.js"></script>
+<script src="%DA%AF%D8%B2%D8%A7%D8%B1%D8%B4%20%D9%BE%D8%A7%DB%8C%D8%AF%D8%A7%D8%B1%DB%8C%20ESG%20%E2%80%93%20%DB%B1%DB%B4%DB%B0%DB%B5_files/jspdf.umd.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="%DA%AF%D8%B2%D8%A7%D8%B1%D8%B4%20%D9%BE%D8%A7%DB%8C%D8%AF%D8%A7%D8%B1%DB%8C%20ESG%20%E2%80%93%20%DB%B1%DB%B4%DB%B0%DB%B5_files/css2.css" rel="stylesheet">
+<style>
+  :root {
+    --green-dark: #0a5c3a;
+    --green-mid: #1a8c5a;
+    --green-light: #d6f0e3;
+    --gold: #c9973a;
+    --gold-light: #fdf3e0;
+    --blue-dark: #0d3460;
+    --blue-mid: #1a5fa8;
+    --blue-light: #ddeeff;
+    --gray-dark: #1e2332;
+    --gray-mid: #4a5568;
+    --gray-light: #f4f5f7;
+    --border: #d1d9e0;
+    --text-body: #2d3748;
+    --text-muted: #718096;
+    --page-bg: #e8e8e4;
+    --page-w: 794px;
+    --shadow: 0 4px 24px rgba(0,0,0,0.13);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Vazirmatn', Tahoma, sans-serif;
+    background: var(--page-bg);
+    direction: rtl;
+    color: var(--text-body);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  /* Toolbar */
+  #toolbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: var(--gray-dark);
+    color: #fff;
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    print-color-adjust: exact;
+  }
+
+  #toolbar span { font-size: 13px; opacity: 0.85; }
+
+  #downloadBtn {
+    background: var(--green-mid);
+    color: #fff;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Vazirmatn', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s;
+  }
+  #downloadBtn:hover { background: var(--green-dark); }
+  #downloadBtn:disabled { opacity: 0.6; cursor: wait; }
+
+  /* Report wrapper */
+  #report-wrapper {
+    padding: 80px 24px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  /* Page */
+  .page {
+    width: var(--page-w);
+    background: #fff;
+    box-shadow: var(--shadow);
+    margin-bottom: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Cover page */
+  .cover {
+    height: 1123px;
+    background: linear-gradient(160deg, #0a1e3a 0%, #0d3460 50%, #0a5c3a 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    padding: 60px 60px;
+    position: relative;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      radial-gradient(circle at 20% 80%, rgba(26,140,90,0.18) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(26,95,168,0.18) 0%, transparent 50%);
+  }
+
+  .cover-logo {
+    width: 90px; height: 90px;
+    border: 3px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 32px; font-weight: 700;
+    margin-bottom: 32px;
+    position: relative;
+    color: #d6f0e3;
+  }
+
+  .cover-year-badge {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 20px;
+    padding: 6px 20px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  .cover h1 {
+    font-size: 42px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.3;
+    margin-bottom: 12px;
+    position: relative;
+  }
+
+  .cover h2 {
+    font-size: 20px;
+    font-weight: 300;
+    opacity: 0.75;
+    text-align: center;
+    margin-bottom: 48px;
+    position: relative;
+  }
+
+  .cover-divider {
+    width: 80px; height: 3px;
+    background: var(--gold);
+    border-radius: 2px;
+    margin: 0 auto 48px;
+    position: relative;
+  }
+
+  .cover-stats {
+    display: flex;
+    gap: 32px;
+    position: relative;
+    margin-bottom: 60px;
+  }
+
+  .cover-stat {
+    text-align: center;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 12px;
+    padding: 20px 28px;
+  }
+
+  .cover-stat .val {
+    font-size: 28px;
+    font-weight: 700;
+    color: #9de8c4;
+    display: block;
+  }
+
+  .cover-stat .lbl {
+    font-size: 11px;
+    opacity: 0.7;
+    margin-top: 4px;
+  }
+
+  .cover-frameworks {
+    position: relative;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: auto;
+  }
+
+  .cover-fw-badge {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 4px;
+    padding: 4px 12px;
+    font-size: 11px;
+    opacity: 0.8;
+  }
+
+  .cover-footer {
+    position: absolute;
+    bottom: 32px;
+    left: 0; right: 0;
+    text-align: center;
+    font-size: 11px;
+    opacity: 0.45;
+  }
+
+  /* Inner pages */
+  .inner-page {
+    padding: 48px 52px;
+    min-height: 1123px;
+    position: relative;
+  }
+
+  /* Page header stripe */
+  .page-header-stripe {
+    background: var(--blue-dark);
+    margin: -48px -52px 36px;
+    padding: 20px 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .page-header-stripe h2 {
+    color: #fff;
+    font-size: 17px;
+    font-weight: 600;
+  }
+
+  .page-header-stripe .page-num {
+    color: rgba(255,255,255,0.5);
+    font-size: 12px;
+  }
+
+  /* Section heading */
+  .section-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--blue-dark);
+    border-right: 4px solid var(--green-mid);
+    padding-right: 12px;
+    margin-bottom: 16px;
+    margin-top: 28px;
+  }
+
+  .section-title:first-child { margin-top: 0; }
+
+  /* KPI cards grid */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .kpi-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    background: #fff;
+    border-top: 3px solid var(--green-mid);
+  }
+
+  .kpi-card.blue { border-top-color: var(--blue-mid); }
+  .kpi-card.gold { border-top-color: var(--gold); }
+  .kpi-card.red { border-top-color: #c0392b; }
+
+  .kpi-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+
+  .kpi-value {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gray-dark);
+  }
+
+  .kpi-unit {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--text-muted);
+    margin-right: 4px;
+  }
+
+  /* Progress bar */
+  .progress-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .progress-label { flex: 0 0 160px; font-size: 12px; color: var(--text-body); text-align: right; }
+  .progress-bar-wrap { flex: 1; background: #eef0f3; border-radius: 4px; height: 8px; overflow: hidden; }
+  .progress-bar-fill { height: 100%; border-radius: 4px; }
+  .progress-val { flex: 0 0 40px; font-size: 12px; font-weight: 600; color: var(--text-body); text-align: left; }
+
+  /* Table */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
+  .data-table th {
+    background: var(--blue-dark);
+    color: #fff;
+    padding: 9px 12px;
+    text-align: right;
+    font-weight: 500;
+    font-size: 11px;
+  }
+  .data-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+    text-align: right;
+  }
+  .data-table tr:nth-child(even) td { background: var(--gray-light); }
+  .data-table tr:hover td { background: #eef4ff; }
+
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 10px;
+    font-weight: 600;
+  }
+  .badge-green { background: #d6f0e3; color: #0a5c3a; }
+  .badge-blue { background: #ddeeff; color: #0d3460; }
+  .badge-gold { background: #fdf3e0; color: #8a6520; }
+  .badge-red { background: #fde8e8; color: #8b1a1a; }
+
+  /* Chart containers */
+  .chart-wrap {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  /* Narrative box */
+  .narrative {
+    background: var(--gray-light);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    font-size: 12.5px;
+    line-height: 1.8;
+    color: var(--text-body);
+    margin-bottom: 20px;
+  }
+
+  .narrative.green-border { border-right: 4px solid var(--green-mid); border-radius: 0 8px 8px 0; }
+  .narrative.blue-border { border-right: 4px solid var(--blue-mid); border-radius: 0 8px 8px 0; }
+  .narrative.gold-border { border-right: 4px solid var(--gold); border-radius: 0 8px 8px 0; }
+
+  /* Framework pills */
+  .fw-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .fw-pill {
+    background: var(--blue-light);
+    color: var(--blue-dark);
+    border-radius: 4px;
+    padding: 3px 10px;
+    font-size: 10px;
+    font-weight: 500;
+  }
+
+  /* Two-column layout */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+  /* Scope emissions visual */
+  .scope-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+  .scope-icon {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+
+  /* Conclusion page */
+  .conclusion-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    background: #fff;
+  }
+  .conclusion-card h4 {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--blue-dark);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .conclusion-card h4::before {
+    content: '';
+    display: block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--green-mid);
+    flex-shrink: 0;
+  }
+
+  /* Page footer */
+  .page-footer {
+    position: absolute;
+    bottom: 20px;
+    left: 52px; right: 52px;
+    border-top: 1px solid var(--border);
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    color: var(--text-muted);
+  }
+
+  /* Print */
+  @media print {
+    body { background: #fff; }
+    #toolbar { display: none; }
+    #report-wrapper { padding: 0; }
+    .page { box-shadow: none; margin-bottom: 0; }
+    .inner-page { min-height: unset; }
+  }
+
+  /* TOC */
+  .toc-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--border);
+    gap: 12px;
+  }
+  .toc-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .toc-title { flex: 1; font-size: 13px; }
+  .toc-page { font-size: 12px; color: var(--text-muted); font-weight: 600; }
+
+  /* Highlight box */
+  .highlight-box {
+    background: var(--green-light);
+    border: 1px solid #9de8c4;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 16px;
+  }
+  .highlight-box .hl-num { font-size: 28px; font-weight: 700; color: var(--green-dark); }
+  .highlight-box .hl-label { font-size: 12px; color: var(--green-dark); }
+</style>
+</head>
+<body>
+
+<!-- Toolbar -->
+<div id="toolbar">
+  <span>پیش‌نمایش گزارش پایداری ESG – دوره گزارش‌دهی ۱۴۰۵</span>
+  <button id="downloadBtn" onclick="downloadPDF()">
+    ⬇ دانلود PDF
+  </button>
+</div>
+
+<div id="report-wrapper">
+
+<!-- ═══════════════════════════ PAGE 1: COVER ═══════════════════════════ -->
+<div class="page">
+  <div class="cover">
+    <div class="cover-logo">ESG</div>
+    <div class="cover-year-badge">گزارش دوره ۱۴۰۵ — ۲۰۲۶</div>
+    <h1>گزارش پایداری<br>زیست‌محیطی، اجتماعی و حاکمیتی</h1>
+    <h2>Environmental · Social · Governance</h2>
+    <div class="cover-divider"></div>
+    <div class="cover-stats">
+      <div class="cover-stat">
+        <span class="val">۲۸۴</span>
+        <span class="lbl">کارکنان سازمان</span>
+      </div>
+      <div class="cover-stat">
+        <span class="val">۱۱٬۷۰۰</span>
+        <span class="lbl">تن CO₂e انتشار کل</span>
+      </div>
+      <div class="cover-stat">
+        <span class="val">۸۴٪</span>
+        <span class="lbl">تحقق اهداف اقلیمی</span>
+      </div>
+      <div class="cover-stat">
+        <span class="val">۹۷٪</span>
+        <span class="lbl">حضور هیئت‌مدیره</span>
+      </div>
+    </div>
+    <div class="cover-frameworks">
+      <span class="cover-fw-badge">GRI Standards</span>
+      <span class="cover-fw-badge">ISSB Sustainability</span>
+      <span class="cover-fw-badge">ISO 14001</span>
+      <span class="cover-fw-badge">CDP Framework</span>
+      <span class="cover-fw-badge">TCFD Framework</span>
+      <span class="cover-fw-badge">GHG Protocol</span>
+      <span class="cover-fw-badge">EcoVadis Rating</span>
+      <span class="cover-fw-badge">SBTi Targets</span>
+    </div>
+    <div class="cover-footer">این گزارش بر اساس استانداردهای بین‌المللی GRI و SASB تهیه شده است | تاریخ انتشار: خرداد ۱۴۰۵</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ PAGE 2: TABLE OF CONTENTS ═══════════════════════════ -->
+<div class="page">
+  <div class="inner-page">
+    <div class="page-header-stripe">
+      <h2>فهرست مطالب</h2>
+      <span class="page-num">صفحه ۲</span>
+    </div>
+
+    <p class="narrative green-border">
+      گزارش پایداری سال ۱۴۰۵ بر اساس استانداردهای بین‌المللی GRI و SASB 
+تهیه شده است. این گزارش عملکرد سازمان را در سه حوزه زیست‌محیطی، اجتماعی و
+ حاکمیتی به صورت جامع پوشش می‌دهد و شفافیت، پاسخگویی و تعهد به توسعه 
+پایدار را در کانون توجه قرار می‌دهد.
+    </p>
+
+    <div class="toc-item">
+      <div class="toc-dot" style="background:#1a8c5a"></div>
+      <span class="toc-title">خلاصه اجرایی و شاخص‌های کلیدی عملکرد</span>
+      <span class="toc-page">۳</span>
+    </div>
+    <div class="toc-item">
+      <div class="toc-dot" style="background:#1a8c5a"></div>
+      <span class="toc-title">عملکرد زیست‌محیطی — انرژی و گازهای گلخانه‌ای</span>
+      <span class="toc-page">۴</span>
+    </div>
+    <div class="toc-item">
+      <div class="toc-dot" style="background:#1a8c5a"></div>
+      <span class="toc-title">عملکرد زیست‌محیطی — آب، پسماند و تنوع زیستی</span>
+      <span class="toc-page">۵</span>
+    </div>
+    <div class="toc-item">
+      <div class="toc-dot" style="background:#1a5fa8"></div>
+      <span class="toc-title">عملکرد اجتماعی — نیروی کار، ایمنی و آموزش</span>
+      <span class="toc-page">۶</span>
+    </div>
+    <div class="toc-item">
+      <div class="toc-dot" style="background:#1a5fa8"></div>
+      <span class="toc-title">عملکرد اجتماعی — تنوع، جامعه و مسئولیت اجتماعی</span>
+      <span class="toc-page">۷</span>
+    </div>
+    <div class="toc-item">
+      <div class="toc-dot" style="background:#c9973a"></div>
+      <span class="toc-title">حاکمیت شرکتی — ساختار هیئت‌مدیره و اخلاق</span>
+      <span class="toc-page">۸</span>
+    </div>
+    <div class="toc-item">
+      <div class="toc-dot" style="background:#c9973a"></div>
+      <span class="toc-title">حاکمیت شرکتی — انطباق، ریسک و زنجیره تامین</span>
+      <span class="toc-page">۹</span>
+    </div>
+    <div class="toc-item">
+      <div class="toc-dot" style="background:#4a5568"></div>
+      <span class="toc-title">نتیجه‌گیری و چشم‌انداز آینده</span>
+      <span class="toc-page">۱۰</span>
+    </div>
+
+    <div style="margin-top:36px">
+      <div class="section-title">چارچوب‌های گزارش‌دهی</div>
+      <p style="font-size:12.5px; color:var(--text-muted); margin-bottom:12px;">
+        این گزارش با استانداردها و چارچوب‌های معتبر بین‌المللی زیر تهیه و تنظیم شده است:
+      </p>
+      <div class="fw-pills">
+        <span class="fw-pill">GRI Standards</span>
+        <span class="fw-pill">ISSB Sustainability Standards</span>
+        <span class="fw-pill">ISO 14001</span>
+        <span class="fw-pill">ISO 26000</span>
+        <span class="fw-pill">CDP Framework</span>
+        <span class="fw-pill">EcoVadis Rating System</span>
+        <span class="fw-pill">TCFD Framework</span>
+        <span class="fw-pill">GHG Protocol</span>
+        <span class="fw-pill">SBTi Targets</span>
+        <span class="fw-pill">COSO ERM</span>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>گزارش پایداری ESG ۱۴۰۵</span>
+      <span>صفحه ۲ از ۱۰</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ PAGE 3: EXECUTIVE SUMMARY ═══════════════════════════ -->
+<div class="page">
+  <div class="inner-page">
+    <div class="page-header-stripe">
+      <h2>خلاصه اجرایی — شاخص‌های کلیدی عملکرد</h2>
+      <span class="page-num">صفحه ۳</span>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">تعداد کل کارکنان</div>
+        <div class="kpi-value">۲۸۴ <span class="kpi-unit">نفر</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">مجموع انتشار گازهای گلخانه‌ای</div>
+        <div class="kpi-value">۱۱٬۷۰۰ <span class="kpi-unit">tCO₂e</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">تحقق اهداف اقلیمی</div>
+        <div class="kpi-value">۸۴ <span class="kpi-unit">٪</span></div>
+      </div>
+      <div class="kpi-card blue">
+        <div class="kpi-label">کل مصرف برق</div>
+        <div class="kpi-value">۱٫۸۵M <span class="kpi-unit">kWh</span></div>
+      </div>
+      <div class="kpi-card blue">
+        <div class="kpi-label">میانگین آموزش هر کارمند</div>
+        <div class="kpi-value">۱۸٫۶ <span class="kpi-unit">ساعت</span></div>
+      </div>
+      <div class="kpi-card blue">
+        <div class="kpi-label">نرخ حضور هیئت‌مدیره</div>
+        <div class="kpi-value">۹۷ <span class="kpi-unit">٪</span></div>
+      </div>
+      <div class="kpi-card gold">
+        <div class="kpi-label">سرمایه‌گذاری اجتماعی</div>
+        <div class="kpi-value">۱٫۲۵M <span class="kpi-unit">واحد پولی</span></div>
+      </div>
+      <div class="kpi-card gold">
+        <div class="kpi-label">پوشش ارزیابی ریسک اقلیمی</div>
+        <div class="kpi-value">۹۶ <span class="kpi-unit">٪</span></div>
+      </div>
+      <div class="kpi-card red">
+        <div class="kpi-label">فوتی‌های مرتبط با کار</div>
+        <div class="kpi-value">۰ <span class="kpi-unit">مورد</span></div>
+      </div>
+    </div>
+
+    <div class="section-title">وضعیت کلی عملکرد پایداری</div>
+
+    <div style="margin-bottom:16px">
+      <div class="progress-row">
+        <span class="progress-label">تحقق اهداف اقلیمی</span>
+        <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:84%;background:#1a8c5a"></div></div>
+        <span class="progress-val">۸۴٪</span>
+      </div>
+      <div class="progress-row">
+        <span class="progress-label">پیشرفت برنامه‌های اقلیمی</span>
+        <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:78%;background:#1a8c5a"></div></div>
+        <span class="progress-val">۷۸٪</span>
+      </div>
+      <div class="progress-row">
+        <span class="progress-label">پوشش ارزیابی ریسک اقلیمی</span>
+        <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:96%;background:#1a5fa8"></div></div>
+        <span class="progress-val">۹۶٪</span>
+      </div>
+      <div class="progress-row">
+        <span class="progress-label">تکمیل آموزش ایمنی و سلامت</span>
+        <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:92%;background:#1a5fa8"></div></div>
+        <span class="progress-val">۹۲٪</span>
+      </div>
+      <div class="progress-row">
+        <span class="progress-label">تکمیل آموزش تنوع و شمول</span>
+        <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:79%;background:#c9973a"></div></div>
+        <span class="progress-val">۷۹٪</span>
+      </div>
+      <div class="progress-row">
+        <span class="progress-label">سهم انرژی تجدیدپذیر</span>
+        <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:18%;background:#c9973a"></div></div>
+        <span class="progress-val">۱۸٪</span>
+      </div>
+      <div class="progress-row">
+        <span class="progress-label">نرخ حضور هیئت‌مدیره</span>
+        <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:97%;background:#0a5c3a"></div></div>
+        <span class="progress-val">۹۷٪</span>
+      </div>
+      <div class="progress-row">
+        <span class="progress-label">بازیافت پسماند</span>
+        <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:64%;background:#1a8c5a"></div></div>
+        <span class="progress-val">۶۴٪</span>
+      </div>
+    </div>
+
+    <div class="narrative green-border">
+      سازمان در این دوره مسیر مشخصی در جهت توسعه پایدار طی کرده است. 
+تعهد به بهبود مستمر عملکرد ESG و پاسخگویی به ذی‌نفعان پایه‌های استراتژی 
+سازمان را تشکیل می‌دهند. دستاوردهای قابل توجه در کاهش ۱۲٪ انتشار کربن، 
+صفر فوتی شغلی، و تحقق ۸۴٪ از اهداف اقلیمی نشان‌دهنده جهت‌گیری درست 
+سازمان است.
+    </div>
+
+    <div class="page-footer">
+      <span>گزارش پایداری ESG ۱۴۰۵</span>
+      <span>صفحه ۳ از ۱۰</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ PAGE 4: ENERGY & GHG ═══════════════════════════ -->
+<div class="page">
+  <div class="inner-page">
+    <div class="page-header-stripe">
+      <h2>عملکرد زیست‌محیطی — انرژی و گازهای گلخانه‌ای</h2>
+      <span class="page-num">صفحه ۴</span>
+    </div>
+
+    <div class="narrative green-border">
+      سازمان در حوزه انرژی و کنترل انتشار گازهای گلخانه‌ای اقدامات جدی 
+انجام داده است. کاهش ۷٫۴٪ مصرف انرژی نسبت به دوره قبل و کاهش ۱۲٪ انتشار 
+کربن، حاکی از اثربخشی برنامه‌های مدیریت انرژی است. با این حال، سهم ۱۸٪ 
+انرژی تجدیدپذیر نشان‌دهنده ظرفیت بالقوه بیشتر در این حوزه است.
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div class="section-title">مصرف انرژی</div>
+        <div class="kpi-grid" style="grid-template-columns:1fr 1fr">
+          <div class="kpi-card">
+            <div class="kpi-label">مصرف برق</div>
+            <div class="kpi-value" style="font-size:16px">۱٬۸۵۰٬۰۰۰ <span class="kpi-unit">kWh</span></div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">مصرف گاز طبیعی</div>
+            <div class="kpi-value" style="font-size:16px">۶۲۰٬۰۰۰ <span class="kpi-unit">m³</span></div>
+          </div>
+          <div class="kpi-card blue">
+            <div class="kpi-label">مصرف سوخت مایع</div>
+            <div class="kpi-value" style="font-size:16px">۱۴۵٬۰۰۰ <span class="kpi-unit">لیتر</span></div>
+          </div>
+          <div class="kpi-card blue">
+            <div class="kpi-label">انرژی به ازای کارمند</div>
+            <div class="kpi-value" style="font-size:16px">۹٬۲۵۰ <span class="kpi-unit">kWh</span></div>
+          </div>
+        </div>
+        <div class="progress-row">
+          <span class="progress-label">کاهش مصرف انرژی</span>
+          <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:74%;background:#1a8c5a"></div></div>
+          <span class="progress-val">۷٫۴٪</span>
+        </div>
+        <div class="progress-row">
+          <span class="progress-label">سهم انرژی تجدیدپذیر</span>
+          <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:18%;background:#c9973a"></div></div>
+          <span class="progress-val">۱۸٪</span>
+        </div>
+      </div>
+      <div>
+        <div class="section-title">انتشار گازهای گلخانه‌ای</div>
+        <div style="margin-bottom:12px">
+          <div class="scope-row">
+            <div class="scope-icon" style="background:#fde8e8;color:#8b1a1a">S1</div>
+            <div style="flex:1">
+              <div style="font-size:12px;font-weight:600">Scope 1 — انتشار مستقیم</div>
+              <div style="font-size:11px;color:var(--text-muted)">۱٬۲۰۰ tCO₂e</div>
+            </div>
+            <div style="font-size:13px;font-weight:700;color:#8b1a1a">۱۰٫۳٪</div>
+          </div>
+          <div class="scope-row">
+            <div class="scope-icon" style="background:#ddeeff;color:#0d3460">S2</div>
+            <div style="flex:1">
+              <div style="font-size:12px;font-weight:600">Scope 2 — انتشار غیرمستقیم</div>
+              <div style="font-size:11px;color:var(--text-muted)">۲٬۵۰۰ tCO₂e</div>
+            </div>
+            <div style="font-size:13px;font-weight:700;color:#0d3460">۲۱٫۴٪</div>
+          </div>
+          <div class="scope-row">
+            <div class="scope-icon" style="background:#d6f0e3;color:#0a5c3a">S3</div>
+            <div style="flex:1">
+              <div style="font-size:12px;font-weight:600">Scope 3 — زنجیره ارزش</div>
+              <div style="font-size:11px;color:var(--text-muted)">۸٬۰۰۰ tCO₂e</div>
+            </div>
+            <div style="font-size:13px;font-weight:700;color:#0a5c3a">۶۸٫۴٪</div>
+          </div>
+        </div>
+        <div class="highlight-box" style="text-align:center">
+          <div class="hl-num">۱۲٪</div>
+          <div class="hl-label">کاهش انتشار کربن نسبت به دوره قبل</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">نمودار توزیع انتشار گازهای گلخانه‌ای (Scope 1+2+3)</div>
+    <div class="chart-wrap" style="height:200px">
+      <canvas id="ghgChart" role="img" aria-label="نمودار دایره‌ای توزیع انتشار گازهای گلخانه‌ای بر اساس Scope" style="display: block; box-sizing: border-box; height: 200px; width: 690px;" width="690" height="200">Scope 1: 1200، Scope 2: 2500، Scope 3: 8000 تن CO2e</canvas>
+    </div>
+
+    <div class="page-footer">
+      <span>گزارش پایداری ESG ۱۴۰۵</span>
+      <span>صفحه ۴ از ۱۰</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ PAGE 5: WATER & WASTE ═══════════════════════════ -->
+<div class="page">
+  <div class="inner-page">
+    <div class="page-header-stripe">
+      <h2>عملکرد زیست‌محیطی — آب، پسماند، آلودگی و تنوع زیستی</h2>
+      <span class="page-num">صفحه ۵</span>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div class="section-title">مدیریت منابع آبی</div>
+        <div class="kpi-grid" style="grid-template-columns:1fr 1fr">
+          <div class="kpi-card">
+            <div class="kpi-label">کل برداشت آب</div>
+            <div class="kpi-value" style="font-size:15px">۸۴٬۵۰۰ <span class="kpi-unit">m³</span></div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">تخلیه فاضلاب</div>
+            <div class="kpi-value" style="font-size:15px">۶۲٬۳۰۰ <span class="kpi-unit">m³</span></div>
+          </div>
+        </div>
+        <div class="progress-row">
+          <span class="progress-label">کاهش مصرف آب</span>
+          <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:68%;background:#1a5fa8"></div></div>
+          <span class="progress-val">۶٫۸٪</span>
+        </div>
+        <div class="progress-row">
+          <span class="progress-label">آب بازیافتی</span>
+          <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:22%;background:#1a5fa8"></div></div>
+          <span class="progress-val">۲۲٪</span>
+        </div>
+        <div class="progress-row">
+          <span class="progress-label">فعالیت در مناطق تنش آبی</span>
+          <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:38%;background:#c9973a"></div></div>
+          <span class="progress-val">۳۸٪</span>
+        </div>
+        <div style="margin-top:8px;font-size:11.5px;color:var(--text-muted)">
+          شدت مصرف آب: <strong style="color:var(--text-body)">۱۲٫۴ m³/واحد</strong>
+        </div>
+      </div>
+      <div>
+        <div class="section-title">مدیریت پسماند</div>
+        <div class="kpi-grid" style="grid-template-columns:1fr 1fr">
+          <div class="kpi-card">
+            <div class="kpi-label">کل پسماند تولیدی</div>
+            <div class="kpi-value" style="font-size:15px">۱٬۲۸۰ <span class="kpi-unit">تن</span></div>
+          </div>
+          <div class="kpi-card red">
+            <div class="kpi-label">پسماند خطرناک</div>
+            <div class="kpi-value" style="font-size:15px">۸۶ <span class="kpi-unit">تن</span></div>
+          </div>
+        </div>
+        <div class="progress-row">
+          <span class="progress-label">بازیافت پسماند</span>
+          <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:64%;background:#1a8c5a"></div></div>
+          <span class="progress-val">۶۴٪</span>
+        </div>
+        <div class="progress-row">
+          <span class="progress-label">پسماند قابل استفاده مجدد</span>
+          <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:41%;background:#1a8c5a"></div></div>
+          <span class="progress-val">۴۱٪</span>
+        </div>
+        <div class="progress-row">
+          <span class="progress-label">دفن نهایی پسماند</span>
+          <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:36%;background:#c9973a"></div></div>
+          <span class="progress-val">۳۶٪</span>
+        </div>
+        <div style="margin-top:8px;font-size:11.5px">
+          <span class="badge badge-green">۱۸ پروژه</span> کاهش پسماند و اقتصاد چرخشی فعال
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">نمودار ترکیب پسماند</div>
+    <div class="chart-wrap" style="height:180px">
+      <canvas id="wasteChart" role="img" aria-label="نمودار میله‌ای مقایسه پسماند بازیافتی، دفع نهایی و خطرناک" style="display: block; box-sizing: border-box; height: 180px; width: 690px;" width="690" height="180">پسماند بازیافتی ۸۱۹ تن، دفن نهایی ۴۶۱ تن، خطرناک ۸۶ تن</canvas>
+    </div>
+
+    <div class="two-col" style="margin-top:8px">
+      <div>
+        <div class="section-title">آلودگی محیط‌زیستی</div>
+        <table class="data-table">
+          <thead><tr><th>شاخص</th><th>مقدار</th><th>واحد</th></tr></thead>
+          <tbody>
+            <tr><td>آلاینده‌های هوا</td><td>۱۸٬۵۰۰</td><td>کیلوگرم</td></tr>
+            <tr><td>حوادث آلودگی</td><td><span class="badge badge-gold">۲ مورد</span></td><td>—</td></tr>
+            <tr><td>حجم نشت آلاینده</td><td>۳۲۰</td><td>لیتر</td></tr>
+            <tr><td>شکایات زیست‌محیطی</td><td><span class="badge badge-green">۱ مورد</span></td><td>—</td></tr>
+            <tr><td>جرایم محیط‌زیستی</td><td>۱۲٬۵۰۰</td><td>واحد پولی</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <div class="section-title">تنوع زیستی و اکوسیستم</div>
+        <table class="data-table">
+          <thead><tr><th>شاخص</th><th>مقدار</th><th>واحد</th></tr></thead>
+          <tbody>
+            <tr><td>زمین تحت تأثیر</td><td>۴۲٫۵</td><td>هکتار</td></tr>
+            <tr><td>زمین احیاشده</td><td><span class="badge badge-green">۱۱٫۸</span></td><td>هکتار</td></tr>
+            <tr><td>تغییر کاربری زمین</td><td>۶٫۴</td><td>هکتار</td></tr>
+            <tr><td>سایت‌های در مناطق حساس</td><td>۳</td><td>سایت</td></tr>
+            <tr><td>برنامه‌های حفاظت</td><td><span class="badge badge-green">۸ برنامه</span></td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>گزارش پایداری ESG ۱۴۰۵</span>
+      <span>صفحه ۵ از ۱۰</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ PAGE 6: SOCIAL — WORKFORCE & SAFETY ═══════════════════════════ -->
+<div class="page">
+  <div class="inner-page">
+    <div class="page-header-stripe">
+      <h2>عملکرد اجتماعی — نیروی کار، ایمنی و آموزش</h2>
+      <span class="page-num">صفحه ۶</span>
+    </div>
+
+    <div class="narrative blue-border">
+      سازمان در حوزه اجتماعی بر ایجاد محیط کار ایمن، عادلانه و 
+شامل‌کننده متمرکز است. دستاورد صفر فوتی شغلی در این دوره یکی از مهم‌ترین
+ نتایج عملکردی است. سرمایه‌گذاری ۳۲۵٬۰۰۰ واحد پولی در آموزش و توسعه 
+کارکنان و تحقق ۹۲٪ آموزش ایمنی، نشان‌دهنده تعهد جدی سازمان به ارتقای 
+سرمایه انسانی است.
+    </div>
+
+    <div class="three-col">
+      <div class="kpi-card blue">
+        <div class="kpi-label">کل کارکنان</div>
+        <div class="kpi-value">۲۸۴</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">استعدادهای کلیدی</div>
+        <div class="kpi-value">۹۶</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">موقعیت‌های باز</div>
+        <div class="kpi-value">۱۸</div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div class="section-title">بهداشت و ایمنی شغلی</div>
+        <table class="data-table">
+          <thead><tr><th>شاخص ایمنی</th><th>مقدار</th></tr></thead>
+          <tbody>
+            <tr><td>فوتی‌های مرتبط با کار</td><td><span class="badge badge-green">۰ مورد ✓</span></td></tr>
+            <tr><td>حوادث از دست رفتن زمان</td><td><span class="badge badge-gold">۱۸ مورد</span></td></tr>
+            <tr><td>نرخ حوادث قابل ثبت</td><td>۲٫۴ نرخ</td></tr>
+            <tr><td>نرخ غیبت شغلی</td><td>۴٫۱٪</td></tr>
+            <tr><td>تکمیل آموزش ایمنی</td><td><span class="badge badge-green">۹۲٪</span></td></tr>
+            <tr><td>مشارکت در برنامه رفاه</td><td><span class="badge badge-blue">۶۸٪</span></td></tr>
+          </tbody>
+        </table>
+
+        <div class="section-title" style="margin-top:16px">شرایط استخدامی</div>
+        <table class="data-table">
+          <thead><tr><th>شاخص</th><th>مقدار</th></tr></thead>
+          <tbody>
+            <tr><td>میانگین ساعت کاری هفتگی</td><td>۴۲ ساعت</td></tr>
+            <tr><td>کل اضافه‌کاری</td><td>۱۲٬۸۰۰ ساعت</td></tr>
+            <tr><td>نسبت حقوق به حداقل قانونی</td><td><span class="badge badge-green">۱٫۸ برابر</span></td></tr>
+            <tr><td>میانگین زمان جذب</td><td>۳۴ روز</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <div class="section-title">آموزش و توسعه</div>
+        <div class="highlight-box" style="text-align:center;margin-bottom:12px">
+          <div class="hl-num">۱۲٬۴۵۰</div>
+          <div class="hl-label">مجموع ساعات آموزشی ارائه شده</div>
+        </div>
+        <div class="kpi-grid" style="grid-template-columns:1fr 1fr">
+          <div class="kpi-card blue">
+            <div class="kpi-label">آموزش هر کارمند</div>
+            <div class="kpi-value" style="font-size:16px">۱۸٫۶ <span class="kpi-unit">ساعت</span></div>
+          </div>
+          <div class="kpi-card blue">
+            <div class="kpi-label">هزینه آموزش</div>
+            <div class="kpi-value" style="font-size:16px">۳۲۵٬۰۰۰</div>
+          </div>
+        </div>
+
+        <div class="section-title" style="margin-top:12px">روابط کارگری</div>
+        <table class="data-table">
+          <thead><tr><th>شاخص</th><th>مقدار</th></tr></thead>
+          <tbody>
+            <tr><td>اختلافات کارگری</td><td><span class="badge badge-gold">۴ مورد</span></td></tr>
+            <tr><td>جلسات تعامل رسمی</td><td>۱۰ جلسه</td></tr>
+            <tr><td>روزهای توقف کار</td><td><span class="badge badge-gold">۱ روز</span></td></tr>
+          </tbody>
+        </table>
+
+        <div class="section-title" style="margin-top:12px">حقوق بشر و استانداردهای کار</div>
+        <table class="data-table">
+          <thead><tr><th>شاخص</th><th>مقدار</th></tr></thead>
+          <tbody>
+            <tr><td>کار اجباری یا کودک</td><td><span class="badge badge-green">۰ مورد ✓</span></td></tr>
+            <tr><td>شکایات حقوق بشر</td><td>۱۲ مورد</td></tr>
+            <tr><td>اقدامات اصلاحی</td><td><span class="badge badge-blue">۸ مورد</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section-title">نمودار ساعات آموزشی در حوزه‌های مختلف</div>
+    <div class="chart-wrap" style="height:160px">
+      <canvas id="trainingChart" role="img" aria-label="نمودار میله‌ای ساعات آموزشی" style="display: block; box-sizing: border-box; height: 160px; width: 690px;" width="690" height="160">ایمنی ۳۲۰۰ ساعت، تنوع ۱۸۴۰ ساعت، مهارت‌های فنی ۵۴۱۰ ساعت، رهبری ۲۰۰۰ ساعت</canvas>
+    </div>
+
+    <div class="page-footer">
+      <span>گزارش پایداری ESG ۱۴۰۵</span>
+      <span>صفحه ۶ از ۱۰</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ PAGE 7: SOCIAL — DEI & COMMUNITY ═══════════════════════════ -->
+<div class="page">
+  <div class="inner-page">
+    <div class="page-header-stripe">
+      <h2>عملکرد اجتماعی — تنوع، برابری، شمول و مشارکت اجتماعی</h2>
+      <span class="page-num">صفحه ۷</span>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div class="section-title">تنوع، برابری و شمول (DEI)</div>
+        <div class="progress-row">
+          <span class="progress-label">گروه‌های کمترنماینده (کل)</span>
+          <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:34%;background:#1a5fa8"></div></div>
+          <span class="progress-val">۳۴٪</span>
+        </div>
+        <div class="progress-row">
+          <span class="progress-label">گروه‌ها در مدیریت ارشد</span>
+          <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:22%;background:#1a5fa8"></div></div>
+          <span class="progress-val">۲۲٪</span>
+        </div>
+        <div class="progress-row">
+          <span class="progress-label">تکمیل آموزش DEI</span>
+          <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:79%;background:#1a5fa8"></div></div>
+          <span class="progress-val">۷۹٪</span>
+        </div>
+        <div class="progress-row">
+          <span class="progress-label">بازبینی ضدتبعیض فرایندها</span>
+          <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:85%;background:#1a8c5a"></div></div>
+          <span class="progress-val">۸۵٪</span>
+        </div>
+        <div class="progress-row">
+          <span class="progress-label">شکاف پرداختی جنسیتی</span>
+          <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:6%;background:#c9973a"></div></div>
+          <span class="progress-val">۶٪</span>
+        </div>
+
+        <table class="data-table" style="margin-top:12px">
+          <thead><tr><th>شاخص DEI</th><th>مقدار</th></tr></thead>
+          <tbody>
+            <tr><td>موارد ثبت‌شده تبعیض</td><td><span class="badge badge-gold">۳ مورد</span></td></tr>
+            <tr><td>زنان در هیئت‌مدیره</td><td><span class="badge badge-blue">۳۳٪</span></td></tr>
+            <tr><td>اعضای مستقل هیئت‌مدیره</td><td><span class="badge badge-blue">۴۴٪</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <div class="section-title">مسئولیت اجتماعی و جامعه</div>
+        <div class="kpi-grid" style="grid-template-columns:1fr 1fr">
+          <div class="kpi-card gold">
+            <div class="kpi-label">سرمایه‌گذاری اجتماعی</div>
+            <div class="kpi-value" style="font-size:14px">۱٬۲۵۰٬۰۰۰</div>
+          </div>
+          <div class="kpi-card gold">
+            <div class="kpi-label">ذی‌نفعان برنامه‌های اجتماعی</div>
+            <div class="kpi-value" style="font-size:14px">۸٬۷۵۰</div>
+          </div>
+        </div>
+
+        <div class="highlight-box" style="margin-top:4px">
+          <div class="hl-num">۱٬۸۴۰</div>
+          <div class="hl-label">ساعت داوطلبانه کارکنان در فعالیت‌های اجتماعی</div>
+        </div>
+
+        <table class="data-table" style="margin-top:8px">
+          <thead><tr><th>شاخص جامعه</th><th>مقدار</th></tr></thead>
+          <tbody>
+            <tr><td>پروژه‌های CSR فعال</td><td><span class="badge badge-green">۱۲ پروژه</span></td></tr>
+            <tr><td>شکایات جامعه محلی</td><td>۷ مورد</td></tr>
+          </tbody>
+        </table>
+
+        <div class="section-title" style="margin-top:12px">ایمنی و مسئولیت مشتریان</div>
+        <table class="data-table">
+          <thead><tr><th>شاخص</th><th>مقدار</th></tr></thead>
+          <tbody>
+            <tr><td>شکایات کیفیت/ایمنی</td><td><span class="badge badge-gold">۱۸ مورد</span></td></tr>
+            <tr><td>حوادث ایمنی محصول</td><td><span class="badge badge-gold">۲ مورد</span></td></tr>
+            <tr><td>اقدامات اصلاحی</td><td><span class="badge badge-blue">۶ مورد</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section-title">نمودار ترکیب نیروی کار</div>
+    <div class="chart-wrap" style="height:200px">
+      <canvas id="workforceChart" role="img" aria-label="نمودار دایره‌ای ترکیب نیروی کار از نظر DEI" style="display: block; box-sizing: border-box; height: 200px; width: 690px;" width="690" height="200">گروه‌های متنوع ۳۴٪، مدیران متنوع ۲۲٪، سایر ۷۸٪</canvas>
+    </div>
+
+    <div class="narrative blue-border" style="margin-top:12px">
+      عملکرد اجتماعی سازمان نمایانگر تعهد به بهبود شرایط کارکنان و ایجاد
+ فرصت‌های برابر است. شکاف پرداختی ۶٪ جنسیتی نقطه‌ای برای بهبود در 
+دوره‌های آینده محسوب می‌شود. سرمایه‌گذاری اجتماعی قابل توجه و حضور فعال 
+کارکنان در فعالیت‌های داوطلبانه، نشانه‌ای از فرهنگ سازمانی مسئولانه است.
+    </div>
+
+    <div class="page-footer">
+      <span>گزارش پایداری ESG ۱۴۰۵</span>
+      <span>صفحه ۷ از ۱۰</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ PAGE 8: GOVERNANCE — BOARD & ETHICS ═══════════════════════════ -->
+<div class="page">
+  <div class="inner-page">
+    <div class="page-header-stripe">
+      <h2>حاکمیت شرکتی — ساختار هیئت‌مدیره، اخلاق و شفافیت</h2>
+      <span class="page-num">صفحه ۸</span>
+    </div>
+
+    <div class="narrative gold-border">
+      حاکمیت شرکتی و نظارت بر اخلاقیات و انطباق با مقررات، از اساس 
+استراتژی سازمان است. هیئت‌مدیره با ۹ عضو، نرخ حضور ۹۷٪ در جلسات و پوشش 
+۴۴٪ اعضای مستقل، ساختار قابل اعتمادی را برای راهبری سازمان فراهم کرده 
+است.
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div class="section-title">ساختار هیئت‌مدیره</div>
+        <div class="kpi-grid" style="grid-template-columns:1fr 1fr">
+          <div class="kpi-card gold">
+            <div class="kpi-label">اعضای هیئت‌مدیره</div>
+            <div class="kpi-value">۹ <span class="kpi-unit">نفر</span></div>
+          </div>
+          <div class="kpi-card gold">
+            <div class="kpi-label">نرخ حضور</div>
+            <div class="kpi-value">۹۷ <span class="kpi-unit">٪</span></div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">جلسات با دستور ESG</div>
+            <div class="kpi-value">۱۱ <span class="kpi-unit">جلسه</span></div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">کمیته‌های نظارتی</div>
+            <div class="kpi-value">۴ <span class="kpi-unit">کمیته</span></div>
+          </div>
+        </div>
+
+        <div class="progress-row">
+          <span class="progress-label">اعضای مستقل</span>
+          <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:44%;background:#c9973a"></div></div>
+          <span class="progress-val">۴۴٪</span>
+        </div>
+        <div class="progress-row">
+          <span class="progress-label">زنان در هیئت‌مدیره</span>
+          <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:33%;background:#c9973a"></div></div>
+          <span class="progress-val">۳۳٪</span>
+        </div>
+
+        <div class="section-title" style="margin-top:16px">حاکمیت ESG</div>
+        <table class="data-table">
+          <thead><tr><th>شاخص</th><th>مقدار</th></tr></thead>
+          <tbody>
+            <tr><td>جلسات کمیته ESG</td><td>۸ جلسه</td></tr>
+            <tr><td>گزارش‌های مدیریتی ESG</td><td>۵ گزارش</td></tr>
+            <tr><td>مسائل ESG بسته‌شده</td><td><span class="badge badge-green">۲ مورد</span></td></tr>
+            <tr><td>اعتبارسنجی‌های خودکار</td><td>۳۶ کنترل</td></tr>
+            <tr><td>خطاهای داده ESG</td><td>۱۴ مورد</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <div class="section-title">اخلاق و یکپارچگی</div>
+        <table class="data-table">
+          <thead><tr><th>شاخص اخلاقی</th><th>مقدار</th></tr></thead>
+          <tbody>
+            <tr><td>تخلفات اخلاقی / فساد</td><td><span class="badge badge-red">۳ مورد</span></td></tr>
+            <tr><td>تضاد منافع افشاشده</td><td>۵ مورد</td></tr>
+            <tr><td>گزارش‌های سوت‌زنی</td><td>۸ گزارش</td></tr>
+            <tr><td>ارزیابی ریسک اخلاق</td><td>۴ ارزیابی</td></tr>
+          </tbody>
+        </table>
+
+        <div class="section-title" style="margin-top:16px">شفافیت مالی و مالیاتی</div>
+        <table class="data-table">
+          <thead><tr><th>شاخص</th><th>مقدار</th></tr></thead>
+          <tbody>
+            <tr><td>اصلاحات مالی</td><td><span class="badge badge-gold">۲ مورد</span></td></tr>
+            <tr><td>اختلافات مالیاتی</td><td>۱ مورد</td></tr>
+            <tr><td>تراکنش اشخاص وابسته</td><td>۶ مورد بررسی</td></tr>
+          </tbody>
+        </table>
+
+        <div class="section-title" style="margin-top:16px">امنیت داده و سایبری</div>
+        <table class="data-table">
+          <thead><tr><th>شاخص</th><th>مقدار</th></tr></thead>
+          <tbody>
+            <tr><td>رخدادهای سایبری</td><td><span class="badge badge-red">۷ مورد</span></td></tr>
+            <tr><td>نقض حریم خصوصی</td><td><span class="badge badge-red">۲ مورد</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section-title">ترکیب هیئت‌مدیره</div>
+    <div class="chart-wrap" style="height:180px">
+      <canvas id="boardChart" role="img" aria-label="نمودار میله‌ای ترکیب هیئت‌مدیره" style="display: block; box-sizing: border-box; height: 180px; width: 690px;" width="690" height="180">اعضای مستقل ۴۴٪، وابسته ۵۶٪، زن ۳۳٪، مرد ۶۷٪</canvas>
+    </div>
+
+    <div class="page-footer">
+      <span>گزارش پایداری ESG ۱۴۰۵</span>
+      <span>صفحه ۸ از ۱۰</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ PAGE 9: GOVERNANCE — COMPLIANCE & RISK ═══════════════════════════ -->
+<div class="page">
+  <div class="inner-page">
+    <div class="page-header-stripe">
+      <h2>حاکمیت شرکتی — انطباق، مدیریت ریسک و زنجیره تامین</h2>
+      <span class="page-num">صفحه ۹</span>
+    </div>
+
+    <div class="three-col">
+      <div class="kpi-card gold">
+        <div class="kpi-label">کنترل‌های تست‌شده</div>
+        <div class="kpi-value">۱۵۶</div>
+      </div>
+      <div class="kpi-card gold">
+        <div class="kpi-label">ریسک‌های ESG ثبت‌شده</div>
+        <div class="kpi-value">۴۲</div>
+      </div>
+      <div class="kpi-card red">
+        <div class="kpi-label">تخلفات انطباقی</div>
+        <div class="kpi-value">۳</div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div class="section-title">مدیریت انطباق</div>
+        <table class="data-table">
+          <thead><tr><th>شاخص انطباق</th><th>مقدار</th></tr></thead>
+          <tbody>
+            <tr><td>کنترل‌های انطباق تست‌شده</td><td>۱۵۶ کنترل</td></tr>
+            <tr><td>موارد عدم انطباق</td><td><span class="badge badge-red">۳ مورد</span></td></tr>
+            <tr><td>تغییرات مقرراتی پایش‌شده</td><td>۲۴ مورد</td></tr>
+          </tbody>
+        </table>
+
+        <div class="section-title" style="margin-top:16px">مدیریت ریسک</div>
+        <table class="data-table">
+          <thead><tr><th>شاخص ریسک</th><th>مقدار</th></tr></thead>
+          <tbody>
+            <tr><td>ریسک‌های ESG ثبت‌شده</td><td>۴۲ مورد</td></tr>
+            <tr><td>ریسک‌های اقلیمی</td><td>۱۴ مورد</td></tr>
+            <tr><td>ریسک‌های قانونی</td><td>۴ مورد</td></tr>
+            <tr><td>جلسات بازبینی ریسک</td><td>۱۲ جلسه</td></tr>
+            <tr><td>موارد عبور از حد ریسک</td><td><span class="badge badge-red">۳ مورد</span></td></tr>
+          </tbody>
+        </table>
+
+        <div class="section-title" style="margin-top:16px">ریسک‌های قانونی</div>
+        <table class="data-table">
+          <thead><tr><th>شاخص</th><th>مقدار</th></tr></thead>
+          <tbody>
+            <tr><td>دعاوی حقوقی فعال</td><td>۳ پرونده</td></tr>
+            <tr><td>جرایم و خسارات حقوقی</td><td>۲۵۰٬۰۰۰</td></tr>
+            <tr><td>هشدارهای مقرراتی</td><td>۲ مورد</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <div class="section-title">زنجیره تامین و تأمین‌کنندگان</div>
+        <table class="data-table">
+          <thead><tr><th>شاخص</th><th>مقدار</th></tr></thead>
+          <tbody>
+            <tr><td>تأمین‌کنندگان پرریسک</td><td><span class="badge badge-red">۱۴ مورد</span></td></tr>
+            <tr><td>ممیزی تأمین‌کنندگان</td><td><span class="badge badge-green">۲۷ ممیزی</span></td></tr>
+          </tbody>
+        </table>
+
+        <div class="section-title" style="margin-top:16px">ممیزی داخلی</div>
+        <table class="data-table">
+          <thead><tr><th>شاخص</th><th>مقدار</th></tr></thead>
+          <tbody>
+            <tr><td>ممیزی‌های ESG/ریسک</td><td>۷ ممیزی</td></tr>
+            <tr><td>یافته‌های ممیزی</td><td>۲۵ یافته</td></tr>
+            <tr><td>اقدامات عقب‌افتاده</td><td><span class="badge badge-gold">۳ مورد</span></td></tr>
+          </tbody>
+        </table>
+
+        <div class="section-title" style="margin-top:16px">مبارزه با پولشویی (AML)</div>
+        <table class="data-table">
+          <thead><tr><th>شاخص AML</th><th>مقدار</th></tr></thead>
+          <tbody>
+            <tr><td>هشدارهای AML</td><td>۱۸۴ هشدار</td></tr>
+            <tr><td>گزارش تراکنش مشکوک</td><td>۲۷ گزارش</td></tr>
+            <tr><td>تطبیق تحریم / PEP</td><td><span class="badge badge-red">۱۴ مورد</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section-title">نمودار توزیع ریسک‌های ESG</div>
+    <div class="chart-wrap" style="height:180px">
+      <canvas id="riskChart" role="img" aria-label="نمودار میله‌ای توزیع ریسک‌های ESG" style="display: block; box-sizing: border-box; height: 180px; width: 690px;" width="690" height="180">ریسک اقلیمی ۱۴، ریسک قانونی ۴، ریسک کل ۴۲، موارد عبور ۳</canvas>
+    </div>
+
+    <div class="page-footer">
+      <span>گزارش پایداری ESG ۱۴۰۵</span>
+      <span>صفحه ۹ از ۱۰</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ PAGE 10: CONCLUSION ═══════════════════════════ -->
+<div class="page">
+  <div class="inner-page">
+    <div class="page-header-stripe">
+      <h2>نتیجه‌گیری کلی و چشم‌انداز آینده</h2>
+      <span class="page-num">صفحه ۱۰</span>
+    </div>
+
+    <div class="narrative green-border">
+      سازمان در دوره ۱۴۰۵ مسیر مشخصی در جهت توسعه پایدار طی کرده است. 
+تعهد به بهبود مستمر عملکرد ESG و پاسخگویی به ذی‌نفعان، پایه‌های استراتژی
+ سازمان را تشکیل می‌دهند. دستاوردهای این دوره نشان می‌دهد که سازمان با 
+رویکردی نظام‌مند به مسائل پایداری می‌نگرد و اقدامات ملموسی برای بهبود در
+ تمامی ابعاد ESG انجام داده است.
+    </div>
+
+    <div class="section-title">دستاوردهای کلیدی دوره</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px">
+      <div class="conclusion-card">
+        <h4>زیست‌محیطی — انرژی و اقلیم</h4>
+        <p style="font-size:12px;color:var(--text-muted)">کاهش ۱۲٪ 
+انتشار کربن، کاهش ۷٫۴٪ مصرف انرژی، تحقق ۸۴٪ اهداف اقلیمی، و سرمایه‌گذاری
+ ۲٬۸۵۰٬۰۰۰ در کاهش تغییرات اقلیمی از مهم‌ترین دستاوردهای زیست‌محیطی این 
+دوره است.</p>
+      </div>
+      <div class="conclusion-card">
+        <h4>زیست‌محیطی — منابع و پسماند</h4>
+        <p style="font-size:12px;color:var(--text-muted)">بازیافت ۶۴٪ 
+پسماند، کاهش ۶٫۸٪ مصرف آب، احیای ۱۱٫۸ هکتار زمین، و اجرای ۱۸ پروژه 
+اقتصاد چرخشی نشانه‌هایی از مدیریت مسئولانه منابع است.</p>
+      </div>
+      <div class="conclusion-card">
+        <h4>اجتماعی — ایمنی و نیروی کار</h4>
+        <p style="font-size:12px;color:var(--text-muted)">صفر فوتی شغلی،
+ تکمیل ۹۲٪ آموزش ایمنی، ارائه ۱۲٬۴۵۰ ساعت آموزش، حقوق ۱٫۸ برابر حداقل 
+قانونی، و شناسایی ۹۶ استعداد کلیدی از دستاوردهای اجتماعی برجسته است.</p>
+      </div>
+      <div class="conclusion-card">
+        <h4>حاکمیتی — ساختار و انطباق</h4>
+        <p style="font-size:12px;color:var(--text-muted)">نرخ حضور ۹۷٪ 
+هیئت‌مدیره، ۳۳٪ حضور زنان در هیئت‌مدیره، تست ۱۵۶ کنترل انطباق، و اجرای ۷
+ ممیزی ESG نشان‌دهنده استحکام ساختار حاکمیتی است.</p>
+      </div>
+    </div>
+
+    <div class="section-title">حوزه‌های نیازمند بهبود</div>
+    <table class="data-table">
+      <thead><tr><th>حوزه</th><th>چالش فعلی</th><th>هدف آینده</th><th>اولویت</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>انرژی تجدیدپذیر</td>
+          <td>۱۸٪ سهم فعلی</td>
+          <td>افزایش به ۳۵٪</td>
+          <td><span class="badge badge-red">بالا</span></td>
+        </tr>
+        <tr>
+          <td>شکاف پرداختی جنسیتی</td>
+          <td>۶٪ اختلاف</td>
+          <td>کاهش به زیر ۳٪</td>
+          <td><span class="badge badge-gold">متوسط</span></td>
+        </tr>
+        <tr>
+          <td>امنیت سایبری</td>
+          <td>۷ رخداد ثبتی</td>
+          <td>کاهش ۵۰٪</td>
+          <td><span class="badge badge-red">بالا</span></td>
+        </tr>
+        <tr>
+          <td>پوشش استعدادها در مدیریت</td>
+          <td>۲۲٪ گروه‌های متنوع</td>
+          <td>افزایش به ۳۰٪</td>
+          <td><span class="badge badge-gold">متوسط</span></td>
+        </tr>
+        <tr>
+          <td>سهم آب بازیافتی</td>
+          <td>۲۲٪ بازیافت</td>
+          <td>افزایش به ۴۰٪</td>
+          <td><span class="badge badge-blue">پایین</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="narrative gold-border" style="margin-top:8px">
+      ساختار حاکمیتی سازمان بر اساس بهترین شیوه‌های بین‌المللی شکل گرفته
+ است. تعهد به شفافیت، اخلاقیات و رعایت تمام مقررات قانونی تداوم خواهد 
+داشت. سازمان در دوره آتی بر تقویت زیرساخت‌های انرژی پاک، بهبود تنوع و 
+شمول، و ارتقای امنیت دیجیتال تمرکز خواهد کرد.
+    </div>
+
+    <div class="page-footer">
+      <span>گزارش پایداری ESG ۱۴۰۵ — تمام حقوق محفوظ است</span>
+      <span>صفحه ۱۰ از ۱۰</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- end report-wrapper -->
+
+<script>
+// ── Chart: GHG Scope breakdown (doughnut)
+new Chart(document.getElementById('ghgChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Scope 1 — مستقیم', 'Scope 2 — غیرمستقیم', 'Scope 3 — زنجیره ارزش'],
+    datasets: [{
+      data: [1200, 2500, 8000],
+      backgroundColor: ['#c0392b', '#1a5fa8', '#1a8c5a'],
+      borderWidth: 2,
+      borderColor: '#fff'
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: true, position: 'right', labels: { font: { family: 'Vazirmatn', size: 11 }, padding: 12 } }
+    }
+  }
+});
+
+// ── Chart: Waste breakdown (bar)
+new Chart(document.getElementById('wasteChart'), {
+  type: 'bar',
+  data: {
+    labels: ['بازیافتی', 'دفن نهایی', 'خطرناک'],
+    datasets: [{
+      label: 'تن',
+      data: [819, 461, 86],
+      backgroundColor: ['#1a8c5a', '#c9973a', '#c0392b'],
+      borderRadius: 4
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { font: { family: 'Vazirmatn', size: 11 } } },
+      y: { ticks: { font: { family: 'Vazirmatn', size: 10 } }, beginAtZero: true }
+    }
+  }
+});
+
+// ── Chart: Training hours (bar)
+new Chart(document.getElementById('trainingChart'), {
+  type: 'bar',
+  data: {
+    labels: ['ایمنی شغلی', 'تنوع و شمول', 'مهارت‌های فنی', 'رهبری', 'سایر'],
+    datasets: [{
+      label: 'ساعت',
+      data: [3200, 1840, 4010, 2000, 1400],
+      backgroundColor: ['#1a5fa8', '#c9973a', '#1a8c5a', '#8e44ad', '#888'],
+      borderRadius: 4
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { font: { family: 'Vazirmatn', size: 11 }, autoSkip: false } },
+      y: { ticks: { font: { family: 'Vazirmatn', size: 10 } }, beginAtZero: true }
+    }
+  }
+});
+
+// ── Chart: Workforce DEI (doughnut)
+new Chart(document.getElementById('workforceChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['گروه‌های متنوع', 'سایر کارکنان'],
+    datasets: [{
+      data: [97, 187],
+      backgroundColor: ['#1a5fa8', '#e2e8f0'],
+      borderWidth: 2,
+      borderColor: '#fff'
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: true, position: 'right', labels: { font: { family: 'Vazirmatn', size: 11 }, padding: 12 } },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) {
+            const total = ctx.dataset.data.reduce((a, b) => a + b, 0);
+            return ctx.label + ': ' + ctx.parsed + ' نفر (' + Math.round(ctx.parsed / total * 100) + '٪)';
+          }
+        }
+      }
+    }
+  }
+});
+
+// ── Chart: Board composition (horizontal bar)
+new Chart(document.getElementById('boardChart'), {
+  type: 'bar',
+  data: {
+    labels: ['اعضای مستقل', 'زنان', 'با تجربه ESG'],
+    datasets: [
+      {
+        label: 'درصد',
+        data: [44, 33, 78],
+        backgroundColor: ['#c9973a', '#1a5fa8', '#1a8c5a'],
+        borderRadius: 4
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    indexAxis: 'y',
+    plugins: { legend: { display: false } },
+    scales: {
+      x: {
+        max: 100,
+        ticks: { font: { family: 'Vazirmatn', size: 10 }, callback: v => v + '٪' }
+      },
+      y: { ticks: { font: { family: 'Vazirmatn', size: 11 } } }
+    }
+  }
+});
+
+// ── Chart: Risk distribution (bar)
+new Chart(document.getElementById('riskChart'), {
+  type: 'bar',
+  data: {
+    labels: ['ریسک‌های اقلیمی', 'ریسک‌های قانونی', 'کل ریسک‌های ESG', 'عبور از حد ریسک', 'هشدارهای AML'],
+    datasets: [{
+      label: 'تعداد',
+      data: [14, 4, 42, 3, 27],
+      backgroundColor: ['#1a8c5a', '#c9973a', '#1a5fa8', '#c0392b', '#8e44ad'],
+      borderRadius: 4
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { font: { family: 'Vazirmatn', size: 10 }, autoSkip: false, maxRotation: 30 } },
+      y: { ticks: { font: { family: 'Vazirmatn', size: 10 } }, beginAtZero: true }
+    }
+  }
+});
+
+// ── PDF Download
+async function downloadPDF() {
+  const btn = document.getElementById('downloadBtn');
+  btn.disabled = true;
+  btn.textContent = 'در حال آماده‌سازی...';
+
+  try {
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+
+    const pages = document.querySelectorAll('.page');
+    const A4_W = 210;
+    const A4_H = 297;
+
+    for (let i = 0; i < pages.length; i++) {
+      btn.textContent = `صفحه ${i + 1} از ${pages.length}...`;
+
+      const canvas = await html2canvas(pages[i], {
+        scale: 2,
+        useCORS: true,
+        logging: false,
+        backgroundColor: '#ffffff'
+      });
+
+      const imgData = canvas.toDataURL('image/jpeg', 0.92);
+      const imgW = A4_W;
+      const imgH = (canvas.height * A4_W) / canvas.width;
+
+      if (i > 0) pdf.addPage();
+      pdf.addImage(imgData, 'JPEG', 0, 0, imgW, Math.min(imgH, A4_H));
+    }
+
+    pdf.save('ESG-Report-1405.pdf');
+  } catch (err) {
+    alert('خطا در تولید PDF. لطفاً مجدداً تلاش کنید.');
+    console.error(err);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '⬇ دانلود PDF';
+  }
+}
+</script>
+
+
+</body></html>
