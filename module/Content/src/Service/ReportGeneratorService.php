@@ -5,6 +5,18 @@ namespace Content\Service;
 use InvalidArgumentException;
 use DateTime;
 
+/**
+ * ReportGeneratorService
+ *
+ * Produces a structured, PDF-ready ESG report array from normalized input.
+ * - Brings nearly all answered controls into key_figures
+ * - Groups controls by source and domain (parent_slug)
+ * - Generates strong data-driven narratives per subsection
+ *
+ * Notes:
+ * - This class intentionally treats any non-empty answer as "answered" (including zero numeric values).
+ * - If richer mapping (answer_status, dashboard_usage, etc.) is desired, extend ReportDataMapper::processControl to include those fields.
+ */
 class ReportGeneratorService
 {
     private ReportDataMapper $dataMapper;
@@ -25,15 +37,12 @@ class ReportGeneratorService
     }
 
     /**
-     * Generate a comprehensive report from raw JSON data
-     *
-     * @param array $rawJson Raw data containing ['data']['list'] or ['list']
-     * @return array Structured report with meta, key figures, sections, and narratives
-     * @throws InvalidArgumentException If rawJson['data']['list'] is empty or invalid
+     * Generate the full report array
+     * @param array $rawJson
+     * @return array
      */
     public function generate(array $rawJson): array
     {
-        // Support multiple input formats
         $list = $rawJson['data']['list'] ?? $rawJson['list'] ?? null;
 
         if (!is_array($list) || empty($list)) {
@@ -46,6 +55,7 @@ class ReportGeneratorService
             'meta' => [
                 'generated_at' => (new DateTime())->format('Y-m-d H:i:s'),
                 'reporting_year' => (int) date('Y'),
+                'answered_controls' => $this->countAnsweredControls($normalized),
             ],
             'key_figures' => $this->extractKeyFigures($normalized),
             'environmental' => $this->environmentalBuilder->build($normalized),
@@ -56,404 +66,492 @@ class ReportGeneratorService
     }
 
     /**
-     * Extract key figures (controls with answer_type=number) from all domains
+     * Count controls that appear to be answered (non-null, non-empty string)
      */
-    private function extractKeyFigures(array $normalized): array
+    private function countAnsweredControls(array $normalized): int
     {
-        $keyFigures = [];
-
-        foreach ($normalized['controls'] as $parentSlug => $controls) {
-            foreach ($controls as $control) {
-                if (isset($control['answer_type']) && $control['answer_type'] === 'number') {
-                    $keyFigures[] = [
-                        'slug' => $control['slug'] ?? null,
-                        'title' => $control['title'] ?? null,
-                        'parent_slug' => $control['parent_slug'] ?? null,
-                        'answer' => $control['answer'] ?? null,
-                        'answer_unit' => $control['answer_unit'] ?? null,
-                        'metric_code' => $control['metric_code'] ?? null,
-                        'kpi_code' => $control['kpi_code'] ?? null,
-                    ];
-                }
+        $count = 0;
+        foreach ($this->getAllControls($normalized) as $control) {
+            if ($this->isAnsweredControl($control)) {
+                $count++;
             }
         }
-
-        return $keyFigures;
+        return $count;
     }
 
     /**
-     * Build dynamic narratives from normalized data with title/body structure
-     * All values are extracted from controls, no hardcoded numbers
+     * Extract a rich set of key figures from almost all answered controls.
+     * Returns an array of figures including formatted values and chart suggestions.
+     */
+    private function extractKeyFigures(array $normalized): array
+    {
+        $figures = [];
+
+        foreach ($this->getAllControls($normalized) as $control) {
+            if (!$this->isAnsweredControl($control)) {
+                continue;
+            }
+
+            $domain = $normalized['domains'][$control['parent_slug']] ?? null;
+            $source = $domain['source'] ?? ($control['source'] ?? 'unknown');
+
+            $formatted = $this->formatAnswer($control['answer'] ?? null, $control['answer_unit'] ?? null, $control['answer_type'] ?? null);
+            $chart = $this->suggestChart($control);
+            $importance = $this->computeSectionImportance($control, $domain);
+
+            $figures[] = [
+                'slug' => $control['slug'] ?? null,
+                'title' => $control['title'] ?? $control['summary'] ?? null,
+                'parent_slug' => $control['parent_slug'] ?? null,
+                'domain_slug' => $control['parent_slug'] ?? null,
+                'domain_title' => $domain['title'] ?? null,
+                'source' => $source,
+                'answer_raw' => $control['answer'] ?? null,
+                'formatted_answer' => $formatted,
+                'answer_unit' => $control['answer_unit'] ?? null,
+                'answer_type' => $control['answer_type'] ?? null,
+                'metric_code' => $control['metric_code'] ?? null,
+                'kpi_code' => $control['kpi_code'] ?? null,
+                'chart_suggestion' => $chart,
+                'section_importance' => $importance,
+            ];
+        }
+
+        // sort by importance and then by domain
+        usort($figures, function ($a, $b) {
+            $ai = $a['section_importance'] ?? 0;
+            $bi = $b['section_importance'] ?? 0;
+            if ($ai === $bi) {
+                return strcmp($a['domain_slug'] ?? '', $b['domain_slug'] ?? '');
+            }
+            return $bi <=> $ai;
+        });
+
+        return $figures;
+    }
+
+    /**
+     * Compute an integer importance for a control to prioritise key figures
+     */
+    private function computeSectionImportance(array $control, ?array $domain = null): int
+    {
+        $high = [
+            'greenhouse-gas-emissions',
+            'energy-resource-management',
+            'water-management',
+            'waste-management-circular-economy',
+            'corporate-governance-structure',
+            'workforce-structure-demographics',
+            'risk-management',
+        ];
+
+        if ($domain && in_array($domain['slug'] ?? ($control['parent_slug'] ?? ''), $high, true)) {
+            return 10;
+        }
+
+        $slug = $control['slug'] ?? '';
+        if (stripos($slug, 'total') !== false || stripos($slug, 'total-') !== false || stripos($slug, 'count') !== false) {
+            return 7;
+        }
+
+        if (($control['answer_type'] ?? '') === 'percentage') {
+            return 5;
+        }
+
+        return 3;
+    }
+
+    /**
+     * Group normalized controls by source (environmental, social, governance)
+     * Returns ['environmental' => [domainSlug=>controls], ...]
+     */
+    private function groupBySource(array $normalized): array
+    {
+        $result = [
+            'environmental' => [],
+            'social' => [],
+            'governance' => [],
+        ];
+
+        foreach ($normalized['domains'] ?? [] as $slug => $domain) {
+            $src = strtolower($domain['source'] ?? '');
+            if (!isset($result[$src])) {
+                $result[$src] = [];
+            }
+            $result[$src][$slug] = $this->dataMapper->getControlsByDomain($slug, $normalized);
+        }
+
+        return $result;
+    }
+
+    /**
+     * Build strong, data-driven narratives for the full report
      */
     private function buildNarratives(array $normalized): array
     {
         $year = (int) date('Y');
-        
+
         return [
             'about_report' => [
                 'title' => 'درباره این گزارش',
-                'body' => "گزارش پایداری سال {$year} بر اساس استاندارهای بین‌المللی GRI و SASB تهیه شده است. " .
-                         "این گزارش عملکرد سازمان در سه حوزه زیست‌محیطی، اجتماعی و حاکمیتی را پوشش می‌دهد."
+                'body' => $this->buildReportIntro($year),
             ],
-            'environmental' => $this->buildEnvironmentalNarratives($normalized),
-            'social' => $this->buildSocialNarratives($normalized),
-            'governance' => $this->buildGovernanceNarratives($normalized),
+            'environmental' => $this->buildSectionNarratives('environmental', $normalized),
+            'social' => $this->buildSectionNarratives('social', $normalized),
+            'governance' => $this->buildSectionNarratives('governance', $normalized),
             'report_conclusion' => [
                 'title' => 'نتیجه‌گیری کلی',
-                'body' => 'سازمان در این دوره مسیر مشخصی در جهت توسعه پایدار طی کرده است. ' .
-                         'تعهد به بهبود مستمر عملکرد ESG و پاسخگویی به ذی‌نفعان پایه‌های استراتژی سازمان را تشکیل می‌دهند.'
-            ]
+                'body' => $this->buildReportConclusion($normalized),
+            ],
         ];
     }
 
     /**
-     * Build report introduction narrative
+     * Paragraph-style intro using year and foundation
      */
     private function buildReportIntro(int $year): string
     {
-        return "گزارش پایداری سال {$year} حاضر، توصیف جامعی از عملکرد سازمان در حوزه‌های محیط‌زیست، اجتماعی و حاکمیتی (ESG) است. " .
-               "این گزارش بر اساس استاندارهای بین‌المللی تهیه شده و شفافیت کامل در ارائه داده‌ها را منعکس می‌کند.";
+        return "گزارش پایداری سال {$year} تصویر یکپارچه‌ای از عملکرد سازمان در حوزه‌های محیط‌زیست، اجتماعی و حاکمیتی است. " .
+            "این گزارش بر مبنای داده‌های ثبت‌شده در سامانه فراهم شده و نقاط قوت، ریسک‌ها و پیشنهادهای کلیدی برای دوره آینده را برجسته می‌کند.";
     }
 
     /**
-     * Build environmental section narratives
+     * Build narratives for a top-level source (environmental/social/governance)
      */
-    private function buildEnvironmentalNarratives(array $normalized): array
+    private function buildSectionNarratives(string $source, array $normalized): array
     {
-        $narratives = [
-            'intro' => 'سازمان در حوزه‌های انرژی، منابع آبی، مدیریت پسماند و تغییرات اقلیمی توجه ویژه داشته است. ' .
-                      'اقدامات محسوسی برای کاهش تأثیرات محیط‌زیستی و ارتقاء سطح پایداری انجام گرفته است.',
-        ];
+        $domains = $this->dataMapper->getDomainsBySource($source, $normalized);
 
-        // GHG Emissions narrative
-        if ($ghgNarrative = $this->buildGHGNarrative($normalized)) {
-            $narratives['ghg'] = $ghgNarrative;
+        $answeredControlsCount = 0;
+        $controlsPool = [];
+        foreach ($domains as $slug => $domain) {
+            $controls = $this->dataMapper->getControlsByDomain($slug, $normalized);
+            foreach ($controls as $c) {
+                if ($this->isAnsweredControl($c)) {
+                    $answeredControlsCount++;
+                    $controlsPool[] = $c + ['parent_slug' => $slug];
+                }
+            }
         }
 
-        // Energy narrative
-        if ($energyNarrative = $this->buildEnergyNarrative($normalized)) {
-            $narratives['energy'] = $energyNarrative;
+        $intro = sprintf('بخش %s: شامل %d حوزه با %d شاخص پاسخ‌شده است. در ادامه مهم‌ترین دستاوردها و شاخص‌های کلیدی این حوزه ارائه می‌شود.',
+            ucfirst($source), count($domains), $answeredControlsCount
+        );
+
+        // Build per-domain narratives
+        $domainNarratives = [];
+        foreach ($domains as $slug => $domain) {
+            $controls = $this->dataMapper->getControlsByDomain($slug, $normalized);
+            $domNarr = $this->buildDomainNarrative($domain, $controls);
+            if ($domNarr) {
+                $domainNarratives[$slug] = $domNarr;
+            }
         }
 
-        // Water narrative
-        if ($waterNarrative = $this->buildWaterNarrative($normalized)) {
-            $narratives['water'] = $waterNarrative;
+        // summary recommendations (chart types)
+        $chartRecommendations = [];
+        foreach ($controlsPool as $c) {
+            $chart = $this->suggestChart($c);
+            if ($chart['chart_type'] ?? null) {
+                $chartRecommendations[$chart['chart_type']] = ($chartRecommendations[$chart['chart_type']] ?? 0) + 1;
+            }
         }
 
-        // Waste narrative
-        if ($wasteNarrative = $this->buildWasteNarrative($normalized)) {
-            $narratives['waste'] = $wasteNarrative;
-        }
+        arsort($chartRecommendations);
+        $topCharts = array_keys(array_slice($chartRecommendations, 0, 3, true));
 
-        $narratives['conclusion'] = 'عملکرد محیط‌زیستی سازمان بیانگر تعهد به کاهش پیامدهای نابرخوانی با محیط است. ' .
-                                   'تلاش‌های مستمر برای بهینه‌سازی مصرف منابع و کاهش انتشارات تداوم خواهد داشت.';
+        $recommendationSentence = count($topCharts)
+            ? ('پیشنهاد نمودارهای پیشنهادی برای ارائه در گزارش: ' . implode(', ', $topCharts) . '.')
+            : '';
 
-        return $narratives;
-    }
-
-    /**
-     * Build GHG emissions narrative from controls
-     */
-    private function buildGHGNarrative(array $normalized): ?string
-    {
-        $scope1 = $this->getControlValue($normalized, 'greenhouse-gas-emissions', 'scope1');
-        $scope2 = $this->getControlValue($normalized, 'greenhouse-gas-emissions', 'scope2');
-        $scope3 = $this->getControlValue($normalized, 'greenhouse-gas-emissions', 'scope3');
-        $total = $this->getControlValue($normalized, 'greenhouse-gas-emissions', 'total-ghg');
-        $reduction = $this->getControlValue($normalized, 'greenhouse-gas-emissions', 'ghg-reduction-rate');
-
-        if (!$scope1 && !$scope2 && !$scope3 && !$total) {
-            return null;
-        }
-
-        $narrative = 'میزان انتشارات گازهای گلخانه‌ای سازمان';
-        
-        if ($scope1) {
-            $narrative .= " در Scope 1 معادل {$scope1} تن معادل دی‌اکسید کربن است،";
-        }
-        if ($scope2) {
-            $narrative .= " Scope 2 برابر {$scope2} تن معادل دی‌اکسید کربن و";
-        }
-        if ($scope3) {
-            $narrative .= " Scope 3 معادل {$scope3} تن معادل دی‌اکسید کربن را شامل می‌شود.";
-        } else {
-            $narrative .= ".";
-        }
-        
-        if ($total) {
-            $narrative .= " کل انتشارات معادل {$total} تن معادل دی‌اکسید کربن است.";
-        }
-        
-        if ($reduction) {
-            $narrative .= " نرخ کاهش انتشارات نسبت به سال قبل {$reduction}% بوده است.";
-        }
-
-        return $narrative;
-    }
-
-    /**
-     * Build energy narrative from controls
-     */
-    private function buildEnergyNarrative(array $normalized): ?string
-    {
-        $electricity = $this->getControlValue($normalized, 'energy-resource-management', 'electricity-consumption');
-        $gas = $this->getControlValue($normalized, 'energy-resource-management', 'gas-consumption');
-        $renewablePercent = $this->getControlValue($normalized, 'energy-resource-management', 'renewable-energy-percent');
-        $energyReduction = $this->getControlValue($normalized, 'energy-resource-management', 'energy-reduction-rate');
-
-        if (!$electricity && !$gas && !$renewablePercent) {
-            return null;
-        }
-
-        $narrative = 'مصرف انرژی سازمان';
-        
-        if ($electricity) {
-            $narrative .= " {$electricity} مگاوات ساعت برق مصرف کرد و";
-        }
-        if ($gas) {
-            $narrative .= " مصرف گاز طبیعی معادل {$gas} مکعب بوده است.";
-        } elseif ($electricity) {
-            $narrative .= ".";
-        }
-
-        if ($renewablePercent) {
-            $narrative .= " {$renewablePercent}% از انرژی مصرفی از منابع تجدیدپذیر تأمین شده است.";
-        }
-
-        if ($energyReduction) {
-            $narrative .= " میزان کاهش مصرف انرژی {$energyReduction}% بوده است.";
-        }
-
-        return $narrative;
-    }
-
-    /**
-     * Build water narrative from controls
-     */
-    private function buildWaterNarrative(array $normalized): ?string
-    {
-        $totalWater = $this->getControlValue($normalized, 'water-management', 'total-water-consumption');
-        $recycledPercent = $this->getControlValue($normalized, 'water-management', 'water-recycling-percent');
-        $waterReduction = $this->getControlValue($normalized, 'water-management', 'water-reduction-rate');
-
-        if (!$totalWater && !$recycledPercent) {
-            return null;
-        }
-
-        $narrative = 'مدیریت منابع آبی';
-        
-        if ($totalWater) {
-            $narrative .= " کل مصرف آب سازمان {$totalWater} مترمکعب بود.";
-        }
-
-        if ($recycledPercent) {
-            $narrative .= " {$recycledPercent}% از آب مصرفی بازیافت و دوباره استفاده شد.";
-        }
-
-        if ($waterReduction) {
-            $narrative .= " میزان کاهش مصرف آب {$waterReduction}% بوده است.";
-        }
-
-        return $narrative;
-    }
-
-    /**
-     * Build waste narrative from controls
-     */
-    private function buildWasteNarrative(array $normalized): ?string
-    {
-        $totalWaste = $this->getControlValue($normalized, 'waste-management-circular-economy', 'total-waste');
-        $recycledPercent = $this->getControlValue($normalized, 'waste-management-circular-economy', 'waste-recycling-percent');
-        $hazardousWaste = $this->getControlValue($normalized, 'waste-management-circular-economy', 'hazardous-waste');
-
-        if (!$totalWaste && !$recycledPercent && !$hazardousWaste) {
-            return null;
-        }
-
-        $narrative = 'مدیریت پسماند سازمان';
-        
-        if ($totalWaste) {
-            $narrative .= " کل پسماند تولیدی {$totalWaste} تن بود.";
-        }
-
-        if ($recycledPercent) {
-            $narrative .= " {$recycledPercent}% از پسماند به روش‌های بازیافت و بازاستفاده اداره شد.";
-        }
-
-        if ($hazardousWaste) {
-            $narrative .= " میزان پسماند خطرناک {$hazardousWaste} تن بود و تحت نظارت ویژه مدیریت شد.";
-        }
-
-        return $narrative;
-    }
-
-    /**
-     * Build social section narratives
-     */
-    private function buildSocialNarratives(array $normalized): array
-    {
-        $narratives = [
-            'intro' => 'سازمان در حوزه اجتماعی بر ایجاد محیط کار ایمن، عادلانه و شامل‌کننده متمرکز است. ' .
-                      'سرمایه‌گذاری در توسعه نیروی انسانی و بهبود رفاه کارکنان از اولویت‌های کلیدی است.',
-        ];
-
-        // Health & Safety narrative
-        if ($hsNarrative = $this->buildHealthSafetyNarrative($normalized)) {
-            $narratives['health_safety'] = $hsNarrative;
-        }
-
-        // Diversity, Equity, Inclusion narrative
-        if ($deiNarrative = $this->buildDEINarrative($normalized)) {
-            $narratives['dei'] = $deiNarrative;
-        }
-
-        $narratives['conclusion'] = 'عملکرد اجتماعی سازمان نمایانگر تعهد به بهبود شرایط کارکنان و ایجاد فرصت‌های برابر است. ' .
-                                   'ادامه تلاش برای کاهش حوادث و افزایش فرصت‌های شغلی برای گروه‌های کمترنماینده پیش خواهد رفت.';
-
-        return $narratives;
-    }
-
-    /**
-     * Build health and safety narrative
-     */
-    private function buildHealthSafetyNarrative(array $normalized): ?string
-    {
-        $injuryRate = $this->getControlValue($normalized, 'health-safety-wellbeing', 'injury-rate');
-        $fatalitiesCount = $this->getControlValue($normalized, 'health-safety-wellbeing', 'fatalities');
-        $safetyTrainingCompletion = $this->getControlValue($normalized, 'health-safety-wellbeing', 'safety-training-completion-percent');
-
-        if (!$injuryRate && !$fatalitiesCount && !$safetyTrainingCompletion) {
-            return null;
-        }
-
-        $narrative = 'سلامت و ایمنی کارکنان';
-        
-        if ($injuryRate) {
-            $narrative .= " نرخ حوادث و صدمات {$injuryRate} برای هر میلیون ساعت کار ثبت شد.";
-        }
-
-        if ($fatalitiesCount) {
-            $narrative .= " متأسفانه {$fatalitiesCount} حادثه با پیامد مرگبار رخ داد.";
-        }
-
-        if ($safetyTrainingCompletion) {
-            $narrative .= " {$safetyTrainingCompletion}% کارکنان برنامه‌های آموزش ایمنی را تکمیل کردند.";
-        }
-
-        return $narrative;
-    }
-
-    /**
-     * Build diversity, equity, inclusion narrative
-     */
-    private function buildDEINarrative(array $normalized): ?string
-    {
-        $wageGap = $this->getControlValue($normalized, 'diversity-equity-inclusion', 'wage-gap');
-        $underrepresentedGroupPercent = $this->getControlValue($normalized, 'diversity-equity-inclusion', 'underrepresented-groups-percent');
-        $femaleLeadershipPercent = $this->getControlValue($normalized, 'diversity-equity-inclusion', 'female-leadership-percent');
-
-        if (!$wageGap && !$underrepresentedGroupPercent && !$femaleLeadershipPercent) {
-            return null;
-        }
-
-        $narrative = 'تنوع، برابری و شمول در سازمان';
-        
-        if ($wageGap) {
-            $narrative .= " شکاف پرداختی بین گروه‌های مختلف {$wageGap}% است.";
-        }
-
-        if ($underrepresentedGroupPercent) {
-            $narrative .= " {$underrepresentedGroupPercent}% از پست‌های مختلف توسط گروه‌های کمترنماینده سازمانی اشغال شده است.";
-        }
-
-        if ($femaleLeadershipPercent) {
-            $narrative .= " {$femaleLeadershipPercent}% از مسئولیت‌های رهبری توسط زنان برعهده است.";
-        }
-
-        return $narrative;
-    }
-
-    /**
-     * Build governance section narratives
-     */
-    private function buildGovernanceNarratives(array $normalized): array
-    {
         return [
-            'intro' => 'حاکمیت شرکتی و نظارت بر اخلاقیات و انطباق با مقررات از اساس استراتژی سازمان است. ' .
-                      'هیات مدیره نقش مهمی در هدایت گذاری‌های سازمان و نظارت بر عملکرد دارد.',
-            'board' => $this->buildBoardNarrative($normalized) ?? 
-                      'هیات مدیره سازمان نقش کلیدی در تصمیم‌گیری‌های استراتژیک و نظارت بر عملکرد سازمان را ایفا می‌کند.',
-            'conclusion' => 'ساختار حاکمیتی سازمان بر اساس بهترین شیوه‌های بین‌المللی شکل گرفته است. ' .
-                          'تعهد به شفافیت، اخلاقیات و رعایت تمام مقررات قانونی تداوم خواهد داشت.',
+            'intro' => $intro,
+            'domains' => $domainNarratives,
+            'chart_recommendations' => $topCharts,
+            'recommendation_note' => $recommendationSentence,
         ];
     }
 
     /**
-     * Build board narrative
+     * Build a narrative paragraph for a domain using its answered controls
      */
-    private function buildBoardNarrative(array $normalized): ?string
+    private function buildDomainNarrative(array $domain, array $controls): ?array
     {
-        $boardSize = $this->getControlValue($normalized, 'corporate-governance-structure', 'board-members-count');
-        $femalePercent = $this->getControlValue($normalized, 'corporate-governance-structure', 'female-board-members-percent');
-        $attendanceRate = $this->getControlValue($normalized, 'corporate-governance-structure', 'board-meeting-attendance-rate');
-        $esgMeetings = $this->getControlValue($normalized, 'corporate-governance-structure', 'esg-focused-meetings-count');
+        $answered = array_filter($controls, function ($c) {
+            return $this->isAnsweredControl($c);
+        });
 
-        if (!$boardSize && !$femalePercent && !$attendanceRate) {
+        if (empty($answered)) {
             return null;
         }
 
-        $narrative = 'هیات مدیره';
-        
-        if ($boardSize) {
-            $narrative .= " {$boardSize} نفر عضو دارد و";
+        $title = $domain['title'] ?? $domain['slug'] ?? 'نامشخص';
+        $description = $domain['description'] ?? '';
+
+        // Prepare summary sentences
+        $sentences = [];
+        $sentences[] = "{$title}: {$description}";
+
+        // Pick up to 4 most relevant controls to mention (by computed importance and numeric values)
+        usort($answered, function ($a, $b) use ($domain) {
+            $ia = $this->computeSectionImportance($a, $domain);
+            $ib = $this->computeSectionImportance($b, $domain);
+            if ($ia === $ib) {
+                $va = is_numeric($a['answer'] ?? null) ? (float)$a['answer'] : 0;
+                $vb = is_numeric($b['answer'] ?? null) ? (float)$b['answer'] : 0;
+                return $vb <=> $va;
+            }
+            return $ib <=> $ia;
+        });
+
+        $examples = array_slice($answered, 0, 6);
+
+        foreach ($examples as $c) {
+            $formatted = $this->formatAnswer($c['answer'] ?? null, $c['answer_unit'] ?? null, $c['answer_type'] ?? null);
+            $titleCtrl = $c['title'] ?? $c['summary'] ?? $c['slug'];
+            $sentences[] = "شاخص «{$titleCtrl}» برابر {$formatted} ثبت شده است.";
         }
 
-        if ($femalePercent) {
-            $narrative .= " {$femalePercent}% از اعضا زن هستند.";
-        } elseif ($boardSize) {
-            $narrative .= ".";
+        // Domain-level insight: if numeric totals make sense (e.g., greenhouse gases or water)
+        $insight = $this->domainInsight($domain, $controls);
+        if ($insight) {
+            $sentences[] = $insight;
         }
 
-        if ($attendanceRate) {
-            $narrative .= " نرخ حضور اعضا در جلسات {$attendanceRate}% بوده است.";
-        }
+        // closing recommendation for the domain
+        $sentences[] = 'پیشنهاد: پایش دوره‌ای این شاخص‌ها، مشخص‌سازی اهداف کوتاه‌مدت و استفاده از نمودارهای روند برای نمایش تغییرات توصیه می‌شود.';
 
-        if ($esgMeetings) {
-            $narrative .= " در این دوره {$esgMeetings} جلسه تخصصی درخصوص مسائل پایداری برگزار شد.";
-        }
-
-        return $narrative;
+        return [
+            'title' => $title,
+            'body' => implode(' ', $sentences),
+        ];
     }
 
     /**
-     * Build final report conclusion
+     * Produce a short insight sentence for domains with special metrics
      */
-    private function buildReportConclusion(): string
+    private function domainInsight(array $domain, array $controls): ?string
     {
-        return 'سازمان متعهد است که در مسیر توسعه پایدار و بهبود مستمر عملکرد ESG خود پیش‌رود. ' .
-               'تعامل مثمرثمر با ذی‌نفعان و سرمایه‌گذاری در فناوری‌های نو پایه‌های استراتژی سازمان را تشکیل می‌دهند. ' .
-               'انتظار می‌رود که نتایج گزارش حاضر مبنای تعیین اهداف و برنامه‌های بهتری برای سال‌های آتی باشد.';
+        $slug = $domain['slug'] ?? '';
+
+        if ($slug === 'greenhouse-gas-emissions') {
+            // sum numeric answers whose units look like tons
+            $total = 0.0;
+            $scopes = [];
+            foreach ($controls as $c) {
+                if (!$this->isAnsweredControl($c)) {
+                    continue;
+                }
+                $u = $c['answer_unit'] ?? '';
+                if (is_numeric($c['answer']) && in_array($u, ['ton', 't', 'ton_co2e', 'co2e', 'ton_co2'], true)) {
+                    $total += (float)$c['answer'];
+                }
+                if (stripos($c['slug'] ?? '', 'scope') !== false) {
+                    $scopes[$c['slug']] = $c['answer'];
+                }
+            }
+
+            if ($total > 0) {
+                $fmtTotal = $this->formatAnswer($total, 'ton', 'number');
+                $scopeParts = [];
+                foreach ($scopes as $k => $v) {
+                    $scopeParts[] = "{$k}: {$this->formatAnswer($v, 'ton', 'number')}";
+                }
+                $scopeText = $scopeParts ? (' (' . implode(', ', $scopeParts) . ')') : '';
+                return "در مجموع، انتشارات گزارش‌شده معادل {$fmtTotal} است{$scopeText}. کاهش یا تثبیت این سطح در سال‌های آتی از اولویت‌های گزارش پیشنهاد می‌شود.";
+            }
+        }
+
+        if ($slug === 'water-management') {
+            $total = $this->getNumericFromControls($controls, ['total-water-withdrawal-consumption', 'total-water-withdrawal', 'total-water']);
+            if ($total !== null) {
+                return "کل برداشت/مصرف آب گزارش‌شده برابر {$this->formatAnswer($total, 'm3', 'number')} است؛ تمرکز بر بازچرخانی و مدیریت مصرف توصیه می‌شود.";
+            }
+        }
+
+        if ($slug === 'waste-management-circular-economy') {
+            $totalWaste = $this->getNumericFromControls($controls, ['total-waste-generated', 'total-waste']);
+            if ($totalWaste !== null) {
+                return "کل پسماند تولیدی برابر {$this->formatAnswer($totalWaste, 'ton', 'number')} است؛ افزایش نرخ بازیافت و کاهش ارسال به دفع نهایی می‌تواند تأثیر قابل‌توجهی داشته باشد.";
+            }
+        }
+
+        if ($slug === 'workforce-structure-demographics') {
+            $employees = $this->getNumericFromControls($controls, ['total-employees-count', 'employees-count']);
+            if ($employees !== null) {
+                return "نیروی انسانی سازمان شامل {$this->formatAnswer($employees, 'employee', 'number')} نفر است؛ سرمایه‌گذاری در توسعه مهارت و برنامه‌های نگهداشت توصیه می‌شود.";
+            }
+        }
+
+        return null;
     }
 
     /**
-     * Helper method to get control value by parent slug and control slug
+     * Helper: find first numeric control by a list of candidate slugs
+     */
+    private function getNumericFromControls(array $controls, array $candidateSlugs)
+    {
+        foreach ($candidateSlugs as $s) {
+            foreach ($controls as $c) {
+                if (($c['slug'] ?? '') === $s && is_numeric($c['answer'] ?? null)) {
+                    return (float)$c['answer'];
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Format numeric/percentage answers into human readable strings
+     */
+    private function formatAnswer($answer, ?string $unit = null, ?string $type = null): string
+    {
+        if ($answer === null || $answer === '') {
+            return 'ناموجود';
+        }
+
+        // Keep numeric type if possible
+        if (is_numeric($answer)) {
+            $isFloat = (floor($answer) != $answer);
+            $decimals = $isFloat ? 1 : 0;
+            $formatted = number_format((float) $answer, $decimals, '.', ',');
+        } else {
+            $formatted = (string) $answer;
+        }
+
+        $unit = $unit ?? strtolower($type ?? '');
+
+        // Map common unit codes to friendly Persian labels
+        $map = [
+            'percent' => '%',
+            'percentage' => '%',
+            'm3' => 'مترمکعب',
+            'm3_per_unit' => 'مترمکعب/واحد',
+            'ton' => 'تن',
+            'employee' => 'نفر',
+            'count' => 'مورد',
+            'day' => 'روز',
+        ];
+
+        $label = $map[$unit] ?? $unit;
+
+        if (in_array($unit, ['percent', 'percentage', '%'], true)) {
+            return $formatted . '%';
+        }
+
+        if (!empty($label)) {
+            return $formatted . ' ' . $label;
+        }
+
+        return $formatted;
+    }
+
+    /**
+     * Suggest chart type for a control — used to advise visuals in the PDF
+     */
+    private function suggestChart(array $control): array
+    {
+        $unit = strtolower($control['answer_unit'] ?? '') ;
+        $type = strtolower($control['answer_type'] ?? '');
+        $slug = $control['slug'] ?? '';
+
+        // Prefer gauge/donut for single-percentage KPIs
+        if ($type === 'percentage' || in_array($unit, ['percent', '%'], true)) {
+            if (stripos($slug, 'share') !== false || stripos($slug, 'ratio') !== false || stripos($slug, 'distribution') !== false) {
+                return ['chart_type' => 'pie', 'reason' => 'Distribution/share indicator'];
+            }
+            return ['chart_type' => 'gauge', 'reason' => 'Single KPI percentage'];
+        }
+
+        // For totals and counts, bar or line (if time-series available)
+        if (in_array($unit, ['ton', 'm3', 'count', 'employee', 'day'], true) || $type === 'number') {
+            // intensity or trend indicators -> line
+            if (stripos($slug, 'intensity') !== false || stripos($slug, 'trend') !== false) {
+                return ['chart_type' => 'line', 'reason' => 'Trend/intensity metric'];
+            }
+            return ['chart_type' => 'bar', 'reason' => 'Absolute/count metric'];
+        }
+
+        // Fallback
+        return ['chart_type' => 'table', 'reason' => 'Tabular presentation recommended'];
+    }
+
+    /**
+     * Check whether control is considered answered. Treat numeric zero as valid.
+     */
+    private function isAnsweredControl(array $control): bool
+    {
+        if (!array_key_exists('answer', $control)) {
+            return false;
+        }
+
+        $a = $control['answer'];
+
+        if ($a === null) {
+            return false;
+        }
+
+        if ($a === '') {
+            return false;
+        }
+
+        // numeric zero and strings like "0" are valid answered values
+        return true;
+    }
+
+    /**
+     * Get a control answer value by parent and slug. Returns null when missing.
+     * Unlike previous implementation this keeps zero numeric answers.
      */
     private function getControlValue(array $normalized, string $parentSlug, string $controlSlug): ?string
     {
         $control = $this->dataMapper->getControlBySlug($controlSlug, $parentSlug, $normalized);
-        
-        if (!$control || !isset($control['answer'])) {
+        if (!$control || !array_key_exists('answer', $control)) {
             return null;
         }
 
         $answer = $control['answer'];
-        
-        // Return empty string if answer is empty/zero/null
-        if ($answer === '' || $answer === null || (is_numeric($answer) && $answer == 0)) {
+
+        if ($answer === null || $answer === '') {
             return null;
         }
 
-        return (string) $answer;
+        return (string)$answer;
+    }
+
+    /**
+     * Return a flat list of all controls from normalized structure
+     */
+    private function getAllControls(array $normalized): array
+    {
+        $all = [];
+        foreach ($normalized['controls'] ?? [] as $parent => $controls) {
+            foreach ($controls as $c) {
+                // ensure parent_slug is always present
+                if (!isset($c['parent_slug'])) {
+                    $c['parent_slug'] = $parent;
+                }
+                $all[] = $c;
+            }
+        }
+        return $all;
+    }
+
+    /**
+     * Build final, human-friendly conclusion using presence/absence of major signals
+     */
+    private function buildReportConclusion(array $normalized): string
+    {
+        $answered = $this->countAnsweredControls($normalized);
+        $total = 0;
+        foreach ($normalized['controls'] ?? [] as $p => $c) {
+            $total += count($c);
+        }
+
+        $coverage = $total > 0 ? round($answered / $total * 100) : 0;
+
+        return "گزارش حاضر شامل {$answered} شاخص پاسخ‌شده از مجموعه {$total} شاخص است (پوشش داده: {$coverage}%). " .
+            "پیشنهاد می‌شود اهداف کمی برای مهم‌ترین شاخص‌های محیط‌زیستی، اجتماعی و حاکمیتی تدوین شده و پیگیری دوره‌ای با استفاده از نمودارهای روند انجام شود.";
     }
 }
 
