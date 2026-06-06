@@ -51,11 +51,11 @@ class ReportGeneratorService
 
         $normalized = $this->dataMapper->normalize($list);
 
-        return [
+        // build report sections
+        $report = [
             'meta' => [
                 'generated_at' => (new DateTime())->format('Y-m-d H:i:s'),
                 'reporting_year' => (int) date('Y'),
-                'answered_controls' => $this->countAnsweredControls($normalized),
             ],
             'key_figures' => $this->extractKeyFigures($normalized),
             'environmental' => $this->environmentalBuilder->build($normalized),
@@ -63,6 +63,71 @@ class ReportGeneratorService
             'governance' => $this->governanceBuilder->build($normalized),
             'narratives' => $this->buildNarratives($normalized),
         ];
+
+        // More precise verification: count answered controls from the normalized flat list and check coverage
+        $actualAnswered = 0;
+        $missingSlugs = [];
+
+        $flatControls = $normalized['controls_flat'] ?? $normalized['all_controls'] ?? $this->getAllControls($normalized);
+
+        // Build a quick lookup of key_figures by unique key (prefer id, fallback to parent::slug)
+        $kfLookup = [];
+        foreach ($report['key_figures'] as $kf) {
+            $kfId = $kf['id'] ?? null;
+            if ($kfId) {
+                $kfLookup['id:' . $kfId] = true;
+            }
+            $kfLookup[($kf['parent_slug'] ?? 'ungrouped') . '::' . ($kf['slug'] ?? '')] = true;
+            // also store slug-only presence to be forgiving
+            $kfLookup['slug:' . ($kf['slug'] ?? '')] = true;
+        }
+
+        foreach ($flatControls as $control) {
+            if (($control['answer_status'] ?? '') === 'answered') {
+                $actualAnswered++;
+
+                $controlKeyId = isset($control['id']) && $control['id'] !== null ? ('id:' . $control['id']) : null;
+                $controlKeyPS = ($control['parent_slug'] ?? 'ungrouped') . '::' . ($control['slug'] ?? '');
+                $controlKeySlug = 'slug:' . ($control['slug'] ?? '');
+
+                $exists = false;
+                if ($controlKeyId && isset($kfLookup[$controlKeyId])) {
+                    $exists = true;
+                } elseif (isset($kfLookup[$controlKeyPS])) {
+                    $exists = true;
+                } elseif (isset($kfLookup[$controlKeySlug])) {
+                    $exists = true;
+                }
+
+                if (!$exists) {
+                    $missingSlugs[] = ($control['slug'] ?? '') . (isset($control['parent_slug']) ? ' (' . $control['parent_slug'] . ')' : '');
+                }
+            }
+        }
+
+        // Populate meta with comprehensive counts
+        $totalControls = $this->countTotalControls($normalized);
+        $totalDomains = count($normalized['domains'] ?? []);
+
+        $report['meta']['total_items'] = count($list);
+        $report['meta']['total_domains'] = $totalDomains;
+        $report['meta']['total_controls'] = $totalControls;
+        $report['meta']['answered_controls'] = $actualAnswered;
+
+        // Per section counts
+        $report['meta']['sections'] = [
+            'environmental' => $this->getSectionStats('environmental', $normalized),
+            'social' => $this->getSectionStats('social', $normalized),
+            'governance' => $this->getSectionStats('governance', $normalized),
+        ];
+
+        if (empty($missingSlugs)) {
+            $report['meta']['note'] = "از مجموع {$totalControls} کنترل، {$actualAnswered} کنترل answered پوشش داده شد.";
+        } else {
+            $report['meta']['note'] = "هشدار: {$actualAnswered} کنترل answered وجود داشت اما " . count($missingSlugs) . " مورد در key_figures قرار نگرفت. Missing: " . implode(', ', $missingSlugs);
+        }
+
+        return $report;
     }
 
     /**
@@ -85,10 +150,11 @@ class ReportGeneratorService
      */
     private function extractKeyFigures(array $normalized): array
     {
-        $figures = [];
+        // Build map keyed by control id when available, otherwise by parent_slug::slug
+        $map = [];
 
         foreach ($this->getAllControls($normalized) as $control) {
-            if (!$this->isAnsweredControl($control)) {
+            if (($control['answer_status'] ?? '') !== 'answered') {
                 continue;
             }
 
@@ -99,7 +165,16 @@ class ReportGeneratorService
             $chart = $this->suggestChart($control);
             $importance = $this->computeSectionImportance($control, $domain);
 
-            $figures[] = [
+            $uniqueKey = null;
+            if (!empty($control['id'])) {
+                $uniqueKey = 'id:' . $control['id'];
+            } else {
+                $uniqueKey = ($control['parent_slug'] ?? 'ungrouped') . '::' . ($control['slug'] ?? '');
+            }
+
+            $map[$uniqueKey] = [
+                'id' => $control['id'] ?? null,
+                'unique_key' => $uniqueKey,
                 'slug' => $control['slug'] ?? null,
                 'title' => $control['title'] ?? $control['summary'] ?? null,
                 'parent_slug' => $control['parent_slug'] ?? null,
@@ -117,7 +192,9 @@ class ReportGeneratorService
             ];
         }
 
-        // sort by importance and then by domain
+        // Preserve values and sort
+        $figures = array_values($map);
+
         usort($figures, function ($a, $b) {
             $ai = $a['section_importance'] ?? 0;
             $bi = $b['section_importance'] ?? 0;
@@ -524,6 +601,11 @@ class ReportGeneratorService
      */
     private function getAllControls(array $normalized): array
     {
+        // If mapper provided a flat controls list, use it directly (preserves original order and fields)
+        if (!empty($normalized['controls_flat']) && is_array($normalized['controls_flat'])) {
+            return $normalized['controls_flat'];
+        }
+
         $all = [];
         foreach ($normalized['controls'] ?? [] as $parent => $controls) {
             foreach ($controls as $c) {
@@ -535,6 +617,59 @@ class ReportGeneratorService
             }
         }
         return $all;
+    }
+
+    /**
+     * Get statistics for a top-level section (environmental/social/governance)
+     */
+    private function getSectionStats(string $source, array $normalized): array
+    {
+        $domains = $this->dataMapper->getDomainsBySource($source, $normalized);
+        $domainCount = count($domains);
+        $answeredCount = 0;
+
+        foreach ($domains as $slug => $domain) {
+            $controls = $this->dataMapper->getControlsByDomain($slug, $normalized);
+            foreach ($controls as $c) {
+                if ($this->isAnsweredControl($c)) {
+                    $answeredCount++;
+                }
+            }
+        }
+
+        return [
+            'domains' => $domainCount,
+            'answered_controls' => $answeredCount,
+        ];
+    }
+
+
+    /**
+     * Count total controls (items with type='control') in the normalized data
+     * Counts across all groups and flat structures
+     */
+    private function countTotalControls(array $normalized): int
+    {
+        $count = 0;
+        $flatControls = $normalized['controls_flat'] ?? $normalized['all_controls'] ?? [];
+        
+        if (!empty($flatControls)) {
+            // If we have flat structure, use it
+            foreach ($flatControls as $control) {
+                if (($control['type'] ?? '') === 'control' || isset($control['answer_status'])) {
+                    $count++;
+                }
+            }
+        } else {
+            // Fallback to grouped structure
+            foreach ($this->getAllControls($normalized) as $control) {
+                if (($control['type'] ?? '') === 'control' || isset($control['answer_status'])) {
+                    $count++;
+                }
+            }
+        }
+        
+        return $count;
     }
 
     /**

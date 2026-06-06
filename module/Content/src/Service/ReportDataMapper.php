@@ -18,6 +18,8 @@ class ReportDataMapper
         $normalized = [
             'domains' => [],
             'controls' => [],
+            // flat list kept for easy iteration and exact counting of controls
+            'controls_flat' => [],
         ];
 
         foreach ($rawList as $item) {
@@ -114,28 +116,38 @@ class ReportDataMapper
      */
     private function processControl(array $item, array &$normalized): void
     {
-        if (!isset($item['slug'], $item['parent_slug'])) {
+        // Require slug but tolerate missing parent_slug (assign to 'ungrouped') so no answered control is dropped
+        if (!isset($item['slug'])) {
             return;
         }
 
-        $parentSlug = $item['parent_slug'];
+        $parentSlug = $item['parent_slug'] ?? 'ungrouped';
 
         if (!isset($normalized['controls'][$parentSlug])) {
             $normalized['controls'][$parentSlug] = [];
         }
 
-        $normalized['controls'][$parentSlug][] = [
-            'type' => $item['type'],
-            'parent_slug' => $item['parent_slug'],
+        // Build a richer control object and keep a flat list for accurate counting later
+        $controlItem = [
+            'type' => $item['type'] ?? 'control',
+            'parent_slug' => $parentSlug,
             'slug' => $item['slug'],
             'title' => $item['title'] ?? null,
             'summary' => $item['summary'] ?? null,
             'answer' => $item['answer'] ?? null,
             'answer_unit' => $item['answer_unit'] ?? null,
             'answer_type' => $item['answer_type'] ?? null,
+            'answer_status' => $item['answer_status'] ?? null,
             'metric_code' => $item['metric_code'] ?? null,
             'kpi_code' => $item['kpi_code'] ?? null,
             'frameworks' => $item['frameworks'] ?? [],
+            'dashboard_usage' => $item['dashboard_usage'] ?? null,
+            'id' => $item['id'] ?? null,
+            'time_update_view' => $item['time_update_view'] ?? null,
+            'source' => $item['source'] ?? null,
         ];
+
+        $normalized['controls'][$parentSlug][] = $controlItem;
+        $normalized['controls_flat'][] = $controlItem;
     }
 }
