@@ -230,19 +230,19 @@ class ConfigService implements ServiceInterface
     protected function createCachedData(): array
     {
         $data = [];
-        foreach ($this->customConfig as $sectionKey => $section) {
-            foreach ($section['configs'] as $configKey => $config) {
-                // set value data
-                $data[$config['key']] = null;
-                if (isset($this->config[$config['config_key']])) {
-                    if (is_array($this->config[$config['config_key']]) && isset($this->config[$config['config_key']][$config['config_sub_key']])) {
-                        $data[$config['key']] = $this->config[$config['config_key']][$config['config_sub_key']];
-                    } else {
-                        $data[$config['key']] = $this->config[$config['config_key']];
-                    }
-                }
-            }
-        }
+//        foreach ($this->customConfig as $sectionKey => $section) {
+//            foreach ($section['configs'] as $configKey => $config) {
+//                // set value data
+//                $data[$config['key']] = null;
+//                if (isset($this->config[$config['config_key']])) {
+//                    if (is_array($this->config[$config['config_key']]) && isset($this->config[$config['config_key']][$config['config_sub_key']])) {
+//                        $data[$config['key']] = $this->config[$config['config_key']][$config['config_sub_key']];
+//                    } else {
+//                        $data[$config['key']] = $this->config[$config['config_key']];
+//                    }
+//                }
+//            }
+//        }
 
         return $this->cacheService->setItem($this->cacheKey, $data, $this->cacheTtl);
     }
